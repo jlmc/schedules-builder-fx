@@ -5,8 +5,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.TextArea?>
 
-<?import org.xine.fx.guice.example.calculator.*?>
-
 
 <AnchorPane id="AnchorPane" 
 fx:id="root" 
@@ -20,13 +18,12 @@ minHeight="-Infinity"
 minWidth="-Infinity" 
 prefHeight="400.0"
  prefWidth="600.0"
- style="-fx-background-color: FF0000;"
- xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
-  fx:controller="org.xine.schedules.builder.fx.controllers.SubjectController">
+ style="-fx-background-color: 00FF00;"
+ xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
    <children>
-      <VBox prefHeight="400.0" prefWidth="430"  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="content" prefHeight="400.0" prefWidth="600.0"  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            
+            <Label prefHeight="17.0" prefWidth="81.0" text="Subject" wrapText="true" />
          </children>
       </VBox>
    </children>

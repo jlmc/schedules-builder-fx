@@ -14,6 +14,8 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.shape.Rectangle?>
 
+
+
 <AnchorPane fx:id="root" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" styleClass="mainScreen" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.xine.schedules.builder.fx.controllers.QApplicationController">
   <children>
     <Rectangle fx:id="navigationBackground" fill="linear-gradient(from 0.0% 0.0% to 0.0% 100.0%, 0xfafbfdff 0.0%, 0xeeeeeeff 100.0%)" height="50.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -21,7 +23,7 @@
         <DropShadow height="11.0" radius="5.0" width="11.0" />
       </effect>
     </Rectangle>
-    <HBox fx:id="navigationHBox" alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <HBox fx:id="navigationHBox" alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="50.0" styleClass="top" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
         <ImageView id="logo" fx:id="spoutLogo" fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
           <image>

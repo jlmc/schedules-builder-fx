@@ -20,8 +20,6 @@ fx:controller="org.xine.schedules.builder.fx.controllers.OfficeController">
             </effect>
         </Rectangle>
 
-
-
         <VBox id="background" maxWidth="200.0" minHeight="400.0" minWidth="200.0" prefHeight="400.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" StackPane.alignment="TOP_LEFT">
             <children>
             	 <ToolBar orientation="VERTICAL">
