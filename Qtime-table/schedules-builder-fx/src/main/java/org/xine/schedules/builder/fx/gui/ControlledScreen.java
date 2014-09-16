@@ -1,5 +1,9 @@
 package org.xine.schedules.builder.fx.gui;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface ControlledScreen.
+ */
 public interface ControlledScreen {
     // This method will allow the injection of the Parent ScreenPane
     /**

@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ContentController.
  */
@@ -112,6 +113,11 @@ public abstract class ContentController {
         return this.navigationButton;
     }
 
+    /**
+     * Sets the controller constrains.
+     *
+     * @param controller the new controller constrains
+     */
     public static void setControllerConstrains(final ContentController controller) {
         AnchorPane.setTopAnchor(controller.getRootNode(), Double.valueOf(0d));
         AnchorPane.setLeftAnchor(controller.getRootNode(), Double.valueOf(0d));

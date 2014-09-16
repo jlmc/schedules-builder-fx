@@ -16,11 +16,13 @@ import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ScreensController.
  */
 public class ScreensController extends StackPane {
 
+    /** The Constant LOGGER. */
     private static final Logger LOGGER = Logger.getLogger(ScreensController.class.getName());
 
     /** The screens. */

@@ -17,6 +17,7 @@ import javax.inject.Inject;
 import org.xine.fx.guice.GuiceFXMLLoader;
 import org.xine.fx.guice.GuiceFXMLLoader.Result;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class CompositeContentController.
  */
@@ -143,8 +144,8 @@ public abstract class CompositeContentController extends ContentController {
         controller.setNavigationButton(navButton);
 
         // navButton.setMinWidth(getNavigationContent().widthProperty().doubleValue());
-        navButton.setPrefWidth(179);
-        navButton.setPrefHeight(39);
+        navButton.setPrefWidth(150.0);
+        //navButton.setPrefHeight(39);
         
 
         navButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -153,6 +154,19 @@ public abstract class CompositeContentController extends ContentController {
 				activateController(controller);
 			}
 		});
+        
+        
+        if(navButtons.isEmpty()){
+        	navButton.getStyleClass().add("first");
+        	navButton.getStyleClass().add("last");
+        	navButtons.add(navButton);
+        }
+        else{
+        	navButton.getStyleClass().add("last");
+        	navButtons.get(navButtons.size() -1).getStyleClass().removeAll("last");
+        	navButton.getStyleClass().add("last");
+        	navButtons.add(navButton);
+        }
         
         getNavigationContent().getChildren().add(navButton);
 

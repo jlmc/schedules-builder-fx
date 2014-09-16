@@ -35,6 +35,7 @@ import javafx.stage.Stage;
 
 import org.xine.schedules.builder.fx.utils.OperatingSystem;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class FxDecorateController.
  */
