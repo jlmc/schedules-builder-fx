@@ -16,6 +16,7 @@ import org.xine.fx.guice.FXMLController;
 import org.xine.schedules.builder.fx.gui.CompositeContentController;
 import org.xine.schedules.builder.fx.gui.Views;
 
+// TODO: Auto-generated Javadoc
 //@FXMLComponent
 
 /**

@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import org.xine.fx.guice.FXMLController;
 import org.xine.schedules.builder.fx.gui.ContentController;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class StartUpController.
  */

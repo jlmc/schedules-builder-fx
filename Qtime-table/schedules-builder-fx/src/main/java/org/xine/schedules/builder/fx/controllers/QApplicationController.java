@@ -34,6 +34,7 @@ import org.xine.schedules.builder.fx.gui.FxDecorateScene;
 import org.xine.schedules.builder.fx.gui.ScreensController;
 import org.xine.schedules.builder.fx.gui.Views;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class QApplicationController.
  */
@@ -48,6 +49,7 @@ public class QApplicationController implements ControlledScreen, ApplicationCont
 	@FXML
 	private Rectangle navigationBackground;
 
+	/** The navigation h box. */
 	@FXML
 	private HBox navigationHBox;
 
@@ -59,6 +61,7 @@ public class QApplicationController implements ControlledScreen, ApplicationCont
 	@FXML
 	private AnchorPane root;
 
+	/** The spout logo. */
 	@FXML
 	private ImageView spoutLogo;
 

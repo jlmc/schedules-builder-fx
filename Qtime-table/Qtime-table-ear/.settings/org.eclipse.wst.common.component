@@ -2,7 +2,7 @@
     <wb-module deploy-name="Qtime-table-ear-0.0.1">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
-        <dependent-module archiveName="Qtime-table-web-0.0.1.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/xine/Qtime-table-web/0.0.1/Qtime-table-web-0.0.1.war">
+        <dependent-module archiveName="Qtime-table-web-0.0.1.war" deploy-path="/" handle="module:/resource/Qtime-table-web/Qtime-table-web">
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>
