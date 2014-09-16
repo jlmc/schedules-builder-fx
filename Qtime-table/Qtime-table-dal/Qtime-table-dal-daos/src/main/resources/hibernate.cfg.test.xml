@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+
+
+
+
+<hibernate-configuration>
+    <session-factory>
+
+
+
+
+        <property name="hibernate.connection.driver_class">org.gjt.mm.mysql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/datos</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">jlc</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+
+
+
+
+        <!-- 2 TRANSACTION_READ_COMMITTED dirty reads are prevented; non-repeatable reads and phantom reads can occur. This level only prohibits a transaction from reading a row with uncommitted changes in it. -->
+        <property name="hibernate.connection.isolation">2</property>
+
+        <!-- Use the C3P0 connection pool provider -->
+        <property name="hibernate.connection.provider_class">org.hibernate.service.jdbc.connections.internal.C3P0ConnectionProvider</property>
+        <property name="hibernate.c3p0.min_size">5</property>
+        <property name="hibernate.c3p0.max_size">11</property>
+        <property name="hibernate.c3p0.timeout">3000</property>
+        <property name="hibernate.c3p0.max_statements">150</property>
+        <property name="hibernate.c3p0.idle_test_period">180</property>
+        <property name="hibernate.c3p0.numHelperThreads">8</property>
+
+        <!-- Print out the generated SQL, for debugging purposes, disable on production environments -->
+        <property name="hibernate.show_sql">false</property>
+        <property name='hibernate.format_sql'>false</property>
+        <property name="use_sql_comments">false</property>
+
+
+        <!-- don't generate statistics -->
+        <property name="hibernate.generate_statistics">false</property>
+
+        <property name="hibernate.search.autoregister_listeners">false</property>
+
+        <!-- performance improvement by batching operations -->
+        <property name="hibernate.default_batch_fetch_size">100</property>
+
+
+
+        <!-- Enable Hibernate's automatic session context management -->
+
+<property name="hibernate.connection.autocommit">true</property>
+
+
+
+        <mapping class="org.connect4.services.dal.entites.ModelUser" />
+
+
+    </session-factory>
+</hibernate-configuration> 
+
+
+
+
+

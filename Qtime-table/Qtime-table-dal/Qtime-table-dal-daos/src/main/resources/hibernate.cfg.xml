@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+
+
+
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.c3p0.min_size">5</property>
+        <property name="hibernate.c3p0.max_size">20</property>
+        <property name="hibernate.c3p0.timeout">300</property>
+        <property name="hibernate.c3p0.max_statements">50</property>
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+
+
+
+        <property name="hibernate.connection.driver_class">org.gjt.mm.mysql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/Qtimetable</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">jlc</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+
+
+
+        <property name="connection.pool_size">10</property>
+        <property name="current_session_context_class">org.hibernate.context.ThreadLocalSessionContext</property>
+
+
+        <property name="hibernate.current_session_context_class">thread</property>
+
+
+        <property name="hibernate.connection.isolation">2</property>
+
+        <property name="hibernate.connection.autocommit">true</property>
+        <!--
+
+            <property name="hibernate.default_schema">dbo</property>
+        -->
+
+
+
+
+
+
+        <!--
+            create: creates the schema, destroying previous data.
+            validate: validate the schema, makes no changes to the database.
+            update: update the schema.
+            create-drop: drop the schema at the end of the session.
+        -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+
+
+        <property name="hibernate.show_sql">false</property>
+        <property name='hibernate.format_sql'>false</property>
+
+
+
+
+
+
+
+        <!--
+            <mapping class="pt.his.framework.fs.modules.data.Do.StateDO"/>
+        -->
+
+
+        <mapping class="org.connect4.services.dal.entites.ModelUser" />
+
+
+    </session-factory>
+</hibernate-configuration> 
+
+
+
+
+

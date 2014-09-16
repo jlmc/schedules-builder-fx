@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+    <definition name="master.tiles" template="/das/view/baseLayout.jsp">
+
+        <put-attribute name="head" value="" />
+        <!-- <put-attribute name="userview" value="/das/view/membership/userview.jsp"/> -->
+        <put-attribute name="nav" value="/das/view/navegator.jsp" />
+        <put-attribute name="content" value="/das/view/defaultContent.jsp" />
+        <put-attribute name="footer" value="/das/view/footer.jsp" />
+    </definition>
+
+</tiles-definitions>

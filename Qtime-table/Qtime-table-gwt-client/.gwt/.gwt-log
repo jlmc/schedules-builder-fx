@@ -1,0 +1,553 @@
+Public resources found in...
+Translatable source found in...
+Found 0 cached/archived units.  Used 0 / 2743 units from cache.
+Compiling...
+   0% complete (ETR: ?)
+   10% complete (ETR: 119 seconds)
+   20% complete (ETR: 92 seconds)
+   30% complete (ETR: 65 seconds)
+   40% complete (ETR: 51 seconds)
+   50% complete (ETR: 41 seconds)
+   60% complete (ETR: 29 seconds)
+   70% complete (ETR: 20 seconds)
+   80% complete (ETR: 13 seconds)
+   90% complete (ETR: 6 seconds)
+   100% complete (ETR: 0 seconds)
+   Compilation completed in 92,69 seconds
+Validating units:
+   Errors in 'file:/C:/Users/JLC/Desktop/Qtime-table/Qtime-table-gwt-client/src/main/java/org/xine/client/QtimeTables.java'
+      Line 19: Arrays cannot be resolved
+      Line 19: Comparator cannot be resolved to a type
+      Line 21: The method compare(String, String) of type new Comparator<String>(){} must override or implement a supertype method
+      Line 26: Arrays cannot be resolved
+      Line 26: o1 cannot be resolved to a variable
+      Line 26: Syntax error on token ",", . expected
+      Line 26: Syntax error on token ",", . expected
+      Line 26: Syntax error on token "-", -- expected
+      Line 26: Syntax error on token "-", -- expected
+      Line 26: o1 cannot be resolved
+      Line 26: o2 cannot be resolved
+      Line 28: List cannot be resolved to a type
+      Line 28: Arrays cannot be resolved
+      Line 30: w cannot be resolved to a variable
+      Line 30: Syntax error on token "-", -- expected
+      Line 30: Syntax error on token "-", -- expected
+      Line 30: w cannot be resolved
+      Line 32: Consumer cannot be resolved to a type
+      Line 35: The method accept(String) of type new Consumer<String>(){} must override or implement a supertype method
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0,20 seconds
+      Removing invalidated units
+Public resources found in...
+Translatable source found in...
+Found 2740 cached/archived units.  Used 2740 / 2740 units from cache.
+Compiling...
+   Compilation completed in 0,00 seconds
+Invalid Unit: org.xine.client.QtimeTable
+Invalid units found: 1
+Compiling...
+   Compilation completed in 0,33 seconds
+Validating units:
+   Errors in 'file:/C:/Users/JLC/Desktop/Qtime-table/Qtime-table-gwt-client/src/main/java/org/xine/client/QtimeTable.java'
+      Line 62: GreetingServiceAsync cannot be resolved to a type
+      Line 62: No source code is available for type GreetingServiceAsync; did you forget to inherit a required module?
+      Line 62: The method create(Class<?>) from the type GWT refers to the missing type GreetingServiceAsync
+      Line 62: GreetingService cannot be resolved to a type
+Removing invalidated units
+Finding entry point classes
+   [ERROR] Errors in 'file:/C:/Users/JLC/Desktop/Qtime-table/Qtime-table-gwt-client/src/main/java/org/xine/client/QtimeTable.java'
+      [ERROR] Line 62: GreetingServiceAsync cannot be resolved to a type
+      [ERROR] Line 62: No source code is available for type GreetingServiceAsync; did you forget to inherit a required module?
+      [ERROR] Line 62: The method create(Class<?>) from the type GWT refers to the missing type GreetingServiceAsync
+      [ERROR] Line 62: GreetingService cannot be resolved to a type
+   [ERROR] Unable to find type 'org.xine.client.QtimeTable'
+      [ERROR] Hint: Previous compiler errors may have made this type unavailable
+      [ERROR] Hint: Check the inheritance chain from your module; it may not be inheriting a required module or a module may not be adding its source path entries properly
+Public resources found in...
+Translatable source found in...
+Found 2739 cached/archived units.  Used 2739 / 2740 units from cache.
+Compiling...
+   Compilation completed in 0,30 seconds
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0,00 seconds
+      Removing invalidated units
+Public resources found in...
+Translatable source found in...
+Found 0 cached/archived units.  Used 0 / 3304 units from cache.
+Compiling...
+   0% complete (ETR: ?)
+   10% complete (ETR: 120 seconds)
+   20% complete (ETR: 87 seconds)
+   30% complete (ETR: 64 seconds)
+   40% complete (ETR: 49 seconds)
+   50% complete (ETR: 37 seconds)
+   60% complete (ETR: 28 seconds)
+   70% complete (ETR: 21 seconds)
+   80% complete (ETR: 13 seconds)
+   90% complete (ETR: 6 seconds)
+   100% complete (ETR: 0 seconds)
+   Compilation completed in 102,57 seconds
+Validating units:
+   Errors in 'jar:file:/C:/Users/JLC/.m2/repository/com/extjs/gxt/2.1.1/gxt-2.1.1.jar!/com/extjs/gxt/ui/client/widget/form/HtmlEditor.java'
+      Line 254: Type mismatch: cannot convert from com.google.gwt.dom.client.Element to com.google.gwt.user.client.Element
+   Errors in 'file:/C:/Users/JLC/Desktop/Qtime-table/Qtime-table-gwt-client/src/main/java/org/xine/client/HomePage.java'
+      Line 24: No source code is available for type java.awt.BorderLayout; did you forget to inherit a required module?
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0,15 seconds
+      Removing invalidated units
+Rebinding com.extjs.gxt.ui.client.image.XImages
+   Invoking generator com.google.gwt.user.rebind.ui.ImageBundleGenerator
+      Adding image 'com/extjs/gxt/ui/client/image/checked.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-bold.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-font-color.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-font-decrease.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-font-highlight.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-font-increase.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-italic.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-justify-center.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-justify-left.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-justify-right.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-link.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-ol.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-source.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-ul.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-underline.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/exclamation.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/columns.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/group-by.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/hmenu-asc.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/hmenu-desc.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/group-checked.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/wait.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/page-first.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/page-first-disabled.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/page-last.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/page-last-disabled.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/page-next.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/page-next-disabled.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/page-prev.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/page-prev-disabled.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/refresh.png'
+      Adding image 'com/extjs/gxt/ui/client/image/more.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tree-collapsed.png'
+      Adding image 'com/extjs/gxt/ui/client/image/tree-collapsed-over.png'
+      Adding image 'com/extjs/gxt/ui/client/image/tree-expanded.png'
+      Adding image 'com/extjs/gxt/ui/client/image/tree-expanded-over.png'
+      Adding image 'com/extjs/gxt/ui/client/image/folder.png'
+      Adding image 'com/extjs/gxt/ui/client/image/folder-closed.png'
+      Adding image 'com/extjs/gxt/ui/client/image/unchecked.gif'
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0,10 seconds
+      Removing invalidated units
+Rebinding com.extjs.gxt.ui.client.messages.XMessages
+   Invoking generator com.google.gwt.i18n.rebind.LocalizableGenerator
+      Processing interface com.extjs.gxt.ui.client.messages.XMessages
+         Generating method body for updateManager_indicatorText()
+         Generating method body for grid_ddText()
+         Generating method body for tabPanelItem_closeText()
+         Generating method body for tabPanelItem_closeOtherText()
+         Generating method body for field_invalidText()
+         Generating method body for loadMask_msg()
+         Generating method body for messageBox_ok()
+         Generating method body for messageBox_cancel()
+         Generating method body for messageBox_yes()
+         Generating method body for messageBox_no()
+         Generating method body for messageBox_close()
+         Generating method body for datePicker_todayText()
+         Generating method body for datePicker_minText()
+         Generating method body for datePicker_maxText()
+         Generating method body for datePicker_disabledDaysText()
+         Generating method body for datePicker_disabledDatesText()
+         Generating method body for datePicker_nextText()
+         Generating method body for datePicker_prevText()
+         Generating method body for datePicker_monthYearText()
+         Generating method body for datePicker_todayTip()
+         Generating method body for datePicker_okText()
+         Generating method body for datePicker_cancelText()
+         Generating method body for datePicker_startDay()
+         Generating method body for pagingToolBar_beforePageText()
+         Generating method body for pagingToolBar_afterPageText()
+         Generating method body for pagingToolBar_firstText()
+         Generating method body for pagingToolBar_prevText()
+         Generating method body for pagingToolBar_nextText()
+         Generating method body for pagingToolBar_lastText()
+         Generating method body for pagingToolBar_refreshText()
+         Generating method body for pagingToolBar_displayMsg()
+         Generating method body for pagingToolBar_emptyMsg()
+         Generating method body for textField_minLengthText()
+         Generating method body for textField_maxLengthText()
+         Generating method body for textField_blankText()
+         Generating method body for textField_regexText()
+         Generating method body for textField_emptyText()
+         Generating method body for uploadField_browseText()
+         Generating method body for numberField_minText()
+         Generating method body for numberField_maxText()
+         Generating method body for numberField_nanText()
+         Generating method body for numberField_negativeText()
+         Generating method body for dateField_disabledDaysText()
+         Generating method body for dateField_disabledDatesText()
+         Generating method body for dateField_minText()
+         Generating method body for dateField_maxText()
+         Generating method body for dateField_invalidText()
+         Generating method body for comboBox_loading()
+         Generating method body for listField_moveSelectedUp()
+         Generating method body for listField_moveSelectedDown()
+         Generating method body for listField_addAll()
+         Generating method body for listField_addSelected()
+         Generating method body for listField_removeAll()
+         Generating method body for listField_removeSelected()
+         Generating method body for htmlEditor_boldTipText()
+         Generating method body for htmlEditor_boldTipTitle()
+         Generating method body for htmlEditor_italicTipText()
+         Generating method body for htmlEditor_italicTipTitle()
+         Generating method body for htmlEditor_underlineTipText()
+         Generating method body for htmlEditor_underlineTipTitle()
+         Generating method body for htmlEditor_justifyLeftTipText()
+         Generating method body for htmlEditor_justifyLeftTipTitle()
+         Generating method body for htmlEditor_justifyCenterTipText()
+         Generating method body for htmlEditor_justifyCenterTipTitle()
+         Generating method body for htmlEditor_justifyRightTipText()
+         Generating method body for htmlEditor_justifyRightTipTitle()
+         Generating method body for htmlEditor_sourceEditTipText()
+         Generating method body for htmlEditor_sourceEditTipTitle()
+         Generating method body for htmlEditor_olTipText()
+         Generating method body for htmlEditor_olTipTitle()
+         Generating method body for htmlEditor_ulTipText()
+         Generating method body for htmlEditor_ulTipTitle()
+         Generating method body for htmlEditor_linkTipText()
+         Generating method body for htmlEditor_linkTipTitle()
+         Generating method body for htmlEditor_createLinkText()
+         Generating method body for htmlEditor_increaseFontSizeTipText()
+         Generating method body for htmlEditor_increaseFontSizeTipTitle()
+         Generating method body for htmlEditor_decreaseFontSizeTipText()
+         Generating method body for htmlEditor_decreaseFontSizeTipTitle()
+         Generating method body for htmlEditor_foreColorTipText()
+         Generating method body for htmlEditor_foreColorTipTitle()
+         Generating method body for htmlEditor_backColorTipText()
+         Generating method body for htmlEditor_backColorTipTitle()
+         Generating method body for gridView_sortAscText()
+         Generating method body for gridView_sortDescText()
+         Generating method body for gridView_columnsText()
+         Generating method body for groupingView_emptyGroupText()
+         Generating method body for groupingView_groupByText()
+         Generating method body for groupingView_showGroupsText()
+         Generating method body for rowEditor_cancelText()
+         Generating method body for rowEditor_dirtyText()
+         Generating method body for rowEditor_saveText()
+         Generating method body for rowEditor_tipTitleText()
+         Generating method body for propertyColumnModel_nameText()
+         Generating method body for propertyColumnModel_valueText()
+         Generating method body for borderLayout_splitTip()
+         Generating method body for borderLayout_collapsibleSplitTip()
+         Generating method body for themeSelector_blueTheme()
+         Generating method body for themeSelector_grayTheme()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0,13 seconds
+      Removing invalidated units
+Public resources found in...
+Translatable source found in...
+Found 0 cached/archived units.  Used 0 / 3304 units from cache.
+Compiling...
+   0% complete (ETR: ?)
+   10% complete (ETR: 75 seconds)
+   20% complete (ETR: 58 seconds)
+   30% complete (ETR: 43 seconds)
+   40% complete (ETR: 33 seconds)
+   50% complete (ETR: 25 seconds)
+   60% complete (ETR: 18 seconds)
+   70% complete (ETR: 13 seconds)
+   80% complete (ETR: 8 seconds)
+   90% complete (ETR: 4 seconds)
+   100% complete (ETR: 0 seconds)
+   Compilation completed in 67,96 seconds
+Validating units:
+   Errors in 'jar:file:/C:/Users/JLC/.m2/repository/com/extjs/gxt/2.1.1/gxt-2.1.1.jar!/com/extjs/gxt/ui/client/widget/form/HtmlEditor.java'
+      Line 254: Type mismatch: cannot convert from com.google.gwt.dom.client.Element to com.google.gwt.user.client.Element
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0,14 seconds
+      Removing invalidated units
+Rebinding com.extjs.gxt.ui.client.image.XImages
+   Invoking generator com.google.gwt.user.rebind.ui.ImageBundleGenerator
+      Adding image 'com/extjs/gxt/ui/client/image/checked.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-bold.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-font-color.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-font-decrease.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-font-highlight.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-font-increase.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-italic.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-justify-center.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-justify-left.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-justify-right.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-link.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-ol.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-source.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-ul.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tb-underline.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/exclamation.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/columns.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/group-by.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/hmenu-asc.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/hmenu-desc.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/group-checked.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/wait.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/page-first.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/page-first-disabled.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/page-last.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/page-last-disabled.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/page-next.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/page-next-disabled.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/page-prev.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/page-prev-disabled.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/refresh.png'
+      Adding image 'com/extjs/gxt/ui/client/image/more.gif'
+      Adding image 'com/extjs/gxt/ui/client/image/tree-collapsed.png'
+      Adding image 'com/extjs/gxt/ui/client/image/tree-collapsed-over.png'
+      Adding image 'com/extjs/gxt/ui/client/image/tree-expanded.png'
+      Adding image 'com/extjs/gxt/ui/client/image/tree-expanded-over.png'
+      Adding image 'com/extjs/gxt/ui/client/image/folder.png'
+      Adding image 'com/extjs/gxt/ui/client/image/folder-closed.png'
+      Adding image 'com/extjs/gxt/ui/client/image/unchecked.gif'
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0,08 seconds
+      Removing invalidated units
+Rebinding com.extjs.gxt.ui.client.messages.XMessages
+   Invoking generator com.google.gwt.i18n.rebind.LocalizableGenerator
+      Processing interface com.extjs.gxt.ui.client.messages.XMessages
+         Generating method body for updateManager_indicatorText()
+         Generating method body for grid_ddText()
+         Generating method body for tabPanelItem_closeText()
+         Generating method body for tabPanelItem_closeOtherText()
+         Generating method body for field_invalidText()
+         Generating method body for loadMask_msg()
+         Generating method body for messageBox_ok()
+         Generating method body for messageBox_cancel()
+         Generating method body for messageBox_yes()
+         Generating method body for messageBox_no()
+         Generating method body for messageBox_close()
+         Generating method body for datePicker_todayText()
+         Generating method body for datePicker_minText()
+         Generating method body for datePicker_maxText()
+         Generating method body for datePicker_disabledDaysText()
+         Generating method body for datePicker_disabledDatesText()
+         Generating method body for datePicker_nextText()
+         Generating method body for datePicker_prevText()
+         Generating method body for datePicker_monthYearText()
+         Generating method body for datePicker_todayTip()
+         Generating method body for datePicker_okText()
+         Generating method body for datePicker_cancelText()
+         Generating method body for datePicker_startDay()
+         Generating method body for pagingToolBar_beforePageText()
+         Generating method body for pagingToolBar_afterPageText()
+         Generating method body for pagingToolBar_firstText()
+         Generating method body for pagingToolBar_prevText()
+         Generating method body for pagingToolBar_nextText()
+         Generating method body for pagingToolBar_lastText()
+         Generating method body for pagingToolBar_refreshText()
+         Generating method body for pagingToolBar_displayMsg()
+         Generating method body for pagingToolBar_emptyMsg()
+         Generating method body for textField_minLengthText()
+         Generating method body for textField_maxLengthText()
+         Generating method body for textField_blankText()
+         Generating method body for textField_regexText()
+         Generating method body for textField_emptyText()
+         Generating method body for uploadField_browseText()
+         Generating method body for numberField_minText()
+         Generating method body for numberField_maxText()
+         Generating method body for numberField_nanText()
+         Generating method body for numberField_negativeText()
+         Generating method body for dateField_disabledDaysText()
+         Generating method body for dateField_disabledDatesText()
+         Generating method body for dateField_minText()
+         Generating method body for dateField_maxText()
+         Generating method body for dateField_invalidText()
+         Generating method body for comboBox_loading()
+         Generating method body for listField_moveSelectedUp()
+         Generating method body for listField_moveSelectedDown()
+         Generating method body for listField_addAll()
+         Generating method body for listField_addSelected()
+         Generating method body for listField_removeAll()
+         Generating method body for listField_removeSelected()
+         Generating method body for htmlEditor_boldTipText()
+         Generating method body for htmlEditor_boldTipTitle()
+         Generating method body for htmlEditor_italicTipText()
+         Generating method body for htmlEditor_italicTipTitle()
+         Generating method body for htmlEditor_underlineTipText()
+         Generating method body for htmlEditor_underlineTipTitle()
+         Generating method body for htmlEditor_justifyLeftTipText()
+         Generating method body for htmlEditor_justifyLeftTipTitle()
+         Generating method body for htmlEditor_justifyCenterTipText()
+         Generating method body for htmlEditor_justifyCenterTipTitle()
+         Generating method body for htmlEditor_justifyRightTipText()
+         Generating method body for htmlEditor_justifyRightTipTitle()
+         Generating method body for htmlEditor_sourceEditTipText()
+         Generating method body for htmlEditor_sourceEditTipTitle()
+         Generating method body for htmlEditor_olTipText()
+         Generating method body for htmlEditor_olTipTitle()
+         Generating method body for htmlEditor_ulTipText()
+         Generating method body for htmlEditor_ulTipTitle()
+         Generating method body for htmlEditor_linkTipText()
+         Generating method body for htmlEditor_linkTipTitle()
+         Generating method body for htmlEditor_createLinkText()
+         Generating method body for htmlEditor_increaseFontSizeTipText()
+         Generating method body for htmlEditor_increaseFontSizeTipTitle()
+         Generating method body for htmlEditor_decreaseFontSizeTipText()
+         Generating method body for htmlEditor_decreaseFontSizeTipTitle()
+         Generating method body for htmlEditor_foreColorTipText()
+         Generating method body for htmlEditor_foreColorTipTitle()
+         Generating method body for htmlEditor_backColorTipText()
+         Generating method body for htmlEditor_backColorTipTitle()
+         Generating method body for gridView_sortAscText()
+         Generating method body for gridView_sortDescText()
+         Generating method body for gridView_columnsText()
+         Generating method body for groupingView_emptyGroupText()
+         Generating method body for groupingView_groupByText()
+         Generating method body for groupingView_showGroupsText()
+         Generating method body for rowEditor_cancelText()
+         Generating method body for rowEditor_dirtyText()
+         Generating method body for rowEditor_saveText()
+         Generating method body for rowEditor_tipTitleText()
+         Generating method body for propertyColumnModel_nameText()
+         Generating method body for propertyColumnModel_valueText()
+         Generating method body for borderLayout_splitTip()
+         Generating method body for borderLayout_collapsibleSplitTip()
+         Generating method body for themeSelector_blueTheme()
+         Generating method body for themeSelector_grayTheme()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0,10 seconds
+      Removing invalidated units
+Public resources found in...
+Translatable source found in...
+Found 0 cached/archived units.  Used 0 / 2737 units from cache.
+Compiling...
+   0% complete (ETR: ?)
+   10% complete (ETR: 84 seconds)
+   20% complete (ETR: 57 seconds)
+   30% complete (ETR: 43 seconds)
+   40% complete (ETR: 34 seconds)
+   50% complete (ETR: 25 seconds)
+   60% complete (ETR: 19 seconds)
+   70% complete (ETR: 13 seconds)
+   80% complete (ETR: 8 seconds)
+   90% complete (ETR: 4 seconds)
+   100% complete (ETR: 0 seconds)
+   Compilation completed in 58,76 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0,01 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+Translatable source found in...
+Found 2737 cached/archived units.  Used 2737 / 2737 units from cache.
+Compiling...
+   Compilation completed in 0,00 seconds
+Removing invalidated units
+Finding entry point classes

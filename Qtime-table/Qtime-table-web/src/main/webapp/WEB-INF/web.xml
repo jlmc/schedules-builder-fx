@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <display-name>Qtime-table-web-Application</display-name>
+
+    <!-- <servlet> -->
+    <!-- <servlet-name>InitServlet</servlet-name> -->
+    <!-- <servlet-class>org.connect4.services.dal.InitServlet</servlet-class> -->
+    <!-- <load-on-startup>11</load-on-startup> -->
+    <!-- </servlet> -->
+
+
+
+    <context-param>
+        <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
+        <param-value>/WEB-INF/tiles.xml</param-value>
+    </context-param>
+    
+    
+    
+  <filter>
+    <filter-name>struts2</filter-name>
+    <filter-class>
+      org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
+    </filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>struts2</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+</web-app>
