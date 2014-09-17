@@ -113,11 +113,6 @@ public class ScreensController extends StackPane {
         if (this.screens.get(name) != null) {
             final DoubleProperty opacity = opacityProperty();
 
-            // final ControlledScreen controlledScreen = this.controllers.get(name);
-            // if (controlledScreen != null) {
-            // controlledScreen.enable();
-            // }
-
             // if there is more than one screen
             if (!getChildren().isEmpty()) {
                 final Timeline fade = new Timeline(new KeyFrame(Duration.ZERO, new KeyValue(opacity, Double.valueOf(1.0D))), new KeyFrame(new Duration(1000), new EventHandler<ActionEvent>() {
