@@ -16,8 +16,7 @@ public class Views {
     public static final String CONFIGURATIONS = "/views/confview.fxml";
 
     /** The Constant officeview. */
-    // public static final String OFFICE_VIEW = "/views/officeview.fxml";
-    // public static final String OFFICE_VIEW = "/views/officeview.fxml";
+
     public static final String OFFICE_VIEW = "/views/testMenu.fxml";
 
     /** The Constant COMPOSITE_COMPONENT_VIEW. */
