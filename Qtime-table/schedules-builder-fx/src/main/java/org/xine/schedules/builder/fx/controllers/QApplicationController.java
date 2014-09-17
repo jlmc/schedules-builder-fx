@@ -174,7 +174,7 @@ public class QApplicationController implements ControlledScreen, ApplicationCont
 				activateController(controller);
 			}
 		});
-
+		navButton.getStyleClass().add("xine-button");
 		controller.setNavigationButton(navButton);
 
 		//

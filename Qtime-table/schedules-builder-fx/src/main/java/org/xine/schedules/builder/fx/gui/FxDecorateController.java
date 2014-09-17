@@ -35,7 +35,6 @@ import javafx.stage.Stage;
 
 import org.xine.schedules.builder.fx.utils.OperatingSystem;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class FxDecorateController.
  */
@@ -142,7 +141,6 @@ public class FxDecorateController {
     }
 
     /** The move nodes. */
-    @SuppressWarnings("unused")
     private final List<Node> moveNodes = new LinkedList<Node>();
 
     /** The primary move node. */

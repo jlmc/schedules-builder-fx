@@ -20,11 +20,12 @@
             <ToolBar maxWidth="155.0" orientation="VERTICAL" styleClass="xine-tool-bar" VBox.vgrow="ALWAYS">
               <items>
                 <VBox fx:id="navigationVBox" styleClass="segmented-button-bar">
-                  <Button maxWidth="150.0" minWidth="150.0" prefHeight="-1.0" styleClass="first" text="Tasks" />
+                 <!-- <Button maxWidth="150.0" minWidth="150.0" prefHeight="-1.0" styleClass="first" text="Tasks" />
                   <Button maxWidth="150.0" minWidth="150.0" text="Administrator" />
                   <Button maxWidth="150.0" minWidth="150.0" text="Search" />
                   <Button maxWidth="150.0" minWidth="150.0" text="Line" />
                   <Button maxWidth="150.0" minWidth="150.0" styleClass="last" text="Process" />
+                  -->
                 </VBox>
               </items>
             </ToolBar>

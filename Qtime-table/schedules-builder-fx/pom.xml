@@ -23,6 +23,11 @@
 		<slf4j.version>1.6.4</slf4j.version>
 		<slf4j.log4j12.version>1.7.7</slf4j.log4j12.version>
 		<guice-fx.version>0.0.1</guice-fx.version>
+
+		<javafx.version>2.3+</javafx.version>
+		<javafx.runtime.jar>${java.home}/lib/jfxrt.jar</javafx.runtime.jar>
+		<javafx.ant.jar>${java.home}/../lib/ant-javafx.jar</javafx.ant.jar>
+
 	</properties>
 
 	<!-- Project developers -->
@@ -76,12 +81,20 @@
 			<version>${guice-fx.version}</version>
 		</dependency>
 
+		<!-- <dependency> -->
+		<!-- <groupId>javafx</groupId> -->
+		<!-- <artifactId>jfxrt</artifactId> -->
+		<!-- <version>${java.version}</version> -->
+		<!-- <scope>system</scope> -->
+		<!-- <systemPath>${java.home}/lib/jfxrt.jar</systemPath> -->
+		<!-- </dependency> -->
+
 		<dependency>
-			<groupId>javafx</groupId>
-			<artifactId>jfxrt</artifactId>
-			<version>${java.version}</version>
+			<groupId>com.oracle</groupId>
+			<artifactId>javafx-runtime</artifactId>
+			<version>RELEASE</version>
 			<scope>system</scope>
-			<systemPath>${java.home}/lib/jfxrt.jar</systemPath>
+			<systemPath>${javafx.runtime.jar}</systemPath>
 		</dependency>
 
 	</dependencies>

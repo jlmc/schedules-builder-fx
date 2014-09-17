@@ -7,10 +7,15 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
 import javax.inject.Inject;
 
@@ -212,6 +217,9 @@ public abstract class CompositeContentController extends ContentController {
             final int direction = from < to ? -1 : 1;
             animateController(this.activeController, oldActiveController, direction);
         }
+       
+        	 
+       
 
         this.activeController.onActivate();
     }
@@ -226,8 +234,47 @@ public abstract class CompositeContentController extends ContentController {
      *            the direction
      */
     protected void animateController(final ContentController activeController2, final ContentController oldActiveController, final int direction) {
-        // TODO Auto-generated method stub
+       
 
     }
+    
+    /*
+    public boolean setScreen(final String name) {
+        if (this.screens.get(name) != null) {
+            final DoubleProperty opacity = opacityProperty();
+
+            // final ControlledScreen controlledScreen = this.controllers.get(name);
+            // if (controlledScreen != null) {
+            // controlledScreen.enable();
+            // }
+
+            // if there is more than one screen
+            if (!getChildren().isEmpty()) {
+                final Timeline fade = new Timeline(new KeyFrame(Duration.ZERO, new KeyValue(opacity, Double.valueOf(1.0D))), new KeyFrame(new Duration(1000), new EventHandler<ActionEvent>() {
+                    @SuppressWarnings("synthetic-access")
+                    @Override
+                    public void handle(final ActionEvent t) {
+                        // remove the displayed screen
+                        getChildren().remove(0);
+                        getChildren().add(0, ScreensController.this.screens.get(name)); // add the screen
+                        final Timeline fadeIn = new Timeline(new KeyFrame(Duration.ZERO, new KeyValue(opacity, Double.valueOf(0.0d))), new KeyFrame(new Duration(800), new KeyValue(opacity, Double.valueOf(1.0D))));
+                        fadeIn.play();
+                    }
+                }, new KeyValue(opacity, Double.valueOf(0.0D))));
+                fade.play();
+
+            } else {
+                setOpacity(0.0);
+                // no one else been displayed, then just show
+                getChildren().add(this.screens.get(name));
+                final Timeline fadeIn = new Timeline(new KeyFrame(Duration.ZERO, new KeyValue(opacity, Double.valueOf(0.0D))), new KeyFrame(new Duration(2500), new KeyValue(opacity, Double.valueOf(1.0D))));
+                fadeIn.play();
+            }
+            return true;
+        }
+        LOGGER.info("screen hasn't been loaded!!!");
+        return false;
+    }
+*/
 
 }
