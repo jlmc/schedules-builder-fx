@@ -7,22 +7,16 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
-import javafx.util.Duration;
 
 import javax.inject.Inject;
 
 import org.xine.fx.guice.GuiceFXMLLoader;
 import org.xine.fx.guice.GuiceFXMLLoader.Result;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class CompositeContentController.
  */
@@ -36,7 +30,7 @@ public abstract class CompositeContentController extends ContentController {
     private Set<String> subViews;
 
     /** The controllers. */
-    private final List<ContentController> controllers = new ArrayList<ContentController>();
+    private final List<ContentController> controllers = new ArrayList<>();
 
     /** The active controller. */
     private ContentController activeController;
@@ -96,11 +90,11 @@ public abstract class CompositeContentController extends ContentController {
      */
     protected void loadSubControllers() {
 
-        //this.subViews.forEach((final String subview) -> loadSubControllers(subview));
+        // this.subViews.forEach((final String subview) -> loadSubControllers(subview));
 
-         for (final String subview : this.subViews) {
-        	 loadSubControllers(subview);
-         }
+        for (final String subview : this.subViews) {
+            loadSubControllers(subview);
+        }
 
         if (this.controllers != null && !this.controllers.isEmpty()) {
             this.activateController(this.controllers.get(0), false);
@@ -150,29 +144,27 @@ public abstract class CompositeContentController extends ContentController {
 
         // navButton.setMinWidth(getNavigationContent().widthProperty().doubleValue());
         navButton.setPrefWidth(150.0);
-        //navButton.setPrefHeight(39);
-        
+        // navButton.setPrefHeight(39);
 
         navButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent arg0) {
-				activateController(controller);
-			}
-		});
-        
-        
-        if(navButtons.isEmpty()){
-        	navButton.getStyleClass().add("first");
-        	navButton.getStyleClass().add("last");
-        	navButtons.add(navButton);
+            @SuppressWarnings("synthetic-access")
+            @Override
+            public void handle(final ActionEvent arg0) {
+                activateController(controller);
+            }
+        });
+
+        if (this.navButtons.isEmpty()) {
+            navButton.getStyleClass().add("first");
+            navButton.getStyleClass().add("last");
+            this.navButtons.add(navButton);
+        } else {
+            navButton.getStyleClass().add("last");
+            this.navButtons.get(this.navButtons.size() - 1).getStyleClass().removeAll("last");
+            navButton.getStyleClass().add("last");
+            this.navButtons.add(navButton);
         }
-        else{
-        	navButton.getStyleClass().add("last");
-        	navButtons.get(navButtons.size() -1).getStyleClass().removeAll("last");
-        	navButton.getStyleClass().add("last");
-        	navButtons.add(navButton);
-        }
-        
+
         getNavigationContent().getChildren().add(navButton);
 
     }
@@ -217,9 +209,6 @@ public abstract class CompositeContentController extends ContentController {
             final int direction = from < to ? -1 : 1;
             animateController(this.activeController, oldActiveController, direction);
         }
-       
-        	 
-       
 
         this.activeController.onActivate();
     }
@@ -234,47 +223,7 @@ public abstract class CompositeContentController extends ContentController {
      *            the direction
      */
     protected void animateController(final ContentController activeController2, final ContentController oldActiveController, final int direction) {
-       
 
     }
-    
-    /*
-    public boolean setScreen(final String name) {
-        if (this.screens.get(name) != null) {
-            final DoubleProperty opacity = opacityProperty();
-
-            // final ControlledScreen controlledScreen = this.controllers.get(name);
-            // if (controlledScreen != null) {
-            // controlledScreen.enable();
-            // }
-
-            // if there is more than one screen
-            if (!getChildren().isEmpty()) {
-                final Timeline fade = new Timeline(new KeyFrame(Duration.ZERO, new KeyValue(opacity, Double.valueOf(1.0D))), new KeyFrame(new Duration(1000), new EventHandler<ActionEvent>() {
-                    @SuppressWarnings("synthetic-access")
-                    @Override
-                    public void handle(final ActionEvent t) {
-                        // remove the displayed screen
-                        getChildren().remove(0);
-                        getChildren().add(0, ScreensController.this.screens.get(name)); // add the screen
-                        final Timeline fadeIn = new Timeline(new KeyFrame(Duration.ZERO, new KeyValue(opacity, Double.valueOf(0.0d))), new KeyFrame(new Duration(800), new KeyValue(opacity, Double.valueOf(1.0D))));
-                        fadeIn.play();
-                    }
-                }, new KeyValue(opacity, Double.valueOf(0.0D))));
-                fade.play();
-
-            } else {
-                setOpacity(0.0);
-                // no one else been displayed, then just show
-                getChildren().add(this.screens.get(name));
-                final Timeline fadeIn = new Timeline(new KeyFrame(Duration.ZERO, new KeyValue(opacity, Double.valueOf(0.0D))), new KeyFrame(new Duration(2500), new KeyValue(opacity, Double.valueOf(1.0D))));
-                fadeIn.play();
-            }
-            return true;
-        }
-        LOGGER.info("screen hasn't been loaded!!!");
-        return false;
-    }
-*/
 
 }

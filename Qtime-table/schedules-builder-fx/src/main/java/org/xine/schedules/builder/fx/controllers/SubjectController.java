@@ -17,7 +17,7 @@ public class SubjectController extends ContentController {
     /** The root. */
     @FXML
     private AnchorPane root;
-    
+
     @FXML
     private SubjectsPane subjectsPane;
 
@@ -29,7 +29,8 @@ public class SubjectController extends ContentController {
         setName("subjets");
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.xine.schedules.builder.fx.gui.ContentController#getRootNode()
      */
     @Override
@@ -42,6 +43,7 @@ public class SubjectController extends ContentController {
      */
     @FXML
     public void initialize() {
+        // TODO::
     }
 
 }

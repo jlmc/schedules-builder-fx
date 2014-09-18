@@ -57,9 +57,8 @@ public class FxDecorateController {
             this.handle = handle;
         }
 
-        /*
-         * (non-Javadoc)
-         * @see javafx.event.EventHandler#handle(javafx.event.Event)
+        /**
+         * {@inheritDoc}
          */
         @SuppressWarnings("synthetic-access")
         @Override
@@ -141,7 +140,7 @@ public class FxDecorateController {
     }
 
     /** The move nodes. */
-    private final List<Node> moveNodes = new LinkedList<Node>();
+    private final List<Node> moveNodes = new LinkedList<>();
 
     /** The primary move node. */
     private Node primaryMoveNode = null;
