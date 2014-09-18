@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.effect.*?>
+
+<AnchorPane id="AnchorPane" fx:id="root" 
+maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 
+minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" 
+xmlns:fx="http://javafx.com/fxml" 
+fx:controller="org.xine.schedules.builder.fx.controllers.OfficeController">
+    <children>
+       <Rectangle fx:id="navigationBackground"  height="400.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" StackPane.alignment="TOP_LEFT">
+            <effect>
+                <DropShadow height="11.0" radius="5.0" width="11.0" />
+            </effect>
+        </Rectangle>
+
+        <VBox id="background" maxWidth="200.0" minHeight="400.0" minWidth="200.0" prefHeight="400.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" StackPane.alignment="TOP_LEFT">
+            <children>
+            	 <ToolBar orientation="VERTICAL">
+            	 <items>
+            	 	<VBox styleClass="segmented-button-bar" fx:id="navigationVBox">
+          
+        			</VBox>
+            	  </items>
+             	</ToolBar>
+            
+                <!-- <TreeView fx:id="menuTreeView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS" /> -->
+            </children>
+           <!-- <padding>
+                <Insets left="20.0"  right="0.0" />
+            </padding>
+            -->
+        </VBox>
+
+
+<!--         <StackPane fx:id="container" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"> -->
+<!--             <StackPane.margin> -->
+<!--             <Insets left="200.0" /> -->
+<!--             </StackPane.margin> -->
+<!--             <children> -->
+<!--                 <Button mnemonicParsing="false" text="Button" /> -->
+<!--             </children> -->
+<!--             <StackPane.margin> -->
+<!--                 <Insets left="200.0" /> -->
+<!--             </StackPane.margin> -->
+<!--         </StackPane> -->
+
+        
+         <AnchorPane fx:id="container" 
+                    prefHeight="400.0" prefWidth="600.0" 
+                    styleClass="background" 
+                    AnchorPane.bottomAnchor="0.0" 
+                    AnchorPane.leftAnchor="200.0" 
+                    AnchorPane.rightAnchor="0.0" 
+                    AnchorPane.topAnchor="0.0" />
+
+
+        <!-- <Rectangle fx:id="navigationBackground" fill="linear-gradient(from 0.0% 0.0% to 0.0% 100.0%, 0xfafbfdff 0.0%, 0xeeeeeeff 100.0%)" height="50.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" -->
+        <!-- AnchorPane.topAnchor="0.0"> -->
+        <!-- <effect> -->
+        <!-- <DropShadow height="11.0" radius="5.0" width="11.0" /> -->
+        <!-- </effect> -->
+        <!-- </Rectangle> -->
+    </children>
+</AnchorPane>

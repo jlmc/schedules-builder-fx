@@ -12,6 +12,18 @@ import javafx.scene.layout.AnchorPane;
  */
 public abstract class ContentController {
 
+    /**
+     * Sets the controller constrains.
+     * @param controller
+     *            the new controller constrains
+     */
+    public static void setControllerConstrains(final ContentController controller) {
+        AnchorPane.setTopAnchor(controller.getRootNode(), Double.valueOf(0d));
+        AnchorPane.setLeftAnchor(controller.getRootNode(), Double.valueOf(0d));
+        AnchorPane.setRightAnchor(controller.getRootNode(), Double.valueOf(0d));
+        AnchorPane.setBottomAnchor(controller.getRootNode(), Double.valueOf(0d));
+    }
+
     /** The name. */
     private final StringProperty name = new SimpleStringProperty("<name>");
 
@@ -19,13 +31,45 @@ public abstract class ContentController {
     private ApplicationController applicationController = null;
 
     /** The navigation button. */
-    protected Button navigationButton = null;
+    private Button navigationButton = null;
+
+    /**
+     * Gets the application controller.
+     * @return the application controller
+     */
+    protected ApplicationController getApplicationController() {
+        return this.applicationController;
+    }
+
+    /**
+     * Gets the name.
+     * @return the name
+     */
+    public String getName() {
+        return this.name.get();
+    }
+
+    /**
+     * Gets the navigation button.
+     * @return the navigation button
+     */
+    public Button getNavigationButton() {
+        return this.navigationButton;
+    }
 
     /**
      * Gets the root node.
      * @return the root node
      */
     public abstract Node getRootNode();
+
+    /**
+     * Name property.
+     * @return the string property
+     */
+    public StringProperty nameProperty() {
+        return this.name;
+    }
 
     /**
      * On activate.
@@ -49,31 +93,6 @@ public abstract class ContentController {
     }
 
     /**
-     * Gets the name.
-     * @return the name
-     */
-    public String getName() {
-        return this.name.get();
-    }
-
-    /**
-     * Sets the name.
-     * @param name
-     *            the new name
-     */
-    public void setName(final String name) {
-        this.name.set(name);
-    }
-
-    /**
-     * Name property.
-     * @return the string property
-     */
-    public StringProperty nameProperty() {
-        return this.name;
-    }
-
-    /**
      * Sets the application controller.
      * @param applicationController
      *            the new application controller
@@ -86,11 +105,12 @@ public abstract class ContentController {
     }
 
     /**
-     * Gets the application controller.
-     * @return the application controller
+     * Sets the name.
+     * @param name
+     *            the new name
      */
-    protected ApplicationController getApplicationController() {
-        return this.applicationController;
+    public void setName(final String name) {
+        this.name.set(name);
     }
 
     /**
@@ -103,25 +123,5 @@ public abstract class ContentController {
             throw new IllegalStateException("navigation button was already set");
         }
         this.navigationButton = activationButton;
-    }
-
-    /**
-     * Gets the navigation button.
-     * @return the navigation button
-     */
-    public Button getNavigationButton() {
-        return this.navigationButton;
-    }
-
-    /**
-     * Sets the controller constrains.
-     *
-     * @param controller the new controller constrains
-     */
-    public static void setControllerConstrains(final ContentController controller) {
-        AnchorPane.setTopAnchor(controller.getRootNode(), Double.valueOf(0d));
-        AnchorPane.setLeftAnchor(controller.getRootNode(), Double.valueOf(0d));
-        AnchorPane.setRightAnchor(controller.getRootNode(), Double.valueOf(0d));
-        AnchorPane.setBottomAnchor(controller.getRootNode(), Double.valueOf(0d));
     }
 }

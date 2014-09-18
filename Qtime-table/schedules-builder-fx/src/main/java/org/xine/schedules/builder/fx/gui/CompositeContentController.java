@@ -36,13 +36,15 @@ public abstract class CompositeContentController extends ContentController {
     private ContentController activeController;
 
     /** The nav buttons. */
-    public List<Button> navButtons = new ArrayList<>();
+    private final List<Button> navButtons = new ArrayList<>();
 
-    // public Node getRootNode() {
-    // return null;
-    // // TODO Auto-generated method stub
-    //
-    // }
+    /**
+     * Gets the nav buttons.
+     * @return the nav buttons
+     */
+    public List<Button> getNavButtons() {
+        return this.navButtons;
+    }
 
     /**
      * Gets the content.
@@ -223,7 +225,7 @@ public abstract class CompositeContentController extends ContentController {
      *            the direction
      */
     protected void animateController(final ContentController activeController2, final ContentController oldActiveController, final int direction) {
-
+        // TODO
     }
 
 }

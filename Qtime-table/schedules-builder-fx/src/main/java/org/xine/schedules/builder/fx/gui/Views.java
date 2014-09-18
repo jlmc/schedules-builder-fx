@@ -1,10 +1,16 @@
 package org.xine.schedules.builder.fx.gui;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Views.
  */
-public class Views {
+public final class Views {
+
+    /**
+     * Instantiates a new views.
+     */
+    private Views() {
+        super();
+    }
 
     /** The Constant APP_VIEW. */
     public static final String APP_VIEW = "/views/appview2.fxml";
@@ -16,8 +22,8 @@ public class Views {
     public static final String CONFIGURATIONS = "/views/confview.fxml";
 
     /** The Constant officeview. */
-
-    public static final String OFFICE_VIEW = "/views/testMenu.fxml";
+    // public static final String OFFICE_VIEW = "/views/testMenu.fxml";
+    public static final String OFFICE_VIEW = "/views/officeview.fxml";
 
     /** The Constant COMPOSITE_COMPONENT_VIEW. */
     public static final String COMPOSITE_COMPONENT_VIEW = "/views/compositecomponentview.fxml";

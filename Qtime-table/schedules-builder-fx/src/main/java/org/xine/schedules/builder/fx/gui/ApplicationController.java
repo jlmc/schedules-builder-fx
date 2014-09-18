@@ -1,6 +1,5 @@
 package org.xine.schedules.builder.fx.gui;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface ApplicationController.
  */

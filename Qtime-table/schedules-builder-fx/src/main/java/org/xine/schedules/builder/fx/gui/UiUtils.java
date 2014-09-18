@@ -6,7 +6,14 @@ import javafx.scene.layout.AnchorPane;
 /**
  * The Class UiUtils.
  */
-public class UiUtils {
+public final class UiUtils {
+
+    /**
+     * Instantiates a new ui utils.
+     */
+    private UiUtils() {
+        super();
+    }
 
     /**
      * Sets the controller constrains.

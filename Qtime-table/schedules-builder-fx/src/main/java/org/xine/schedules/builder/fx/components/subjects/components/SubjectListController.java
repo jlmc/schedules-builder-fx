@@ -5,29 +5,45 @@ import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 
 import org.xine.fx.guice.FXMLController;
-import org.xine.schedules.builder.fx.gui.ContentController;
+import org.xine.schedules.builder.fx.components.ScheduleAbstractContentController;
 
+/**
+ * The Class SubjectListController.
+ */
 @FXMLController
-public class SubjectListController  extends ContentController{
-	
-	public static final String NAME = "subjectListController";
+public class SubjectListController extends ScheduleAbstractContentController {
 
-	/** The root. */
+    /** The Constant NAME. */
+    public static final String NAME = "subjectListController";
+
+    /** The root. */
     @FXML
     private AnchorPane root;
-	
-    
-    public SubjectListController(){
-    	super();
-    	setName(NAME);
+
+    /**
+     * Instantiates a new subject list controller.
+     */
+    public SubjectListController() {
+        super();
+        setName(NAME);
     }
-	
-	@Override
-	public Node getRootNode() {
-		return this.root;
-	}
-	
-	
-	
+
+    /*
+     * (non-Javadoc)
+     * @see org.xine.schedules.builder.fx.gui.ContentController#getRootNode()
+     */
+    @Override
+    public Node getRootNode() {
+        return this.root;
+    }
+
+    /**
+     * Selection action.
+     */
+    @SuppressWarnings("static-method")
+    @FXML
+    public void selectionAction() {
+        System.out.println("selection action");
+    }
 
 }
