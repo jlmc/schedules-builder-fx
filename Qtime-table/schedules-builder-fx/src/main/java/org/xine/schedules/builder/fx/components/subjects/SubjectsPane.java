@@ -15,7 +15,7 @@ import org.xine.schedules.builder.fx.components.SubType;
 /**
  * The Class SubjectsPane.
  */
-@FXMLComponent(resources = "org.xine.schedules.builder.fx.components.subjects.SubjectsPane")
+@FXMLComponent(resources = "org.xine.schedules.builder.fx.components.AbstractPane")
 public class SubjectsPane extends ScheduleAbstractComponent {
 
     /** The root. */
