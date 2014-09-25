@@ -3,6 +3,7 @@ package org.xine.schedules.builder.fx.components.subjects.components;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 
 import org.xine.fx.guice.FXMLController;
 import org.xine.schedules.builder.fx.components.ScheduleAbstractContentController;
@@ -19,6 +20,9 @@ public class SubjectListController extends ScheduleAbstractContentController {
     /** The root. */
     @FXML
     private AnchorPane root;
+
+    @FXML
+    private HBox footer;
 
     /**
      * Instantiates a new subject list controller.

@@ -58,7 +58,7 @@
 	-fx-effect: innershadow(three-pass-box, #969696, 25, 0.0, 0, 0);
 }
 
-.xine-button:default, .button.action {
+.xine-button:default, .xine-button.action {
 	-spout-button-top-color: #3576D4;
 	-spout-button-gradient-top-color: #2966BF;
 	-spout-button-gradient-bottom-color: #2761B5;
@@ -103,7 +103,7 @@
 }
 
 .xine-button:default .text, .xine-button.action .text, .xine-button.confirm .text,
-	.button.alert .text {
+	.xine-button.alert .text {
 	-fx-effect: dropshadow(gaussian, grey, 2, 0.0, 0, -1);
 }
 
@@ -272,7 +272,6 @@
 
 .xine-tool-bar
 {
-	-fx-base: -dark-black;
     -fx-font-size: 12pt;
     -fx-background-color:
         linear-gradient(to bottom, derive(-fx-base,-30%), derive(-fx-base,-60%)),
@@ -316,6 +315,61 @@
         -darkest-black,
         rgb(55, 57, 58),
         linear-gradient(to top, -light-black 2%, -dark-black 98%);
+}
+
+
+/* components */
+
+.component{
+	
+}
+
+.component .header{
+	-fx-background-color: #F7931E;
+	-fx-padding: 0.0 0.0 0.0 8.0;
+}
+
+.component .header .label{
+	/*-fx-font-size: 16.0px;*/
+	-fx-text-fill: white;
+	
+}
+
+
+.h1{
+	-fx-font-size: 18.0px;
+}
+
+.h2{
+	-fx-font-size: 14.0px;
+	-fx-font-style: italic;
+}
+
+
+.component .foot{
+	-fx-background-color: #F2F2F2;
+	-fx-border-color: #CCCCCC;
+	-fx-border-width: 1.0px 0.0 0.0 0.0; 
+}
+
+.component .internal{
+	-fx-padding: 1.0px 15.0px 1.0px 15.0px;
+}
+
+.component .foot .l{
+	-fx-padding: 2.0px 5.0px 2.0px 5.0px;
+	-fx-alignment: center-left;
+}
+
+.component .foot .r{
+	-fx-padding: 2.0px 5.0px 2.0px 5.0px;
+	-fx-alignment: center-right;
+}
+
+.component .button{
+	-fx-padding: 2.0px 5.0px 2.0px 5.0px;
+	-fx-font-size: 12px;
+	
 }
  
 

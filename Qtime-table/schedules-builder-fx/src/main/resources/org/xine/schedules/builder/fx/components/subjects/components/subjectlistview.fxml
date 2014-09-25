@@ -1,13 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="430.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.xine.schedules.builder.fx.components.subjects.components.SubjectListController">
-  <children>
-    <Button maxWidth="150.0" minWidth="150.0" onAction="#selectionAction" text="LIST" />
-  </children>
+<AnchorPane id="AnchorPane" 
+fx:id="root" 
+maxHeight="-Infinity" 
+maxWidth="-Infinity" 
+minHeight="-Infinity" 
+minWidth="-Infinity" 
+prefHeight="400.0" 
+prefWidth="600.0" 
+
+AnchorPane.bottomAnchor="0.0" 
+AnchorPane.leftAnchor="0.0" 
+AnchorPane.rightAnchor="0.0" 
+AnchorPane.topAnchor="0.0" 
+xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.xine.schedules.builder.fx.components.subjects.components.SubjectListController">
+   <children>
+   
+   
+   
+    <VBox prefHeight="400.0" prefWidth="600.0"  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children></children>
+       
+   
+   
+    </VBox>
+   </children>
 </AnchorPane>

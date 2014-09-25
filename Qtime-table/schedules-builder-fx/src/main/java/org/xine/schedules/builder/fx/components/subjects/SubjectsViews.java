@@ -13,7 +13,7 @@ public final class SubjectsViews {
     }
 
     /** The Constant SUBJECTS_VIEW. */
-    public static final String LIST_VIEW = "/org/xine/schedules/builder/fx/components/subjects/components/subjectlistview.fxml";
+    public static final String LIST_VIEW = "/org/xine/schedules/builder/fx/components/subjects/components/subjectsview.fxml";
 
     /** The Constant SUBJECTS_CREATE_VIEW. */
     public static final String CREATE_VIEW = "/org/xine/schedules/builder/fx/components/subjects/components/subjectcreateview.fxml";
