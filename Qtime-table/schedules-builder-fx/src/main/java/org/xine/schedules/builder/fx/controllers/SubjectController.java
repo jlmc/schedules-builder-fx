@@ -42,7 +42,7 @@ public class SubjectController extends ContentController {
      */
     @FXML
     public void initialize() {
-        System.out.println("SubjectController init");
+        // TODO::
     }
 
 }

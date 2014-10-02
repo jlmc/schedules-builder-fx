@@ -27,7 +27,13 @@
                <children>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <center>
-                        <Button mnemonicParsing="false" text="Button" BorderPane.alignment="TOP_LEFT" />
+                        <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <columns>
+                              <TableColumn fx:id="idc" prefWidth="34.0" text="id" />
+                              <TableColumn fx:id="subjectc" prefWidth="335.0" text="subject" />
+                              <TableColumn fx:id="actionsc" prefWidth="200.0" text=" actions" />
+                           </columns>
+                        </TableView>
                      </center>
                   </BorderPane>
                </children></VBox>

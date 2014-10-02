@@ -345,15 +345,23 @@
 	-fx-font-style: italic;
 }
 
+.xine-component{
+	-fx-padding: 1px;
+}
+
 
 .component .foot{
-	-fx-background-color: #F2F2F2;
+	/*-fx-background-color: #F2F2F2;*/
+	-fx-background-color: #E5E5E5;
 	-fx-border-color: #CCCCCC;
 	-fx-border-width: 1.0px 0.0 0.0 0.0; 
 }
 
 .component .internal{
-	-fx-padding: 1.0px 15.0px 1.0px 15.0px;
+	-fx-padding: 1.0px 1.0px 1.0px 1.0px;
+	/*-fx-background-color: #F2F2F2;*/
+	-fx-background-color: #FFFFFF;
+	
 }
 
 .component .foot .l{
