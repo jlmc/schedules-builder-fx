@@ -107,9 +107,10 @@ public class SubjectsController extends ScheduleAbstractContentController {
 
     /**
      * Initialize.
+     * @param <T>
      */
     @FXML
-    public void initialize() {
+    public <T> void initialize() {
         this.h1.textProperty().set("Subjets List");
         this.h2.textProperty().set("");
 
@@ -136,6 +137,8 @@ public class SubjectsController extends ScheduleAbstractContentController {
 
         this.actionsc.setCellFactory(c -> buttonCellBuilder());
 
+        this.actionsc.setSortable(false);
+
         // this.actionsc.setCellFactory(new Callback<TableColumn<Subject, Boolean>, TableCell<Subject, Boolean>>() {
         // @Override
         // public TableCell<Subject, Boolean> call(final TableColumn<Subject, Boolean> param) {
@@ -148,6 +151,11 @@ public class SubjectsController extends ScheduleAbstractContentController {
          * firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
          * lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
          */
+
+        // define width
+        this.idc.prefWidthProperty().bind(this.table.widthProperty().multiply(0.05));
+        this.subjectc.prefWidthProperty().bind(this.table.widthProperty().multiply(0.60));
+        this.actionsc.prefWidthProperty().bind(this.table.widthProperty().multiply(0.35));
     }
 
     @SuppressWarnings("unused")
