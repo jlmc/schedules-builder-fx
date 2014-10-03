@@ -6,9 +6,9 @@ package org.xine.schedules.builder.fx.components.subjects.components;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.value.ObservableValue;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -16,16 +16,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.util.Callback;
 
 import org.xine.fx.guice.FXMLController;
 import org.xine.schedules.builder.fx.components.ScheduleAbstractContentController;
 import org.xine.schedules.builder.fx.components.utils.ActionsTableCell;
+import org.xine.schedules.builder.fx.components.utils.ActionsTableCellDeleteEvent;
+import org.xine.schedules.builder.fx.components.utils.ActionsTableCellEditEvent;
+import org.xine.schedules.builder.fx.components.utils.ActionsTableCellViewEvent;
 import org.xine.schedules.builder.fx.model.Subject;
 
 /**
@@ -81,7 +82,7 @@ public class SubjectsController extends ScheduleAbstractContentController {
 
     /** The actionsc. */
     @FXML
-    private TableColumn<Subject, Boolean> actionsc;
+    private TableColumn<Subject, Subject> actionsc;
 
     /** The model. */
     private final SubjectsModel model;
@@ -108,6 +109,7 @@ public class SubjectsController extends ScheduleAbstractContentController {
     /**
      * Initialize.
      * @param <T>
+     *            the generic type
      */
     @FXML
     public <T> void initialize() {
@@ -118,49 +120,60 @@ public class SubjectsController extends ScheduleAbstractContentController {
 
         this.table.setItems(this.model.getSubjectsData());
 
-        this.idc.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Subject, Number>, ObservableValue<Number>>() {
-            @Override
-            public ObservableValue<Number> call(final CellDataFeatures<Subject, Number> param) {
-                return param.getValue().getIdProperty();
-            }
+        this.idc.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().getIdProperty());
+        this.subjectc.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().nameProperty());
+        this.actionsc.setCellValueFactory(cellDataFeatures -> {
+            return new SimpleObjectProperty<>(cellDataFeatures.getValue());
         });
-        this.subjectc.setCellValueFactory(c -> c.getValue().nameProperty());
 
         // / action collumn
-
-        this.actionsc.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Subject, Boolean>, ObservableValue<Boolean>>() {
-            @Override
-            public ObservableValue<Boolean> call(final CellDataFeatures<Subject, Boolean> param) {
-                return new SimpleBooleanProperty(param.getValue() != null);
-            }
+        this.actionsc.setCellFactory(tableColumn -> {
+            return actionsCellBuilder();
         });
 
-        this.actionsc.setCellFactory(c -> buttonCellBuilder());
-
         this.actionsc.setSortable(false);
-
-        // this.actionsc.setCellFactory(new Callback<TableColumn<Subject, Boolean>, TableCell<Subject, Boolean>>() {
-        // @Override
-        // public TableCell<Subject, Boolean> call(final TableColumn<Subject, Boolean> param) {
-        // return buttonCellBuilder();
-        // }
-        // });
-
-        /*
-         * // Initialize the person table with the two columns.
-         * firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
-         * lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
-         */
 
         // define width
         this.idc.prefWidthProperty().bind(this.table.widthProperty().multiply(0.05));
         this.subjectc.prefWidthProperty().bind(this.table.widthProperty().multiply(0.60));
-        this.actionsc.prefWidthProperty().bind(this.table.widthProperty().multiply(0.35));
+        this.actionsc.prefWidthProperty().bind(this.table.widthProperty().multiply(0.34));
     }
 
-    @SuppressWarnings("unused")
-    protected TableCell<Subject, Boolean> buttonCellBuilder() {
-        return new ActionsTableCell<Subject, Boolean>();
+    /**
+     * Actions cell builder.
+     * @return the table cell
+     */
+    @SuppressWarnings({"rawtypes", "static-method" })
+    protected TableCell<Subject, Subject> actionsCellBuilder() {
+        final ActionsTableCell<Subject, Subject> actionsTableCell = new ActionsTableCell<>();
+
+        actionsTableCell.addEventHandler(ActionsTableCellViewEvent.VIEW_EVENT, new EventHandler<Event>() {
+
+            @Override
+            public void handle(final Event e) {
+
+                // final TableCell cell = (TableCell) e.getSource();
+
+                final ActionsTableCell c = (ActionsTableCell) e.getTarget();
+                if (c != null) {
+                    // final Subject subject = (Subject) cell.getUserData();
+                    final Subject subject = (Subject) c.getData();
+
+                    System.out.println("o button View clicado: " + subject.getId() + " name:" + subject.getName());
+                }
+
+            }
+        });
+
+        actionsTableCell.addEventHandler(ActionsTableCellEditEvent.EDIT_EVENT, e -> {
+            System.out.println("edit clicked");
+        });
+
+        actionsTableCell.addEventHandler(ActionsTableCellDeleteEvent.DELETE_EVENT, e -> {
+            System.out.println("deleted clicked");
+        });
+
+        return actionsTableCell;
     }
 
     /**
