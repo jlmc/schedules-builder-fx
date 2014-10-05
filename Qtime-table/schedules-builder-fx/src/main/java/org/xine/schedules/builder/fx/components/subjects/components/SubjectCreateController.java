@@ -1,5 +1,6 @@
 package org.xine.schedules.builder.fx.components.subjects.components;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -9,6 +10,7 @@ import javafx.scene.layout.VBox;
 
 import org.xine.fx.guice.FXMLController;
 import org.xine.schedules.builder.fx.components.ScheduleAbstractContentController;
+import org.xine.schedules.builder.fx.components.SubType;
 import org.xine.schedules.builder.fx.model.Subject;
 
 /**
@@ -84,6 +86,26 @@ public class SubjectCreateController extends ScheduleAbstractContentController {
      */
     public void setSubjectModel(final Subject subjectModel) {
         this.subjectModel = subjectModel;
+    }
+
+    /**
+     * Back click.
+     * @param event
+     *            the event
+     */
+    @FXML
+    public void backClick(final ActionEvent event) {
+        super.getParentComponent().activateController(SubType.LIST);
+    }
+
+    /**
+     * Save click.
+     * @param event
+     *            the event
+     */
+    @FXML
+    public void saveClick(final ActionEvent event) {
+        super.getParentComponent().activateController(SubType.CREATE);
     }
 
 }

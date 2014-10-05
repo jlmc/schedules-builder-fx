@@ -29,9 +29,9 @@
                      <center>
                         <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <columns>
-                              <TableColumn fx:id="idc" prefWidth="34.0" text="id" />
-                              <TableColumn fx:id="subjectc" prefWidth="335.0" text="subject" />
-                              <TableColumn fx:id="actionsc" prefWidth="200.0" text=" actions" />
+                              <TableColumn fx:id="idc" text="id" />
+                              <TableColumn fx:id="subjectc" text="subject" />
+                              <TableColumn fx:id="actionsc" resizable="false" sortable="false" style="-fx-text-alignment: right; -fx-alignment: center-right" text=" actions" />
                            </columns>
                         </TableView>
                      </center>
@@ -47,12 +47,12 @@
                <children>
                   <HBox prefHeight="25.0" prefWidth="300.0" styleClass="l" HBox.hgrow="ALWAYS">
                      <children>
-                        <Button mnemonicParsing="false" text="Button" />
+                        <Button mnemonicParsing="false" onAction="#createClick" text="create" />
                      </children>
                   </HBox>
                   <HBox prefHeight="25.0" prefWidth="300.0" styleClass="r" HBox.hgrow="ALWAYS">
                      <children>
-                        <Button mnemonicParsing="false" text="Button" />
+<!--                         <Button mnemonicParsing="false" text="Button" /> -->
                      </children>
                   </HBox>
                </children></HBox>

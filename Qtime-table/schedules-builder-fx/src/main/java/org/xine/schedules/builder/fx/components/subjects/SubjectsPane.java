@@ -18,6 +18,7 @@ import org.xine.schedules.builder.fx.components.SubType;
 @FXMLComponent(resources = "org.xine.schedules.builder.fx.components.subjects.SubjectsPane")
 public class SubjectsPane extends ScheduleAbstractComponent {
 
+    /** The root. */
     @FXML
     private AnchorPane root;
 
@@ -42,8 +43,13 @@ public class SubjectsPane extends ScheduleAbstractComponent {
         loadSubControllers(SUBVIEWS);
 
         activateController(SubType.LIST);
+
     }
 
+    /*
+     * (non-Javadoc)
+     * @see org.xine.schedules.builder.fx.components.ScheduleAbstractComponent#getContent()
+     */
     @Override
     protected Pane getContent() {
         return this.root;

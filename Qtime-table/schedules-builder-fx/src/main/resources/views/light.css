@@ -378,6 +378,22 @@
 	-fx-padding: 2.0px 5.0px 2.0px 5.0px;
 	-fx-font-size: 12px;
 	
+	
 }
+
+.component .backButton{
+	-fx-graphic: url('../images/back-16.png');
+}
+
+.component .saveButton{
+	-fx-graphic: url('../images/save-16.png');
+}
+
+
+.rigth-alignment{
+	-fx-alignment: center-right;
+	-fx-text-alignment: right ;
+}
+
  
 

@@ -8,13 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" styleClass="component" 
-stylesheets="@../../../../../../../../views/light.css" 
-xmlns="http://javafx.com/javafx/8" 
-xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="org.xine.schedules.builder.fx.components.subjects.components.SubjectCreateController">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" styleClass="component" stylesheets="@../../../../../../../../views/light.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.xine.schedules.builder.fx.components.subjects.components.SubjectCreateController">
    <children>
       <VBox fx:id="main" layoutX="0.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -47,12 +41,12 @@ fx:controller="org.xine.schedules.builder.fx.components.subjects.components.Subj
                <children>
                   <HBox prefHeight="25.0" prefWidth="300.0" styleClass="l" HBox.hgrow="ALWAYS">
                      <children>
-                        <Button mnemonicParsing="false" text="Button" />
+                        <Button mnemonicParsing="false" styleClass="backButton" text="back" onAction="#backClick" />
                      </children>
                   </HBox>
                   <HBox prefHeight="25.0" prefWidth="300.0" styleClass="r" HBox.hgrow="ALWAYS">
                      <children>
-                        <Button mnemonicParsing="false" text="Button" />
+                        <Button mnemonicParsing="false" styleClass="saveButton" text="save" onAction="#saveClick" />
                      </children>
                   </HBox>
                </children></HBox>
@@ -60,6 +54,3 @@ fx:controller="org.xine.schedules.builder.fx.components.subjects.components.Subj
       </VBox>
    </children>
 </AnchorPane>
-
-
-
