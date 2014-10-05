@@ -109,7 +109,7 @@ public abstract class ScheduleAbstractComponent extends AnchorPane {
      */
     private void activateController(final ScheduleAbstractContentController contentController, final boolean b) {
 
-        if (contentController == null && contentController == this.activeController) {
+        if (contentController == null || contentController == this.activeController) {
             return;
         }
 
