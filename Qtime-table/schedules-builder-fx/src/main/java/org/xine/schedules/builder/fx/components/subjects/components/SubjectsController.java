@@ -5,7 +5,6 @@ package org.xine.schedules.builder.fx.components.subjects.components;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -18,6 +17,7 @@ import javafx.scene.layout.VBox;
 
 import org.xine.fx.guice.FXMLController;
 import org.xine.schedules.builder.fx.components.ScheduleAbstractContentController;
+import org.xine.schedules.builder.fx.components.ScheduleModel;
 import org.xine.schedules.builder.fx.components.SubType;
 import org.xine.schedules.builder.fx.components.utils.ActionsTableCell;
 import org.xine.schedules.builder.fx.components.utils.DummySource;
@@ -79,7 +79,7 @@ public class SubjectsController extends ScheduleAbstractContentController {
     private TableColumn<Subject, Subject> actionsc;
 
     /** The model. */
-    private final SubjectsModel model;
+    private final ScheduleModel<Subject> model;
 
     /**
      * Instantiates a new subjects controller.
@@ -87,7 +87,7 @@ public class SubjectsController extends ScheduleAbstractContentController {
     public SubjectsController() {
         super();
         setName(SUBJECTSCONTROLLER);
-        this.model = new SubjectsModel();
+        this.model = new ScheduleModel<>();
 
     }
 
@@ -128,16 +128,15 @@ public class SubjectsController extends ScheduleAbstractContentController {
         this.actionsc.setSortable(false);
 
         // define width
-        this.idc.prefWidthProperty().bind(this.table.widthProperty().multiply(0.05));
+        this.idc.prefWidthProperty().bind(this.table.widthProperty().multiply(0.040));
         this.subjectc.prefWidthProperty().bind(this.table.widthProperty().multiply(0.60));
-        this.actionsc.prefWidthProperty().bind(this.table.widthProperty().multiply(0.34));
+        this.actionsc.prefWidthProperty().bind(this.table.widthProperty().multiply(0.35));
     }
 
     /**
      * Actions cell builder.
      * @return the table cell
      */
-    @SuppressWarnings({"static-method" })
     protected TableCell<Subject, Subject> actionsCellBuilder() {
         final ActionsTableCell<Subject, Subject> actionsTableCell = new ActionsTableCell<>();
 
@@ -155,13 +154,30 @@ public class SubjectsController extends ScheduleAbstractContentController {
         // }
         // });
 
-        actionsTableCell.setOnViewAction(new EventHandler<ActionEvent>() {
+        // actionsTableCell.setOnViewAction(new EventHandler<ActionEvent>() {
+        //
+        // @Override
+        // public void handle(final ActionEvent event) {
+        // final Subject s = actionsTableCell.getData();
+        //
+        // System.out.println("o button View clicadoXXXX: " + s.getId() + " name:" + s.getName());
+        // }
+        // });
 
-            @Override
-            public void handle(final ActionEvent event) {
-                final Subject s = actionsTableCell.getData();
+        actionsTableCell.setOnEditAction(e -> {
+            final Subject s = actionsTableCell.getData();
+            setStatus(SubType.EDIT, s);
+        });
 
-                System.out.println("o button View clicadoXXXX: " + s.getId() + " name:" + s.getName());
+        actionsTableCell.setOnViewAction(e -> {
+            final Subject s = actionsTableCell.getData();
+            setStatus(SubType.VIEW, s);
+        });
+
+        actionsTableCell.setOnDeleteAction(e -> {
+            final Subject s = actionsTableCell.getData();
+            if (s != null) {
+                this.model.getSubjectsData().remove(s);
             }
         });
 
@@ -174,6 +190,29 @@ public class SubjectsController extends ScheduleAbstractContentController {
         // });
 
         return actionsTableCell;
+    }
+
+    /**
+     * Sets the status.
+     * @param subType
+     *            the sub type
+     * @param subject
+     *            the subject
+     */
+    private void setStatus(final SubType subType, final Subject subject) {
+        this.model.setSelectedObject(subject);
+        setStatus(subType);
+    }
+
+    /**
+     * Sets the status.
+     * @param subType
+     *            the new status
+     */
+    private void setStatus(final SubType subType) {
+        if (subType != null) {
+            super.getParentComponent().activateController(subType);
+        }
     }
 
     /**

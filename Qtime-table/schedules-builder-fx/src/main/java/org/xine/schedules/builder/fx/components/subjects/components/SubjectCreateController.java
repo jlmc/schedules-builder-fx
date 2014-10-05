@@ -88,6 +88,13 @@ public class SubjectCreateController extends ScheduleAbstractContentController {
         this.subjectModel = subjectModel;
     }
 
+    @FXML
+    public void initialize() {
+        this.h1.textProperty().set("Subjets");
+        this.h2.textProperty().set("create <i>New</i>");
+
+    }
+
     /**
      * Back click.
      * @param event

@@ -361,7 +361,6 @@
 	-fx-padding: 1.0px 1.0px 1.0px 1.0px;
 	/*-fx-background-color: #F2F2F2;*/
 	-fx-background-color: #FFFFFF;
-	
 }
 
 .component .foot .l{
@@ -377,8 +376,6 @@
 .component .button{
 	-fx-padding: 2.0px 5.0px 2.0px 5.0px;
 	-fx-font-size: 12px;
-	
-	
 }
 
 .component .backButton{
@@ -389,11 +386,27 @@
 	-fx-graphic: url('../images/save-16.png');
 }
 
+.component .editButton{
+	-fx-graphic: url('../images/edit-16.png');
+}
+
+.component .deleteButton{
+	-fx-graphic: url('../images/delete-16.png');
+}
+
 
 .rigth-alignment{
 	-fx-alignment: center-right;
 	-fx-text-alignment: right ;
 }
+
+
+ /*
+.table-view .table-row-cell {
+    -fx-border-width: 1;
+  -fx-border-width:  1.0px 0.0px 0.0px 0.0px;
+}
+  */
 
  
 
