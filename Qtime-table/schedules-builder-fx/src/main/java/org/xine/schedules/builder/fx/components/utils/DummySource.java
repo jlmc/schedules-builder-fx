@@ -3,12 +3,20 @@ package org.xine.schedules.builder.fx.components.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.xine.schedules.builder.fx.components.ScheduleModel;
+import org.xine.schedules.builder.fx.components.subjects.SubjectDataModel;
 import org.xine.schedules.builder.fx.model.Subject;
 
+/**
+ * The Class DummySource.
+ */
 public class DummySource {
 
-    public static void builderSubjects(final ScheduleModel<Subject> model) {
+    /**
+     * Builder subjects.
+     * @param model
+     *            the model
+     */
+    public static void builderSubjects(final SubjectDataModel model) {
         final List<Subject> ss = new ArrayList<>();
 
         Subject s = new Subject();
@@ -26,7 +34,7 @@ public class DummySource {
         s.setName("Cesar");
         ss.add(s);
 
-        model.setSubjectsData(ss);
+        model.getSubject().addAll(ss);
     }
 
 }

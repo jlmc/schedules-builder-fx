@@ -15,10 +15,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import javax.inject.Inject;
+
 import org.xine.fx.guice.FXMLController;
 import org.xine.schedules.builder.fx.components.ScheduleAbstractContentController;
-import org.xine.schedules.builder.fx.components.ScheduleModel;
 import org.xine.schedules.builder.fx.components.SubType;
+import org.xine.schedules.builder.fx.components.subjects.SubjectDataModel;
 import org.xine.schedules.builder.fx.components.utils.ActionsTableCell;
 import org.xine.schedules.builder.fx.components.utils.DummySource;
 import org.xine.schedules.builder.fx.model.Subject;
@@ -79,7 +81,8 @@ public class SubjectsController extends ScheduleAbstractContentController {
     private TableColumn<Subject, Subject> actionsc;
 
     /** The model. */
-    private final ScheduleModel<Subject> model;
+    @Inject
+    private SubjectDataModel model;
 
     /**
      * Instantiates a new subjects controller.
@@ -87,7 +90,6 @@ public class SubjectsController extends ScheduleAbstractContentController {
     public SubjectsController() {
         super();
         setName(SUBJECTSCONTROLLER);
-        this.model = new ScheduleModel<>();
 
     }
 
@@ -112,10 +114,13 @@ public class SubjectsController extends ScheduleAbstractContentController {
 
         DummySource.builderSubjects(this.model);
 
-        this.table.setItems(this.model.getSubjectsData());
+        // DummySource.builderSubjects(this.model);
+
+        this.table.setItems(this.model.getSubject());
 
         this.idc.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().getIdProperty());
         this.subjectc.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().nameProperty());
+
         this.actionsc.setCellValueFactory(cellDataFeatures -> {
             return new SimpleObjectProperty<>(cellDataFeatures.getValue());
         });
@@ -165,19 +170,17 @@ public class SubjectsController extends ScheduleAbstractContentController {
         // });
 
         actionsTableCell.setOnEditAction(e -> {
-            final Subject s = actionsTableCell.getData();
-            setStatus(SubType.EDIT, s);
+            setStatus(SubType.EDIT, actionsTableCell.getData());
         });
 
         actionsTableCell.setOnViewAction(e -> {
-            final Subject s = actionsTableCell.getData();
-            setStatus(SubType.VIEW, s);
+            setStatus(SubType.VIEW, actionsTableCell.getData());
         });
 
         actionsTableCell.setOnDeleteAction(e -> {
             final Subject s = actionsTableCell.getData();
             if (s != null) {
-                this.model.getSubjectsData().remove(s);
+                this.model.getSubject().remove(s);
             }
         });
 
@@ -200,7 +203,8 @@ public class SubjectsController extends ScheduleAbstractContentController {
      *            the subject
      */
     private void setStatus(final SubType subType, final Subject subject) {
-        this.model.setSelectedObject(subject);
+
+        this.model.setSelectedSubjectIndex(this.model.getSubject().indexOf(subject));
         setStatus(subType);
     }
 

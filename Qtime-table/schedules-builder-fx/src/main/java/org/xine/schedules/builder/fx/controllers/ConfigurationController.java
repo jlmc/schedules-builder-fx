@@ -19,7 +19,7 @@ public class ConfigurationController extends ContentController {
 
     /** The input field. */
     @FXML
-    private TextArea inputField;  
+    private TextArea inputField;
 
     /** The chat area. */
     @FXML
@@ -37,7 +37,8 @@ public class ConfigurationController extends ContentController {
         setName("Configuration");
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.xine.schedules.builder.fx.gui.ContentController#getRootNode()
      */
     @Override

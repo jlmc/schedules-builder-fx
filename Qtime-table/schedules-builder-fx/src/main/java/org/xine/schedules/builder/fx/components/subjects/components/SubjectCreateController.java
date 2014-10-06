@@ -1,16 +1,22 @@
 package org.xine.schedules.builder.fx.components.subjects.components;
 
+import java.util.Random;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import javax.inject.Inject;
+
 import org.xine.fx.guice.FXMLController;
 import org.xine.schedules.builder.fx.components.ScheduleAbstractContentController;
 import org.xine.schedules.builder.fx.components.SubType;
+import org.xine.schedules.builder.fx.components.subjects.SubjectDataModel;
 import org.xine.schedules.builder.fx.model.Subject;
 
 /**
@@ -50,8 +56,17 @@ public class SubjectCreateController extends ScheduleAbstractContentController {
     @FXML
     private HBox foot;
 
-    /** The subject model. */
-    private Subject subjectModel;
+    /** The subject name. */
+    @FXML
+    private TextField subjectName;
+
+    /** The model. */
+    @Inject
+    private SubjectDataModel model;
+
+    /** The random. */
+    @Inject
+    private Random random;
 
     /**
      * Instantiates a new subject create controller.
@@ -72,22 +87,8 @@ public class SubjectCreateController extends ScheduleAbstractContentController {
     }
 
     /**
-     * Gets the subject model.
-     * @return the subject model
+     * Initialize.
      */
-    public Subject getSubjectModel() {
-        return this.subjectModel;
-    }
-
-    /**
-     * Sets the subject model.
-     * @param subjectModel
-     *            the new subject model
-     */
-    public void setSubjectModel(final Subject subjectModel) {
-        this.subjectModel = subjectModel;
-    }
-
     @FXML
     public void initialize() {
         this.h1.textProperty().set("Subjets");
@@ -112,7 +113,17 @@ public class SubjectCreateController extends ScheduleAbstractContentController {
      */
     @FXML
     public void saveClick(final ActionEvent event) {
-        super.getParentComponent().activateController(SubType.CREATE);
+
+        if (this.subjectName.textProperty().get() != null && !this.subjectName.textProperty().get().trim().isEmpty()) {
+            final Subject subject = new Subject();
+            subject.setId(this.random.nextInt());
+            subject.setName(this.subjectName.getText());
+
+            this.model.getSubject().add(subject);
+        }
+
+        super.getParentComponent().activateController(SubType.LIST);
+
     }
 
 }

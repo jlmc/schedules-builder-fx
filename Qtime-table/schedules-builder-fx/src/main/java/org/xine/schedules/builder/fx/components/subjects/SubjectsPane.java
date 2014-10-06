@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
+import javax.inject.Inject;
+
 import org.xine.fx.guice.FXMLComponent;
 import org.xine.schedules.builder.fx.components.ScheduleAbstractComponent;
 import org.xine.schedules.builder.fx.components.SubType;
@@ -22,6 +24,11 @@ public class SubjectsPane extends ScheduleAbstractComponent {
     @FXML
     private AnchorPane root;
 
+    /** The model. */
+    @SuppressWarnings("unused")
+    @Inject
+    private SubjectDataModel model;
+
     /** The Constant subviews. */
     private static final Map<SubType, String> SUBVIEWS = Collections.unmodifiableMap(new HashMap<SubType, String>() {
         private static final long serialVersionUID = 1L;
@@ -32,16 +39,22 @@ public class SubjectsPane extends ScheduleAbstractComponent {
         }
     });
 
+    public SubjectsPane() {
+        super();
+        System.out.println("consstructor");
+    }
+
     /**
      * Initialize.
      */
     @FXML
     public void initialize() {
-
+        System.out.println("initialize Start");
         loadSubControllers(SUBVIEWS);
 
         activateController(SubType.LIST);
 
+        System.out.println("initialize END");
     }
 
     /*

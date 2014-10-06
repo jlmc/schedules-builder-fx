@@ -16,9 +16,6 @@ import org.xine.fx.guice.FXMLController;
 import org.xine.schedules.builder.fx.gui.CompositeContentController;
 import org.xine.schedules.builder.fx.gui.Views;
 
-// TODO: Auto-generated Javadoc
-//@FXMLComponent
-
 /**
  * The Class OfficeController.
  */
@@ -48,11 +45,7 @@ public class OfficeController extends CompositeContentController {
 
     /** The office subviews. */
     private final Set<String> officeSubviews = new LinkedHashSet<String>() {
-        /**
-         *
-         */
         private static final long serialVersionUID = 1L;
-
         {
             add(Views.SUBJECTS_VIEW);
             add(Views.ROOMS_VIEW);
@@ -87,15 +80,15 @@ public class OfficeController extends CompositeContentController {
         // TODO missing set of sub views
         setSubViews(this.officeSubviews.toArray(new String[this.officeSubviews.size()]));
 
-       // buttonBar.getStyleClass().setAll("segmented-button-bar");
+        // buttonBar.getStyleClass().setAll("segmented-button-bar");
         this.navigationVBox.getStyleClass().setAll("segmented-button-bar");
-        //this.navigationVBox.heightProperty().bind(this.root.heightProperty());
-        
+        // this.navigationVBox.heightProperty().bind(this.root.heightProperty());
+
         // TODO missing loadSubcontrolers Call
         loadSubControllers();
 
-        //this.navigationBackground.getStyleClass().setAll("segmented-button-bar");
-        //this.navigationBackground.heightProperty().bind(this.root.heightProperty());
+        // this.navigationBackground.getStyleClass().setAll("segmented-button-bar");
+        // this.navigationBackground.heightProperty().bind(this.root.heightProperty());
     }
 
     /*

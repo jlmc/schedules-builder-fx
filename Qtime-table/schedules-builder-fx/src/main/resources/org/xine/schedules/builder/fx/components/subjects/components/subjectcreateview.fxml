@@ -45,7 +45,7 @@
                                 </rowConstraints>
                                  <children>
                                     <Label text="Subject Name:" />
-                                    <TextField GridPane.columnIndex="1" />
+                                    <TextField GridPane.columnIndex="1" fx:id="subjectName"/>
                                     <Label text="description:" textAlignment="RIGHT" GridPane.rowIndex="1" />
                                     <TextArea prefHeight="43.0" prefWidth="198.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                  </children>

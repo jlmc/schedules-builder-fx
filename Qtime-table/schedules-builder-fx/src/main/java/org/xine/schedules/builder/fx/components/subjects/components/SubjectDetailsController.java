@@ -8,8 +8,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import javax.inject.Inject;
+
 import org.xine.schedules.builder.fx.components.ScheduleAbstractContentController;
 import org.xine.schedules.builder.fx.components.SubType;
+import org.xine.schedules.builder.fx.components.subjects.SubjectDataModel;
 
 /**
  * The Class SubjectDetailsController.
@@ -54,6 +57,10 @@ public class SubjectDetailsController extends ScheduleAbstractContentController 
     /** The subject description label. */
     @FXML
     private Label subjectDescriptionLabel;
+
+    /** The model. */
+    @Inject
+    private SubjectDataModel model;
 
     /**
      * Instantiates a new subject details controller.
@@ -100,6 +107,14 @@ public class SubjectDetailsController extends ScheduleAbstractContentController 
     @FXML
     public void editClick(final ActionEvent event) {
         super.getParentComponent().activateController(SubType.CREATE);
+    }
+
+    @Override
+    public void onActivate() {
+        // TODO Auto-generated method stub
+        super.onActivate();
+
+        this.subjectNameLabel.textProperty().bindBidirectional(this.model.getSubject().get(this.model.getSelectedSubjectIndex()).nameProperty());
     }
 
 }

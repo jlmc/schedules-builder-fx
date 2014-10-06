@@ -27,11 +27,17 @@ import com.google.inject.Module;
  */
 public class Launcher extends GuiceApplication {
 
+    /** The Constant MIN_WIDTH. */
     public static final int MIN_WIDTH = 800;
+
+    /** The Constant MIN_HEIGHT. */
     public static final int MIN_HEIGHT = 600;
 
+    /** The fxml loader. */
     @Inject
     private GuiceFXMLLoader fxmlLoader;
+
+    /** The application controller. */
     private QApplicationController applicationController;
 
     /*
@@ -39,6 +45,13 @@ public class Launcher extends GuiceApplication {
      * @see javafx.application.Application#start(javafx.stage.Stage)
      */
     // @Override
+    /**
+     * Start aaa.
+     * @param primaryStage
+     *            the primary stage
+     * @throws Exception
+     *             the exception
+     */
     public static void startAAA(final Stage primaryStage) throws Exception {
 
         primaryStage.setTitle("Hello World!");
@@ -67,6 +80,10 @@ public class Launcher extends GuiceApplication {
         launch(args);
     }
 
+    /*
+     * (non-Javadoc)
+     * @see javafx.application.Application#start(javafx.stage.Stage)
+     */
     @Override
     public void start(final Stage stage) throws Exception {
         loadFonts();
@@ -135,16 +152,28 @@ public class Launcher extends GuiceApplication {
         // primaryStage.show();
     }
 
+    /**
+     * Load fonts.
+     */
     private static void loadFonts() {
         loadFont("/font/awesome/fontawesome-webfont.ttf");
         loadFont("/font/awesome/ubuntu/Ubuntu-L.ttf");
     }
 
+    /**
+     * Load font.
+     * @param location
+     *            the location
+     */
     private static void loadFont(final String location) {
         Font.loadFont(Launcher.class.getResourceAsStream(location), 12);
 
     }
 
+    /*
+     * (non-Javadoc)
+     * @see javafx.application.Application#stop()
+     */
     @Override
     public void stop() throws Exception {
 
@@ -152,6 +181,10 @@ public class Launcher extends GuiceApplication {
         super.stop();
     }
 
+    /*
+     * (non-Javadoc)
+     * @see org.xine.fx.guice.GuiceApplication#init(java.util.List)
+     */
     @Override
     public void init(final List<Module> arg0) throws Exception {
         // TODO Auto-generated method stub
