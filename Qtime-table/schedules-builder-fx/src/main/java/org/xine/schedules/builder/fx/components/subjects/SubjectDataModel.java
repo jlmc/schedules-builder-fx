@@ -63,4 +63,12 @@ public class SubjectDataModel {
         return this.selectedSubjectIndex;
     }
 
+    /**
+     * Gets the selected object.
+     * @return the selected object
+     */
+    public Subject getSelectedObject() {
+        return getSubject().get(getSelectedSubjectIndex());
+    }
+
 }

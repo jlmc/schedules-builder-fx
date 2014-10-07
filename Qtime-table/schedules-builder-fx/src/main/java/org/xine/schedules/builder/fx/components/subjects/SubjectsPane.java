@@ -36,6 +36,7 @@ public class SubjectsPane extends ScheduleAbstractComponent {
             put(SubType.LIST, SubjectsViews.LIST_VIEW);
             put(SubType.CREATE, SubjectsViews.CREATE_VIEW);
             put(SubType.VIEW, SubjectsViews.DETAILS_VIEW);
+            put(SubType.EDIT, SubjectsViews.EDIT_VIEW);
         }
     });
 

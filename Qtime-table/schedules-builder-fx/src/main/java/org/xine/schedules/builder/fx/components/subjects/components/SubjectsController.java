@@ -230,4 +230,9 @@ public class SubjectsController extends ScheduleAbstractContentController {
         super.getParentComponent().activateController(SubType.CREATE);
     }
 
+    @Override
+    public void onActivate() {
+        this.model.selectedSubjectIndex.set(-1);
+    }
+
 }

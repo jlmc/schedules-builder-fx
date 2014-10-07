@@ -20,4 +20,7 @@ public final class SubjectsViews {
 
     /** The Constant SUBJECTS_DETAILS_VIEW. */
     public static final String DETAILS_VIEW = "/org/xine/schedules/builder/fx/components/subjects/components/subjectdetailsview.fxml";
+
+    /** The Constant EDIT_VIEW. */
+    public static final String EDIT_VIEW = "/org/xine/schedules/builder/fx/components/subjects/components/ subjecteditview.fxml";
 }

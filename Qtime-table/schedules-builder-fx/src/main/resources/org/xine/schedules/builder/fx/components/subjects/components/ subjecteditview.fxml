@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" styleClass="component" stylesheets="@../../../../../../../../views/light.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.xine.schedules.builder.fx.components.subjects.components.SubjectEditController">
+   <children>
+      <VBox fx:id="main" layoutX="0.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox fx:id="header" alignment="CENTER_LEFT" minHeight="30.0" prefHeight="30.0" prefWidth="600.0" spacing="10.0" styleClass="header">
+              
+               <children>
+                  <Label fx:id="h1" prefHeight="30.0" styleClass="h1" text="Titulo" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="h2" prefHeight="30.0" styleClass="h2" text="subtitil" />
+               </children>
+            </HBox>
+            <VBox fx:id="internal" prefHeight="345.0" prefWidth="600.0" styleClass="internal" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <center>
+                        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                           <children>
+                              <GridPane>
+                                <columnConstraints>
+                                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="372.0" minWidth="10.0" prefWidth="372.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.0" minWidth="0.0" prefWidth="0.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Subject Name:" />
+                                    <TextField GridPane.columnIndex="1" fx:id="subjectName"/>
+                                    <Label text="description:" textAlignment="RIGHT" GridPane.rowIndex="1" />
+                                    <TextArea prefHeight="43.0" prefWidth="198.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets bottom="20.0" top="20.0" />
+                                 </opaqueInsets>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                     </center>
+                  </BorderPane>
+               </children></VBox>
+            
+<!--             <ScrollPane prefHeight="345.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS"> -->
+<!--                <content> -->
+<!--                   <VBox prefHeight="343.0" prefWidth="586.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" style="-fx-background-color: red;" /> -->
+<!--                </content> -->
+<!--             </ScrollPane> -->
+            <HBox fx:id="foot" prefHeight="25.0" styleClass="foot">
+               <children>
+                  <HBox prefHeight="25.0" prefWidth="300.0" styleClass="l" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#backClick" styleClass="backButton" text="back" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="25.0" prefWidth="300.0" styleClass="r" spacing="5" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#deleteClick" styleClass="deleteButton" text="delete" />
+                        <Button mnemonicParsing="false" onAction="#saveClick" styleClass="saveButton" text="save" />
+                     </children>
+                  </HBox>
+               </children></HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
