@@ -40,6 +40,9 @@ public class SubjectsPane extends ScheduleAbstractComponent {
         }
     });
 
+    /**
+     * Instantiates a new subjects pane.
+     */
     public SubjectsPane() {
         super();
         System.out.println("consstructor");

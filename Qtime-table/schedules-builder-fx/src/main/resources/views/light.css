@@ -407,6 +407,14 @@
   -fx-border-width:  1.0px 0.0px 0.0px 0.0px;
 }
   */
+  
+
+.text-field:validation-error {
+-fx-background-color: #ffa0a0 ;
+}
+.label.error-instructions {
+-fx-text-fill: #ffa0a0 ;
+}
 
  
 

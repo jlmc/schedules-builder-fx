@@ -21,7 +21,7 @@ public class SubjectDataModel {
     private ListProperty<Subject> subjects;
 
     /** The selected subject index. */
-    public IntegerProperty selectedSubjectIndex = new SimpleIntegerProperty(-1);
+    private IntegerProperty selectedSubjectIndex = new SimpleIntegerProperty(-1);
 
     /**
      * Gets the subject.

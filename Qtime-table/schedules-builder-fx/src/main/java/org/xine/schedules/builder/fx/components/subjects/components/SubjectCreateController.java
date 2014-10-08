@@ -13,6 +13,12 @@ import javafx.scene.layout.VBox;
 
 import javax.inject.Inject;
 
+import jidefx.scene.control.validation.ValidationEvent;
+import jidefx.scene.control.validation.ValidationMode;
+import jidefx.scene.control.validation.ValidationObject;
+import jidefx.scene.control.validation.ValidationUtils;
+import jidefx.scene.control.validation.Validator;
+
 import org.xine.fx.guice.FXMLController;
 import org.xine.schedules.builder.fx.components.ScheduleAbstractContentController;
 import org.xine.schedules.builder.fx.components.SubType;
@@ -94,8 +100,16 @@ public class SubjectCreateController extends ScheduleAbstractContentController {
         this.h1.textProperty().set("Subjets");
         this.h2.textProperty().set("create <i>New</i>");
 
-        // final Validator validator; // = new SimpleValidator();
-        // this.nameProperty().
+        // VALIDATION demo test
+        ValidationUtils.install(this.subjectName, new Validator() {
+
+            @Override
+            public ValidationEvent call(final ValidationObject param) {
+                System.out.println("i'm in validation thing");
+                return new ValidationEvent(ValidationEvent.VALIDATION_ERROR, 15, ValidationEvent.FailBehavior.REVERT);
+
+            }
+        }, ValidationMode.ON_FOCUS_LOST);
 
     }
 

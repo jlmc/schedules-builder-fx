@@ -114,12 +114,10 @@ public class SubjectsController extends ScheduleAbstractContentController {
 
         DummySource.builderSubjects(this.model);
 
-        // DummySource.builderSubjects(this.model);
-
         this.table.setItems(this.model.getSubject());
 
-        this.idc.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().getIdProperty());
         this.subjectc.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().nameProperty());
+        this.idc.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().getIdProperty());
 
         this.actionsc.setCellValueFactory(cellDataFeatures -> {
             return new SimpleObjectProperty<>(cellDataFeatures.getValue());
@@ -232,7 +230,7 @@ public class SubjectsController extends ScheduleAbstractContentController {
 
     @Override
     public void onActivate() {
-        this.model.selectedSubjectIndex.set(-1);
+        this.model.setSelectedSubjectIndex(-1);
     }
 
 }

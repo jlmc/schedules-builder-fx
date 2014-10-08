@@ -9,7 +9,13 @@ import org.xine.schedules.builder.fx.model.Subject;
 /**
  * The Class DummySource.
  */
-public class DummySource {
+public final class DummySource {
+
+    /**
+     * Instantiates a new dummy source.
+     */
+    private DummySource() {
+    }
 
     /**
      * Builder subjects.
@@ -17,24 +23,24 @@ public class DummySource {
      *            the model
      */
     public static void builderSubjects(final SubjectDataModel model) {
-        final List<Subject> ss = new ArrayList<>();
+        final List<Subject> subjects = new ArrayList<>();
 
         Subject s = new Subject();
         s.setId(1);
         s.setName("Ana");
-        ss.add(s);
+        subjects.add(s);
 
         s = new Subject();
         s.setId(2);
         s.setName("Bruno");
-        ss.add(s);
+        subjects.add(s);
 
         s = new Subject();
         s.setId(3);
         s.setName("Cesar");
-        ss.add(s);
+        subjects.add(s);
 
-        model.getSubject().addAll(ss);
+        model.getSubject().addAll(subjects);
     }
 
 }
