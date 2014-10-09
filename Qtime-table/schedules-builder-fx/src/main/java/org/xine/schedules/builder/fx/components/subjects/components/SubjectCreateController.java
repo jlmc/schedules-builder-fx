@@ -101,13 +101,12 @@ public class SubjectCreateController extends ScheduleAbstractContentController {
         this.h2.textProperty().set("create <i>New</i>");
 
         // VALIDATION demo test
-        ValidationUtils.install(this.subjectName, new Validator() {
 
+        ValidationUtils.install(this.subjectName, new Validator() {
             @Override
             public ValidationEvent call(final ValidationObject param) {
                 System.out.println("i'm in validation thing");
                 return new ValidationEvent(ValidationEvent.VALIDATION_ERROR, 15, ValidationEvent.FailBehavior.REVERT);
-
             }
         }, ValidationMode.ON_FOCUS_LOST);
 
@@ -130,6 +129,9 @@ public class SubjectCreateController extends ScheduleAbstractContentController {
      */
     @FXML
     public void saveClick(final ActionEvent event) {
+        // this.notifier = Notification.Notifier.INSTANCE;
+        // final Notification notification = new Notification("t test", "firts message");
+        // this.notifier.notify(notification);
 
         if (this.subjectName.textProperty().get() != null && !this.subjectName.textProperty().get().trim().isEmpty()) {
             final Subject subject = new Subject();

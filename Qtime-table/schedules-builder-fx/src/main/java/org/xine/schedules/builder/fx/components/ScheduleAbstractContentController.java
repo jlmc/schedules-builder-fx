@@ -27,4 +27,10 @@ public abstract class ScheduleAbstractContentController extends ContentControlle
         this.parentComponent = parentComponent;
     }
 
+    @Override
+    public void onQuit() {
+        // TODO Auto-generated method stub
+        super.onQuit();
+    }
+
 }

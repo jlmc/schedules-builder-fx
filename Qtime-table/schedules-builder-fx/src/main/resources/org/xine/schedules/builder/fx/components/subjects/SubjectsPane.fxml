@@ -8,24 +8,18 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root id="AnchorPane" fx:id="root" 
-maxHeight="-Infinity" maxWidth="-Infinity" 
-minHeight="-Infinity" minWidth="-Infinity"
- prefHeight="400.0" prefWidth="600.0" 
- styleClass="xine-component" type="javafx.scene.layout.AnchorPane"
-  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" 
-  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" 
-  xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-  <children>
-  
-    
-<!--    <Label fx:id="text" text="testing " AnchorPane.bottomAnchor="185.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="259.0" AnchorPane.topAnchor="186.0"> -->
-<!--       <font> -->
-<!--         <Font name="Arial" size="25.0" /> -->
-<!--       </font> -->
-<!--     </Label> -->
-  </children>
-   <padding>
-      <Insets bottom="0.0" left="0.0" right="0.0" top="0.0" />
-   </padding>
+<fx:root id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="xine-component" type="javafx.scene.layout.AnchorPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+
+
+        <!-- <Label fx:id="text" text="testing " AnchorPane.bottomAnchor="185.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="259.0" AnchorPane.topAnchor="186.0"> -->
+        <!-- <font> -->
+        <!-- <Font name="Arial" size="25.0" /> -->
+        <!-- </font> -->
+        <!-- </Label> -->
+    </children>
+    <padding>
+        <Insets bottom="0.0" left="0.0" right="0.0" top="0.0" />
+    </padding>
 </fx:root>

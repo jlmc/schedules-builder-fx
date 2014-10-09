@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 
 import org.xine.fx.guice.FXMLController;
+import org.xine.schedules.builder.fx.components.subjects.SubjectsPane;
 import org.xine.schedules.builder.fx.gui.ContentController;
 
 /**
@@ -17,8 +18,9 @@ public class SubjectController extends ContentController {
     @FXML
     private AnchorPane root;
 
-    // @FXML
-    // private SubjectsPane subjectsPane;
+    /** The subjects pane. */
+    @FXML
+    private SubjectsPane subjectsPane;
 
     /**
      * Instantiates a new subject controller.
@@ -32,6 +34,10 @@ public class SubjectController extends ContentController {
      * (non-Javadoc)
      * @see org.xine.schedules.builder.fx.gui.ContentController#getRootNode()
      */
+    /**
+     * Gets the root node.
+     * @return the root node
+     */
     @Override
     public Node getRootNode() {
         return this.root;
@@ -42,7 +48,15 @@ public class SubjectController extends ContentController {
      */
     @FXML
     public void initialize() {
-        // TODO::
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see org.xine.schedules.builder.fx.gui.ContentController#onQuit()
+     */
+    @Override
+    public void onQuit() {
+        this.subjectsPane.onQuit();
     }
 
 }

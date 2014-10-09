@@ -1,7 +1,9 @@
 package org.xine.schedules.builder.fx.components;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -156,6 +158,9 @@ public abstract class ScheduleAbstractComponent extends AnchorPane {
      * Callback - design for extension
      */
     public void onQuit() {
-        //
+        final Set<ContentController> cont = new HashSet<>(this.subcontrollers.values());
+        for (final ContentController c : cont) {
+            c.onQuit();
+        }
     }
 }

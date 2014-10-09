@@ -2,6 +2,7 @@ package org.xine.schedules.builder.fx;
 
 import java.util.List;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Parent;
@@ -113,43 +114,6 @@ public class Launcher extends GuiceApplication {
 
         stage.show();
 
-        // final Parent root = FXMLLoader.load(getClass().getResource(Views.APP_VIEW));
-
-        // final Scene scene = new Scene((Parent) appViewResult.getRoot(), 800, 650);
-
-        // stage.setScene(scene);
-        // stage.show();
-
-        // final ScreensController mainContainer = new ScreensController();
-        // mainContainer.loadScreen(Views.APP_VIEW, Views.APP_VIEW);
-        // // mainContainer.loadScreen(REGISTER, REGISTER_FILE);
-        // // mainContainer.loadScreen(MAIN, MAIN_FILE);
-        // // mainContainer.loadScreen(RANKING, RANKING_FILE);
-        //
-        // mainContainer.setScreen(Views.APP_VIEW);
-        //
-        // /*
-        // * AnchorPane.setTopAnchor(n, 0.0);
-        // * AnchorPane.setRightAnchor(n, 0.0);
-        // * AnchorPane.setLeftAnchor(n, 0.0);
-        // * AnchorPane.setBottomAnchor(n, 0.0);
-        // */
-        //
-        // final Group root = new Group();
-        //
-        // // final VBox vg = new VBox(mainContainer);
-        // // vg.setMaxHeight(Double.MAX_VALUE);
-        //
-        // root.getChildren().addAll(mainContainer);
-        // // final BorderPane root = new BorderPane();
-        // // root.setCenter(mainContainer);
-        //
-        // // final Scene scene = new Scene(vg);
-        // final Scene scene = new Scene(root);
-        //
-        // primaryStage.setScene(scene);
-        //
-        // primaryStage.show();
     }
 
     /**
@@ -176,9 +140,11 @@ public class Launcher extends GuiceApplication {
      */
     @Override
     public void stop() throws Exception {
+        super.stop();
+
+        Platform.runLater(() -> this.applicationController.onQuit());
 
         System.out.println("QUITING");
-        super.stop();
     }
 
     /*

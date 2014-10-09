@@ -228,4 +228,11 @@ public abstract class CompositeContentController extends ContentController {
         // TODO
     }
 
+    @Override
+    public void onQuit() {
+
+        for (final ContentController c : this.controllers) {
+            c.onQuit();
+        }
+    }
 }

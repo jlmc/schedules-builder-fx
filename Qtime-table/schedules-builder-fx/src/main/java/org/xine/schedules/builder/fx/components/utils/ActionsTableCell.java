@@ -53,6 +53,8 @@ public class ActionsTableCell<T, S> extends TableCell<T, S> {
 
         if (!empty) {
             setGraphic(this.box);
+        } else {
+            setGraphic(null);
         }
     }
 

@@ -330,5 +330,6 @@ public class QApplicationController implements ControlledScreen, ApplicationCont
                 e.printStackTrace();
             }
         }
+
     }
 }

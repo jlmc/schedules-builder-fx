@@ -70,4 +70,9 @@ public class SubjectsPane extends ScheduleAbstractComponent {
         return this.root;
     }
 
+    @Override
+    public void onQuit() {
+        // TODO Auto-generated method stub
+        super.onQuit();
+    }
 }

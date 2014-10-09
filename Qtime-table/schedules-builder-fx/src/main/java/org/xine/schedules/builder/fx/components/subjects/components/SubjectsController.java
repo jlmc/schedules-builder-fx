@@ -116,8 +116,8 @@ public class SubjectsController extends ScheduleAbstractContentController {
 
         this.table.setItems(this.model.getSubject());
 
-        this.subjectc.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().nameProperty());
         this.idc.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().getIdProperty());
+        this.subjectc.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().nameProperty());
 
         this.actionsc.setCellValueFactory(cellDataFeatures -> {
             return new SimpleObjectProperty<>(cellDataFeatures.getValue());
