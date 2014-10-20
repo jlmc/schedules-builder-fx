@@ -23,6 +23,7 @@ import org.xine.fx.guice.FXMLController;
 import org.xine.schedules.builder.fx.components.ScheduleAbstractContentController;
 import org.xine.schedules.builder.fx.components.SubType;
 import org.xine.schedules.builder.fx.components.subjects.SubjectDataModel;
+import org.xine.schedules.builder.fx.gui.Notification;
 import org.xine.schedules.builder.fx.model.Subject;
 
 /**
@@ -130,7 +131,9 @@ public class SubjectCreateController extends ScheduleAbstractContentController {
     @FXML
     public void saveClick(final ActionEvent event) {
         // this.notifier = Notification.Notifier.INSTANCE;
-        // final Notification notification = new Notification("t test", "firts message");
+        final Notification notification = new Notification("t test", "firts message");
+
+        Notification.Notifier.INSTANCE.notify(notification);
         // this.notifier.notify(notification);
 
         if (this.subjectName.textProperty().get() != null && !this.subjectName.textProperty().get().trim().isEmpty()) {

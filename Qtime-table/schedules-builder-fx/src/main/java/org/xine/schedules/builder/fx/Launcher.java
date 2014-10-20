@@ -19,6 +19,7 @@ import org.xine.fx.guice.GuiceFXMLLoader;
 import org.xine.fx.guice.GuiceFXMLLoader.Result;
 import org.xine.schedules.builder.fx.controllers.QApplicationController;
 import org.xine.schedules.builder.fx.gui.FxDecorateScene;
+import org.xine.schedules.builder.fx.gui.Notification;
 import org.xine.schedules.builder.fx.gui.Views;
 
 import com.google.inject.Module;
@@ -142,7 +143,13 @@ public class Launcher extends GuiceApplication {
     public void stop() throws Exception {
         super.stop();
 
-        Platform.runLater(() -> this.applicationController.onQuit());
+        Platform.runLater(() -> {
+
+            Notification.Notifier.INSTANCE.stop();
+
+            this.applicationController.onQuit();
+
+        });
 
         System.out.println("QUITING");
     }

@@ -19,6 +19,9 @@ public class Room implements Serializable {
     /** The type. */
     private RoomType type;
 
+    /** The name. */
+    private String name;
+
     /**
      * Gets the id.
      * @return the id
@@ -68,5 +71,22 @@ public class Room implements Serializable {
      */
     public void setType(final RoomType type) {
         this.type = type;
+    }
+
+    /**
+     * Gets the name.
+     * @return the name
+     */
+    public String getName() {
+        return this.name;
+    }
+
+    /**
+     * Sets the name.
+     * @param name
+     *            the new name
+     */
+    public void setName(final String name) {
+        this.name = name;
     }
 }

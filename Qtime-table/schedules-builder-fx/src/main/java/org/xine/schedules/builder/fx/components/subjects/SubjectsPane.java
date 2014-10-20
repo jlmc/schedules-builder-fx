@@ -45,7 +45,6 @@ public class SubjectsPane extends ScheduleAbstractComponent {
      */
     public SubjectsPane() {
         super();
-        System.out.println("consstructor");
     }
 
     /**
@@ -53,12 +52,9 @@ public class SubjectsPane extends ScheduleAbstractComponent {
      */
     @FXML
     public void initialize() {
-        System.out.println("initialize Start");
         loadSubControllers(SUBVIEWS);
-
         activateController(SubType.LIST);
 
-        System.out.println("initialize END");
     }
 
     /*
@@ -72,7 +68,6 @@ public class SubjectsPane extends ScheduleAbstractComponent {
 
     @Override
     public void onQuit() {
-        // TODO Auto-generated method stub
         super.onQuit();
     }
 }

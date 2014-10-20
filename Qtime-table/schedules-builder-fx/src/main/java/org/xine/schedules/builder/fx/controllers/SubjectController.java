@@ -48,6 +48,7 @@ public class SubjectController extends ContentController {
      */
     @FXML
     public void initialize() {
+        // nothing
     }
 
     /*
