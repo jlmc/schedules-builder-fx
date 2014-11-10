@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<!--   stylesheets="@../../../../../../../../resources/views/searchablekeyboard.css" -->
+
+<fx:root id="AnchorPane" fx:id="root" maxHeight="30.0" prefHeight="30.0" prefWidth="600.0"
+ styleClass="searchablekeyboard"
+ type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox layoutX="5.0" layoutY="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <children>
+            <ChoiceBox fx:id="choiseBox" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" HBox.hgrow="NEVER">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </ChoiceBox>
+            <Separator maxHeight="25.0" orientation="VERTICAL" prefHeight="20.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="5.0" HBox.hgrow="NEVER">
+               <HBox.margin>
+                  <Insets left="5.0" right="2.0" />
+               </HBox.margin>
+            </Separator>
+            <TextField fx:id="textfield"  style="-fx-background-radius: 0;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="168.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="5.0" HBox.hgrow="ALWAYS" />
+            <Button fx:id="button" minWidth="25.0" mnemonicParsing="false"  AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+         </children>
+      </HBox>
+   </children>
+</fx:root>
