@@ -4,6 +4,7 @@ import javafx.beans.property.ListProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -55,6 +56,9 @@ public class Searchablekeyboard<T> extends AnchorPane {
     /** The choise types. */
     private final ListProperty<T> choiseTypes = new SimpleListProperty<>(FXCollections.observableArrayList());
 
+    /** The prompt text. */
+    private final SimpleStringProperty promptText = new SimpleStringProperty("");
+
     /**
      * *************************************************************************
      * *
@@ -71,8 +75,6 @@ public class Searchablekeyboard<T> extends AnchorPane {
      */
     // @FXML
     public void initialize() {
-        System.out.println("test");
-        this.textfield.setPromptText("put here the searchable text...");
 
         // this.textfield.setOnKeyPressed(new EventHandler<KeyEvent>() ...
         this.textfield.setOnKeyPressed(event -> {
@@ -89,6 +91,8 @@ public class Searchablekeyboard<T> extends AnchorPane {
                 getSearchableAction().handle(event);
             }
         });
+
+        this.textfield.setPromptText(this.promptText.get());
 
         this.choiseBox.setItems(this.choiseTypes);
 
@@ -128,8 +132,21 @@ public class Searchablekeyboard<T> extends AnchorPane {
         return this.choiseTypes;
     }
 
+    /**
+     * Gets the selected choise type.
+     * @return the selected choise type
+     */
     public T getSelectedChoiseType() {
         return this.choiseBox.getValue();
+    }
+
+    /**
+     * Sets the prompt text.
+     * @param value
+     *            the new prompt text
+     */
+    public void setPromptText(final String value) {
+        this.promptText.set(value);
     }
 
     /*
