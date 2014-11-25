@@ -30,10 +30,10 @@ import com.google.inject.Module;
 public class Launcher extends GuiceApplication {
 
     /** The Constant MIN_WIDTH. */
-    public static final int MIN_WIDTH = 800;
+    public static final int MIN_WIDTH = 995;
 
     /** The Constant MIN_HEIGHT. */
-    public static final int MIN_HEIGHT = 600;
+    public static final int MIN_HEIGHT = 650;
 
     /** The fxml loader. */
     @Inject
@@ -69,17 +69,10 @@ public class Launcher extends GuiceApplication {
 
         final StackPane root = new StackPane();
         root.getChildren().add(btn);
-        primaryStage.setScene(new Scene(root, 300, 250));
-        primaryStage.show();
-    }
 
-    /**
-     * The main method.
-     * @param args
-     *            the arguments
-     */
-    public static void main(final String[] args) {
-        launch(args);
+        final Scene scene = new Scene(root, MIN_WIDTH, MIN_HEIGHT);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     /*
@@ -162,6 +155,17 @@ public class Launcher extends GuiceApplication {
     public void init(final List<Module> arg0) throws Exception {
         // TODO Auto-generated method stub
 
+    }
+
+    /**
+     * The main method.
+     * @param args
+     *            the arguments
+     */
+    public static void main(final String[] args) {
+        System.out.println("Ola mundo");
+
+        launch(args);
     }
 
 }

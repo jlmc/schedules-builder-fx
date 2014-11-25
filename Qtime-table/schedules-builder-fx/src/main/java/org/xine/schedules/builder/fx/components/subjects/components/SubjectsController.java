@@ -123,11 +123,6 @@ public class SubjectsController extends ScheduleAbstractContentController {
             return new SimpleObjectProperty<>(cellDataFeatures.getValue());
         });
 
-        // / action collumn
-        this.actionsc.setCellFactory(tableColumn -> {
-            return actionsCellBuilder();
-        });
-
         this.actionsc.setSortable(false);
 
         // define width

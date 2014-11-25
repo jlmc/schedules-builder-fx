@@ -13,7 +13,7 @@
         <module>Qtime-table-bl</module>
 		<module>Qtime-table-client-swing</module>
 
-		<module>Qtime-table-gwt-client</module>
+	
 		
 		<module>schedules-builder-fx</module>
     </modules>

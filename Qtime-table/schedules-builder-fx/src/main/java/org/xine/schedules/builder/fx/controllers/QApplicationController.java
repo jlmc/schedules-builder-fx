@@ -92,6 +92,8 @@ public class QApplicationController implements ControlledScreen, ApplicationCont
             add(Views.START_UP);
             add(Views.OFFICE_VIEW);
             add(Views.CONFIGURATIONS);
+            add(Views.BACKOFFICE);
+
         }
     };
 

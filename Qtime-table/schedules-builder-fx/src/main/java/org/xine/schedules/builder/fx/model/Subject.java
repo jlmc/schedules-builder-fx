@@ -20,6 +20,16 @@ public class Subject implements Serializable {
     /** The name. */
     private final SimpleStringProperty name = new SimpleStringProperty(null);
 
+    public Subject() {
+        super();
+    }
+
+    public Subject(final int id, final String name) {
+        super();
+        setId(id);
+        setName(name);
+    }
+
     /**
      * Gets the id.
      * @return the id

@@ -39,4 +39,6 @@ public final class Views {
     /** The Constant ROOMS_VIEW. */
     public static final String ROOMS_VIEW = "/views/roomsview.fxml";
 
+    public static final String BACKOFFICE = "/views/backofficeview.fxml";
+
 }

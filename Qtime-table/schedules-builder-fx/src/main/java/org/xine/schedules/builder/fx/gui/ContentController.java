@@ -6,23 +6,10 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ContentController.
  */
 public abstract class ContentController {
-
-    /**
-     * Sets the controller constrains.
-     * @param controller
-     *            the new controller constrains
-     */
-    public static void setControllerConstrains(final ContentController controller) {
-        AnchorPane.setTopAnchor(controller.getRootNode(), Double.valueOf(0d));
-        AnchorPane.setLeftAnchor(controller.getRootNode(), Double.valueOf(0d));
-        AnchorPane.setRightAnchor(controller.getRootNode(), Double.valueOf(0d));
-        AnchorPane.setBottomAnchor(controller.getRootNode(), Double.valueOf(0d));
-    }
 
     /** The name. */
     private final StringProperty name = new SimpleStringProperty("<name>");
@@ -123,5 +110,24 @@ public abstract class ContentController {
             throw new IllegalStateException("navigation button was already set");
         }
         this.navigationButton = activationButton;
+    }
+
+    /**
+     * Sets the controller constrains.
+     */
+    public void setControllerConstrains() {
+        setControllerConstrains(this);
+    }
+
+    /**
+     * Sets the controller constrains.
+     * @param controller
+     *            the new controller constrains
+     */
+    public static void setControllerConstrains(final ContentController controller) {
+        AnchorPane.setTopAnchor(controller.getRootNode(), Double.valueOf(0d));
+        AnchorPane.setLeftAnchor(controller.getRootNode(), Double.valueOf(0d));
+        AnchorPane.setRightAnchor(controller.getRootNode(), Double.valueOf(0d));
+        AnchorPane.setBottomAnchor(controller.getRootNode(), Double.valueOf(0d));
     }
 }

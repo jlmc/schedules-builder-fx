@@ -39,17 +39,7 @@ fx:controller="org.xine.schedules.builder.fx.controllers.OfficeController">
         </VBox>
 
 
-<!--         <StackPane fx:id="container" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"> -->
-<!--             <StackPane.margin> -->
-<!--             <Insets left="200.0" /> -->
-<!--             </StackPane.margin> -->
-<!--             <children> -->
-<!--                 <Button mnemonicParsing="false" text="Button" /> -->
-<!--             </children> -->
-<!--             <StackPane.margin> -->
-<!--                 <Insets left="200.0" /> -->
-<!--             </StackPane.margin> -->
-<!--         </StackPane> -->
+
 
         
          <AnchorPane fx:id="container" 
@@ -61,11 +51,6 @@ fx:controller="org.xine.schedules.builder.fx.controllers.OfficeController">
                     AnchorPane.topAnchor="0.0" />
 
 
-        <!-- <Rectangle fx:id="navigationBackground" fill="linear-gradient(from 0.0% 0.0% to 0.0% 100.0%, 0xfafbfdff 0.0%, 0xeeeeeeff 100.0%)" height="50.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" -->
-        <!-- AnchorPane.topAnchor="0.0"> -->
-        <!-- <effect> -->
-        <!-- <DropShadow height="11.0" radius="5.0" width="11.0" /> -->
-        <!-- </effect> -->
-        <!-- </Rectangle> -->
+  
     </children>
 </AnchorPane>

@@ -19,7 +19,6 @@
 
 <AnchorPane  fx:id="root" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" styleClass="mainScreen" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
 fx:controller="org.xine.schedules.builder.fx.controllers.QApplicationController">
-	<!--  TODO Add Nodes -->
     <children>
         <Rectangle fx:id="navigationBackground" fill="linear-gradient(from 0.0% 0.0% to 0.0% 100.0%, 0xfafbfdff 0.0%, 0xeeeeeeff 100.0%)" height="50.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <effect>
@@ -45,7 +44,7 @@ fx:controller="org.xine.schedules.builder.fx.controllers.QApplicationController"
         
         <AnchorPane fx:id="content" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
         
-<!--       <Label layoutX="354.0" layoutY="271.0" text="Test on Load" /> -->
+
     
     </children>
    

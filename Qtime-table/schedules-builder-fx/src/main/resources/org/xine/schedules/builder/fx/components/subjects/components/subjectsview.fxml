@@ -7,6 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import org.xine.schedules.builder.fx.gui.xcomponents.Searchablekeyboard?>
 
 <AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" styleClass="component" stylesheets="@../../../../../../../../views/light.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.xine.schedules.builder.fx.components.subjects.components.SubjectsController">
    <children>
@@ -27,6 +28,9 @@
                <children>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <center>
+                        
+                       
+                     
                         <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <columns>
                               <TableColumn fx:id="idc" text="id" />
