@@ -11,12 +11,13 @@ import javafx.scene.layout.AnchorPane;
 import org.xine.fx.guice.FXMLController;
 import org.xine.schedules.builder.fx.backoffice.BackofficeContentController;
 import org.xine.schedules.builder.fx.backoffice.Status;
+import org.xine.schedules.builder.fx.model.Subject;
 
 /**
  * The Class SubjectEditeController.
  */
 @FXMLController
-public class SubjectEditeController extends BackofficeContentController {
+public class SubjectEditeController extends BackofficeContentController<Subject> {
 
     /** The cancel button. */
     @FXML
@@ -79,6 +80,11 @@ public class SubjectEditeController extends BackofficeContentController {
     private void save() {
         // TODO:: missing implementation
         getContentDecorated().changeStatus(Status.LIST);
+    }
+
+    @Override
+    public void onActivate() {
+        this.nameField.textProperty().bind(getModel().getSelected().nameProperty());
     }
 
     /**

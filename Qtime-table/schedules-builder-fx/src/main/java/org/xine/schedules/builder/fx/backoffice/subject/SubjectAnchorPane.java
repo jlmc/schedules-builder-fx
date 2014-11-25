@@ -244,10 +244,11 @@ public class SubjectAnchorPane extends AnchorPane implements ContentDecorated {
     private void loadSubController(final Status state, final String subview) {
         if (state != null && subview != null) {
 
-            final BackofficeContentController controller = getSubController(subview);
+            final BackofficeContentController<Subject> controller = getSubController(subview);
             // controller.setStateMachine(this);
 
             controller.setContentDecorated(this);
+            controller.setModel(this.model);
 
             this.controllers.put(state, controller);
             controller.setApplicationController(this.applicationController);

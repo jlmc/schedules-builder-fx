@@ -6,10 +6,20 @@ import org.xine.schedules.builder.fx.gui.ContentDecorated;
 /**
  * The Class BackofficeContentController.
  */
-public abstract class BackofficeContentController extends ContentController {
+public abstract class BackofficeContentController<T> extends ContentController {
 
     /** The macro. */
     private ContentDecorated contentDecorated;
+
+    private BackofficeModel<T> model;
+
+    public BackofficeModel<T> getModel() {
+        return this.model;
+    }
+
+    public void setModel(final BackofficeModel<T> model) {
+        this.model = model;
+    }
 
     public ContentDecorated getContentDecorated() {
         return this.contentDecorated;

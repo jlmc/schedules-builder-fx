@@ -9,12 +9,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
-import javax.inject.Inject;
-
 import org.xine.fx.guice.FXMLController;
 import org.xine.schedules.builder.fx.backoffice.BackofficeContentController;
-import org.xine.schedules.builder.fx.backoffice.BackofficeModel;
-import org.xine.schedules.builder.fx.backoffice.Editor;
 import org.xine.schedules.builder.fx.backoffice.Status;
 import org.xine.schedules.builder.fx.components.utils.ActionsTableCell;
 import org.xine.schedules.builder.fx.model.Subject;
@@ -23,7 +19,7 @@ import org.xine.schedules.builder.fx.model.Subject;
  * The Class SubjectListController.
  */
 @FXMLController
-public class SubjectListController extends BackofficeContentController implements Editor {
+public class SubjectListController extends BackofficeContentController<Subject> {
 
     /*
      * **************************************************************************
@@ -62,12 +58,6 @@ public class SubjectListController extends BackofficeContentController implement
     private TableColumn<Subject, String> descriptionColumn;
 
     /*
-     * the model properties
-     */
-    @Inject
-    private BackofficeModel<Subject> model;
-
-    /*
      * *************************************************************************
      * *
      * Constructors *
@@ -90,11 +80,6 @@ public class SubjectListController extends BackofficeContentController implement
     public void initialize() {
         this.createButton.setOnAction(e -> getContentDecorated().changeStatus(Status.CREATE));
 
-        for (int i = 0; i < 100; i++) {
-            this.model.getList().add(new Subject(i + 1, String.format("Subject %d", i + 1)));
-            // this.subjects.add(new Subject(i + 1, String.format("Subject %d", i + 1)));
-        }
-
         this.nameColumn.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().nameProperty());
         this.actionsColumn.setCellValueFactory(cellDataFeatures -> new SimpleObjectProperty<>(cellDataFeatures.getValue()));
         this.actionsColumn.setCellFactory(tableColumn -> {
@@ -111,16 +96,24 @@ public class SubjectListController extends BackofficeContentController implement
 
             cell.setOnEditAction(e -> {
                 final Subject selected = cell.getData();
-                // TODO :: missing implementation
-                System.out.println("Edit Change " + selected.getName());
+                getModel().setSelected(selected);
                 getContentDecorated().changeStatus(Status.EDIT);
             });
 
             return cell;
         });
 
-        this.table.setItems(this.model.getList());
+    }
 
+    @Override
+    public void onActivate() {
+        if (getModel().getList() == null || getModel().getList().isEmpty()) {
+            for (int i = 0; i < 100; i++) {
+                getModel().getList().add(new Subject(i + 1, String.format("Subject %d", i + 1)));
+                // this.subjects.add(new Subject(i + 1, String.format("Subject %d", i + 1)));
+            }
+            this.table.setItems(getModel().getList());
+        }
     }
 
     /*

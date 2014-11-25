@@ -11,9 +11,10 @@ import javafx.scene.layout.AnchorPane;
 import org.xine.fx.guice.FXMLController;
 import org.xine.schedules.builder.fx.backoffice.BackofficeContentController;
 import org.xine.schedules.builder.fx.backoffice.Status;
+import org.xine.schedules.builder.fx.model.Subject;
 
 @FXMLController
-public class SubjectCreateController extends BackofficeContentController {
+public class SubjectCreateController extends BackofficeContentController<Subject> {
 
     @FXML
     private AnchorPane root;
