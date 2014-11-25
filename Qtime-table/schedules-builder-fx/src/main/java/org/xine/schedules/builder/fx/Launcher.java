@@ -144,7 +144,6 @@ public class Launcher extends GuiceApplication {
 
         });
 
-        System.out.println("QUITING");
     }
 
     /*
@@ -163,9 +162,7 @@ public class Launcher extends GuiceApplication {
      *            the arguments
      */
     public static void main(final String[] args) {
-        System.out.println("Ola mundo");
-
         launch(args);
-    }
 
+    }
 }

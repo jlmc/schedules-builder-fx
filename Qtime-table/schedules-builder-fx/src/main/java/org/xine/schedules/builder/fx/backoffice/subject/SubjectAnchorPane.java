@@ -19,11 +19,13 @@ import org.xine.fx.guice.FXMLComponent;
 import org.xine.fx.guice.GuiceFXMLLoader;
 import org.xine.fx.guice.GuiceFXMLLoader.Result;
 import org.xine.schedules.builder.fx.backoffice.BackofficeContentController;
+import org.xine.schedules.builder.fx.backoffice.BackofficeModel;
 import org.xine.schedules.builder.fx.backoffice.BackofficeViews;
 import org.xine.schedules.builder.fx.backoffice.Status;
 import org.xine.schedules.builder.fx.gui.ApplicationController;
 import org.xine.schedules.builder.fx.gui.ContentController;
 import org.xine.schedules.builder.fx.gui.ContentDecorated;
+import org.xine.schedules.builder.fx.model.Subject;
 
 /**
  * The Class SubjectAnchorPane.
@@ -55,6 +57,9 @@ public class SubjectAnchorPane extends AnchorPane implements ContentDecorated {
 
     /** The name. */
     private final StringProperty name = new SimpleStringProperty("<name>");
+
+    @Inject
+    private BackofficeModel<Subject> model;
 
     /** The sub controllers. */
     private final LinkedHashMap<Status, BackofficeContentController> controllers = new LinkedHashMap<>();

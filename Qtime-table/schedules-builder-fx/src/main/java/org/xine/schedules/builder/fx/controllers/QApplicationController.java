@@ -90,8 +90,8 @@ public class QApplicationController implements ControlledScreen, ApplicationCont
         private static final long serialVersionUID = 1L;
         {
             add(Views.START_UP);
-            add(Views.OFFICE_VIEW);
-            add(Views.CONFIGURATIONS);
+            // add(Views.OFFICE_VIEW);
+            // add(Views.CONFIGURATIONS);
             add(Views.BACKOFFICE);
 
         }

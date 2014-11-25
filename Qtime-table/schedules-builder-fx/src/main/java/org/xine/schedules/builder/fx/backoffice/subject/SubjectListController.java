@@ -1,8 +1,6 @@
 package org.xine.schedules.builder.fx.backoffice.subject;
 
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -11,8 +9,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
+import javax.inject.Inject;
+
 import org.xine.fx.guice.FXMLController;
 import org.xine.schedules.builder.fx.backoffice.BackofficeContentController;
+import org.xine.schedules.builder.fx.backoffice.BackofficeModel;
 import org.xine.schedules.builder.fx.backoffice.Editor;
 import org.xine.schedules.builder.fx.backoffice.Status;
 import org.xine.schedules.builder.fx.components.utils.ActionsTableCell;
@@ -63,9 +64,8 @@ public class SubjectListController extends BackofficeContentController implement
     /*
      * the model properties
      */
-    final ObservableList<Subject> subjects = FXCollections.observableArrayList();
-
-    private Subject selected;
+    @Inject
+    private BackofficeModel<Subject> model;
 
     /*
      * *************************************************************************
@@ -91,7 +91,8 @@ public class SubjectListController extends BackofficeContentController implement
         this.createButton.setOnAction(e -> getContentDecorated().changeStatus(Status.CREATE));
 
         for (int i = 0; i < 100; i++) {
-            this.subjects.add(new Subject(i + 1, String.format("Subject %d", i + 1)));
+            this.model.getList().add(new Subject(i + 1, String.format("Subject %d", i + 1)));
+            // this.subjects.add(new Subject(i + 1, String.format("Subject %d", i + 1)));
         }
 
         this.nameColumn.setCellValueFactory(cellDataFeatures -> cellDataFeatures.getValue().nameProperty());
@@ -118,7 +119,7 @@ public class SubjectListController extends BackofficeContentController implement
             return cell;
         });
 
-        this.table.setItems(this.subjects);
+        this.table.setItems(this.model.getList());
 
     }
 

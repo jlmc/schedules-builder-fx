@@ -34,7 +34,6 @@ public class RoomsController extends ContentController {
 
     @FXML
     public void initialize() {
-        System.out.println("Ola pessoal");
 
         this.searchablekeyboard.setSearchableAction(new EventHandler<ActionEvent>() {
 
