@@ -1,6 +1,10 @@
 package org.xine.schedules.builder.fx.backoffice.subject;
 
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -57,6 +61,9 @@ public class SubjectListController extends BackofficeContentController<Subject> 
     @FXML
     private TableColumn<Subject, String> descriptionColumn;
 
+    /** The list. */
+    private ListProperty<Subject> list;// = FXCollections.observableArrayList();
+
     /*
      * *************************************************************************
      * *
@@ -88,6 +95,8 @@ public class SubjectListController extends BackofficeContentController<Subject> 
             cell.setOnDeleteAction(e -> {
                 final Subject s = cell.getData();
                 if (s != null) {
+
+                    setSelected(s);
                     // TODO::missing delete implemetation
 
                     System.out.println("Delete: " + s.getName());
@@ -95,25 +104,31 @@ public class SubjectListController extends BackofficeContentController<Subject> 
             });
 
             cell.setOnEditAction(e -> {
-                final Subject selected = cell.getData();
-                getModel().setSelected(selected);
+                setSelected(cell.getData());
+                // getModel().setSelected(selected);
                 getContentDecorated().changeStatus(Status.EDIT);
             });
 
             return cell;
         });
 
+        this.table.setItems(getList());
+
+        for (int i = 0; i < 10; i++) {
+            getList().add(new Subject(i, String.format("%d - name", i)));
+        }
+
     }
 
     @Override
     public void onActivate() {
-        if (getModel().getList() == null || getModel().getList().isEmpty()) {
-            for (int i = 0; i < 100; i++) {
-                getModel().getList().add(new Subject(i + 1, String.format("Subject %d", i + 1)));
-                // this.subjects.add(new Subject(i + 1, String.format("Subject %d", i + 1)));
-            }
-            this.table.setItems(getModel().getList());
-        }
+        // if (getModel().getList() == null || getModel().getList().isEmpty()) {
+        // for (int i = 0; i < 100; i++) {
+        // getModel().getList().add(new Subject(i + 1, String.format("Subject %d", i + 1)));
+        // // this.subjects.add(new Subject(i + 1, String.format("Subject %d", i + 1)));
+        // }
+        // this.table.setItems(getModel().getList());
+        // }
     }
 
     /*
@@ -133,6 +148,18 @@ public class SubjectListController extends BackofficeContentController<Subject> 
         return this.root;
     }
 
-    // /
+    // /~
+
+    /**
+     * Gets the list.
+     * @return the list
+     */
+    public ListProperty<Subject> getList() {
+        if (this.list == null) {
+            final ObservableList<Subject> innerList = FXCollections.observableArrayList();
+            this.list = new SimpleListProperty<>(innerList);
+        }
+        return this.list;
+    }
 
 }
