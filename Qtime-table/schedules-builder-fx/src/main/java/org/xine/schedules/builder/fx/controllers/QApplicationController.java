@@ -282,14 +282,20 @@ public class QApplicationController implements ControlledScreen, ApplicationCont
         //
         // });
 
-        timeline.setOnFinished(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(final ActionEvent arg0) {
-                setControllerConstrains(oldController);
-                setControllerConstrains(contentController);
-                oldController.getRootNode().setVisible(false);
-            }
+        timeline.setOnFinished(e -> {
+            setControllerConstrains(oldController);
+            setControllerConstrains(contentController);
+            oldController.getRootNode().setVisible(false);
         });
+
+        // timeline.setOnFinished(new EventHandler<ActionEvent>() {
+        // @Override
+        // public void handle(final ActionEvent arg0) {
+        // setControllerConstrains(oldController);
+        // setControllerConstrains(contentController);
+        // oldController.getRootNode().setVisible(false);
+        // }
+        // });
 
     }
 

@@ -75,16 +75,24 @@ public class SubjectEditeController extends BackofficeContentController<Subject>
         this.cancelButton.setOnAction(e -> cancel());
         this.saveButton.setOnAction(e -> save());
 
+        // this.nameField.textProperty().bind(getSelected().nameProperty());
+
+        // this.nameField.textProperty(Bindings.when(getSelectedProperty().isNotNull()).then("XX").otherwise(getSelected().nameProperty()));
+
+        // this.nameField.textProperty().bind(Bindings.createStringBinding(() -> getSelectedProperty().isNull().get() ? "null" : getSelectedProperty().get().getName(), getSelectedProperty().get().nameProperty()));
     }
 
     private void save() {
         // TODO:: missing implementation
+        getSelected().setName(this.nameField.getText().trim());
+
         getContentDecorated().changeStatus(Status.LIST);
     }
 
     @Override
     public void onActivate() {
-        this.nameField.textProperty().bind(getModel().getSelected().nameProperty());
+        System.out.println("EDIT-" + getSelected().getId());
+        this.nameField.setText(getSelected().getName());
     }
 
     /**

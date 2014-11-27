@@ -19,7 +19,6 @@ import org.xine.fx.guice.FXMLComponent;
 import org.xine.fx.guice.GuiceFXMLLoader;
 import org.xine.fx.guice.GuiceFXMLLoader.Result;
 import org.xine.schedules.builder.fx.backoffice.BackofficeContentController;
-import org.xine.schedules.builder.fx.backoffice.BackofficeModel;
 import org.xine.schedules.builder.fx.backoffice.BackofficeViews;
 import org.xine.schedules.builder.fx.backoffice.Status;
 import org.xine.schedules.builder.fx.gui.ApplicationController;
@@ -58,11 +57,8 @@ public class SubjectAnchorPane extends AnchorPane implements ContentDecorated {
     /** The name. */
     private final StringProperty name = new SimpleStringProperty("<name>");
 
-    @Inject
-    private BackofficeModel<Subject> model;
-
     /** The sub controllers. */
-    private final LinkedHashMap<Status, BackofficeContentController> controllers = new LinkedHashMap<>();
+    private final LinkedHashMap<Status, BackofficeContentController<Subject>> controllers = new LinkedHashMap<>();
 
     /** The views. */
     private final Map<Status, String> views = Collections.unmodifiableMap(new LinkedHashMap<Status, String>() {
@@ -142,6 +138,7 @@ public class SubjectAnchorPane extends AnchorPane implements ContentDecorated {
         loadSubControllers();
 
         // activateController(Status.LIST);
+
     }
 
     /*
@@ -218,9 +215,9 @@ public class SubjectAnchorPane extends AnchorPane implements ContentDecorated {
         }
 
         if (this.controllers != null && !this.controllers.isEmpty()) {
-            final Set<Entry<Status, BackofficeContentController>> mapValues = this.controllers.entrySet();
+            final Set<Entry<Status, BackofficeContentController<Subject>>> mapValues = this.controllers.entrySet();
             @SuppressWarnings("unchecked")
-            final Entry<Status, BackofficeContentController>[] array = new Entry[mapValues.size()];
+            final Entry<Status, BackofficeContentController<Subject>>[] array = new Entry[mapValues.size()];
             mapValues.toArray(array);
             if (array[0] != null) {
 
@@ -229,9 +226,11 @@ public class SubjectAnchorPane extends AnchorPane implements ContentDecorated {
                 // activateController(array[0].getValue());
 
                 activateController(controller);
-            }
 
+            }
+            this.controllers.get(Status.LIST).getSelectedProperty().bindBidirectional(this.controllers.get(Status.EDIT).getSelectedProperty());
         }
+
     }
 
     /**
@@ -248,7 +247,6 @@ public class SubjectAnchorPane extends AnchorPane implements ContentDecorated {
             // controller.setStateMachine(this);
 
             controller.setContentDecorated(this);
-            controller.setModel(this.model);
 
             this.controllers.put(state, controller);
             controller.setApplicationController(this.applicationController);
@@ -284,8 +282,6 @@ public class SubjectAnchorPane extends AnchorPane implements ContentDecorated {
 
     /**
      * Activate controller.
-     * @param status
-     *            the state
      * @param controller
      *            the controller
      */
@@ -306,6 +302,10 @@ public class SubjectAnchorPane extends AnchorPane implements ContentDecorated {
         this.activeController.onActivate();
     }
 
+    /*
+     * (non-Javadoc)
+     * @see org.xine.schedules.builder.fx.gui.ContentDecorated#changeStatus(org.xine.schedules.builder.fx.backoffice.Status)
+     */
     @Override
     public void changeStatus(final Status status) {
         final BackofficeContentController contentController = this.controllers.get(status);

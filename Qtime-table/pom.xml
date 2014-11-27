@@ -13,9 +13,10 @@
         <module>Qtime-table-bl</module>
 		<module>Qtime-table-client-swing</module>
 
-	
+	   
 		
 		<module>schedules-builder-fx</module>
+		<module>Qtime-table-fxdesktop</module>
     </modules>
 
 
