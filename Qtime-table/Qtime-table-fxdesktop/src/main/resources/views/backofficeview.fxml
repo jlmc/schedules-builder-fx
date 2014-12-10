@@ -8,7 +8,9 @@
 <?import org.xine.schedules.builder.fx.backoffice.subject.*?>
 
 
-<AnchorPane fx:id="root" prefHeight="660.0" prefWidth="960.0" styleClass="backofficeView" stylesheets="@backoffice.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.xine.schedules.builder.fx.controllers.BackOfficeController">
+<AnchorPane fx:id="root" prefHeight="660.0" prefWidth="960.0" styleClass="backofficeView" stylesheets="@backoffice.css"
+        xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+        fx:controller="org.xine.qtime.fxdesktop.controllers.BackOfficeController">
     <children>
         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -46,7 +48,7 @@
                 </VBox>
                 <VBox fx:id="component" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                    <children>
-                      <SubjectAnchorPane id="subjectAnchorPane" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+<!--                       <SubjectAnchorPane id="subjectAnchorPane" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" /> -->
                    </children>
                </VBox>
                 
