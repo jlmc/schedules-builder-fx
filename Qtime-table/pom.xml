@@ -8,7 +8,7 @@
     <modules>
         <module>Qtime-table-entities</module>
         <module>Qtime-table-dal</module>
-        <module>Qtime-table-web</module>
+<!--         <module>Qtime-table-web</module> -->
         <module>Qtime-table-ear</module>
         <module>Qtime-table-bl</module>
 		<module>Qtime-table-client-swing</module>
