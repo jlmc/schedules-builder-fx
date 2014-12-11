@@ -2,7 +2,11 @@ package org.xine.qtime.fxdesktop.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 
 import javax.inject.Inject;
 
@@ -19,10 +23,10 @@ public abstract class ContextController extends ContentController {
     private GuiceFXMLLoader fxmlLoader;
 
     /** The controllers. */
-    private final List<Controller> controllers = new ArrayList<>();
+    private final List<ContentController> subcontrollers = new ArrayList<>();
 
     /** The active controller. */
-    private Controller activeController;
+    private ContentController activeController;
 
     /**
      * Load sub view.
@@ -44,81 +48,136 @@ public abstract class ContextController extends ContentController {
     }
 
     /**
-     * Gets the controllers.
-     * @return the controllers
+     * Loadsubviews.
+     * @param subviews
+     *            the subviews
      */
-    public List<Controller> getControllers() {
-        return this.controllers;
+    public void loadsubviews(final Collection<String> subviews) {
+        if (subviews != null) {
+            for (final String subview : subviews) {
+                if (subview != null) {
+                    loadSubController(subview);
+                }
+            }
+        }
+
+        if (this.subcontrollers != null && !this.subcontrollers.isEmpty()) {
+            activateController(this.subcontrollers.get(0));
+        }
+
+    }
+
+    /**
+     * Load sub controller.
+     * @param subController
+     *            the sub controller
+     */
+    private void loadSubController(final String subController) {
+        try {
+            final ContentController controller = this.loadSubView(subController);
+            this.subcontrollers.add(controller);
+
+            controller.setApplicationController(this.applicationController);
+
+            final Button btn = addControllerButton(controller);
+            controller.setNavigationButton(btn);
+
+            if (getComponent() != null) {
+                getComponent().getChildren().add(controller.getRootNode());
+                controller.setControllerConstrains();
+                controller.getRootNode().setVisible(false);
+            }
+
+        } catch (final Exception e) {
+            System.out.println("SubController OF:" + subController + " - " + e.toString());
+            // If any goes wrong, ignore just load we don't want the aplication break because of a internal sub view
+        }
+    }
+
+    /**
+     * Adds the controller button.
+     * @param controller
+     *            the controller
+     * @return the button
+     */
+    private Button addControllerButton(final ContentController controller) {
+        final Button navButton = new Button(controller.getName());
+        // maxWidth="200.0" minWidth="200.0"
+        navButton.setPrefWidth(200.0D);
+        navButton.setMinWidth(200.0D);
+        navButton.setMaxWidth(200.0D);
+
+        navButton.setOnAction(e -> activateController(controller));
+
+        if (getnavItems() != null) {
+            getnavItems().getChildren().add(navButton);
+        }
+
+        return navButton;
+    }
+
+    /**
+     * Activate controller.
+     * @param controller
+     *            the controller
+     */
+    private void activateController(final ContentController controller) {
+        activateController(controller, false);
     }
 
     /**
      * Activate controller.
      * @param contentController
      *            the content controller
+     * @param animate
+     *            the animate
      */
-    private void activateController(final ContentController contentController) {
-        activateController(contentController, true);
-    }
-
-    /**
-     * Activate controller.
-     * @param controller
-     *            the controller
-     * @param anime
-     *            the anime
-     */
-    private void activateController(final ContentController controller, final boolean anime) {
-        if (this.activeController == controller) {
+    private void activateController(final ContentController contentController, final boolean animate) {
+        if (this.activeController == contentController) {
             return;
         }
-        final int from = this.controllers.indexOf(this.activeController);
-        final int to = this.controllers.indexOf(controller);
-        final Controller oldController = this.activeController;
-        controller.getRootNode().setVisible(true);
+
+        final int from = this.subcontrollers.indexOf(this.activeController);
+        final int to = this.subcontrollers.indexOf(contentController);
+        final ContentController oldController = this.activeController;
+        contentController.getRootNode().setVisible(true);
         if (this.activeController != null) {
             this.activeController.getRootNode().setVisible(false);
             this.activeController.onDeactivate();
-            removeStyleClassSelected(oldController);
-            // /this.activeController.getNavigationButton().getStyleClass().remove("selected");
+            this.activeController.getNavigationButton().getStyleClass().remove("selected");
         }
-        this.activeController = controller;
-        addStyleClassSelected(controller);
-        // this.activeController.getNavigationButton().getStyleClass().add("selected");
-
-        // final int direction = from < to ? -1 : 1;
-        // if (animate && oldController != null) {
-        // animateController(controller, oldController, direction);
-        // }
+        this.activeController = contentController;
+        this.activeController.getNavigationButton().getStyleClass().add("selected");
+        final int direction = from < to ? -1 : 1;
+        if (animate && oldController != null) {
+            animateController(contentController, oldController, direction);
+        }
         this.activeController.onActivate();
-
     }
 
     /**
-     * Adds the style class selected.
-     * @param controller
-     *            the controller
+     * Animate controller.
+     * @param contentController
+     *            the content controller
+     * @param oldController
+     *            the old controller
+     * @param direction
+     *            the direction
      */
-    private void addStyleClassSelected(final Controller controller) {
-        if (controller instanceof ContextController) {
-            if (((ContentController) controller).getNavigationButton() != null) {
-                ((ContentController) controller).getNavigationButton().getStyleClass().add("selected");
-            }
-        }
+    private void animateController(final ContentController contentController, final ContentController oldController, final int direction) {
+        // TODO Auto-generated method stub
     }
 
     /**
-     * Removes the style class selected.
-     * @param controller
-     *            the controller
+     * Gets the component.
+     * @return the component
      */
-    private void removeStyleClassSelected(final Controller controller) {
-        if (controller instanceof ContextController) {
-            if (((ContentController) controller).getNavigationButton() != null) {
+    public abstract Pane getComponent();
 
-                ((ContentController) controller).getNavigationButton().getStyleClass().remove("selected");
-            }
+    /**
+     * Gets the nav items.
+     * @return the nav items
+     */
+    public abstract Pane getnavItems();
 
-        }
-
-    }
 }

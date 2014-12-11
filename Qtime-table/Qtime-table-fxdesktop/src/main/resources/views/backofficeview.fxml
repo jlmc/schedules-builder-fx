@@ -32,11 +32,11 @@
                             <items>
                                 <VBox fx:id="navItems">
                                     <children>
-                                        <Button maxWidth="200.0" minWidth="200.0" prefHeight="-1.0" styleClass="first" text="Tasks" />
-                                        <Button maxWidth="200.0" minWidth="200.0" text="Administrator" />
-                                        <Button maxWidth="200.0" minWidth="200.0" text="Search" />
-                                        <Button maxWidth="200.0" minWidth="200.0" text="Line" />
-                                        <Button maxWidth="200.0" minWidth="200.0" styleClass="last" text="Process" />
+<!--                                         <Button maxWidth="200.0" minWidth="200.0" prefHeight="-1.0" styleClass="first" text="Tasks" /> -->
+<!--                                         <Button maxWidth="200.0" minWidth="200.0" text="Administrator" /> -->
+<!--                                         <Button maxWidth="200.0" minWidth="200.0" text="Search" /> -->
+<!--                                         <Button maxWidth="200.0" minWidth="200.0" text="Line" /> -->
+<!--                                         <Button maxWidth="200.0" minWidth="200.0" styleClass="last" text="Process" /> -->
                                     </children>
                                 </VBox>
                             </items>
@@ -46,11 +46,12 @@
                         </ToolBar>
                     </children>
                 </VBox>
-                <VBox fx:id="component" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-                   <children>
+                <AnchorPane  fx:id="component" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                    <children>
 <!--                       <SubjectAnchorPane id="subjectAnchorPane" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" /> -->
                    </children>
-               </VBox>
+                </AnchorPane>
+
                 
                 
             </children>

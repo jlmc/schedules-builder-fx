@@ -226,3 +226,17 @@ searchablekeyboard .text-field{
 	-fx-border-bottom-left-radius: 0px; 	
 	 top-left, top-right, bottom-right, and bottom-left corners, in that order. */ 
 }
+
+
+.progress-indicator .indicator {
+    -fx-background-color: transparent ;
+}
+.progress-indicator {
+    -fx-progress-color: green ;
+}
+.progress-indicator:critical {
+    -fx-progress-color: red ;
+}
+.progress-indicator:warning {
+    -fx-progress-color: orange ;
+}
