@@ -168,6 +168,19 @@ public abstract class ContextController extends ContentController {
         // TODO Auto-generated method stub
     }
 
+    @Override
+    public void onQuit() {
+        this.subcontrollers.forEach(controller -> {
+            try {
+                controller.onQuit();
+            } catch (final Exception e) {
+                // nothing
+            }
+        });
+        super.onQuit();
+
+    }
+
     /**
      * Gets the component.
      * @return the component
