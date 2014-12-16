@@ -1,44 +1,103 @@
 package org.xine.qtime.fxdesktop.backoffice;
 
+import org.xine.fx.guice.FXMLController;
+import org.xine.qtime.fxdesktop.controllers.MachineStatesController;
+
+import java.net.URL;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Pane;
 
-import org.xine.fx.guice.FXMLController;
-import org.xine.qtime.fxdesktop.controllers.ContentController;
-
+/**
+ * The Class SubjectsController.
+ */
 @FXMLController
-public class SubjectsController extends ContentController {
+public class SubjectsController extends MachineStatesController implements Initializable {
 
+    /** The identify. */
     @FXML
     private Label identify;
 
+    /** The root. */
     @FXML
     private AnchorPane root;
 
-    @FXML
-    private StackPane content;
+    /** The views. */
+    private final Map<State, String> views = Collections
+            .unmodifiableMap(new HashMap<State, String>() {
+                private static final long serialVersionUID = 1L;
+                {
+                    put(State.LIST, "/views/backoffice/subjects/subjectListView.fxml");
+                    put(State.CREATE, "/views/backoffice/subjects/subjectCreateView.fxml");
+                    put(State.EDIT, "/views/backoffice/subjects/subjectEditView.fxml");
+                }
 
+            });
+
+    // @FXML
+    // private StackPane content;
+
+    /**
+     * Instantiates a new subjects controller.
+     */
     public SubjectsController() { // org.xine.qtime.fxdesktop.backoffice.SubjectsController
         super();
         setName("Disciplinas");
     }
 
+    /*
+     * (non-Javadoc)
+     * @see org.xine.qtime.fxdesktop.controllers.MachineStatesController#getRootNode()
+     */
     @Override
     public Node getRootNode() {
         return this.root;
     }
 
+    /*
+     * (non-Javadoc)
+     * @see org.xine.qtime.fxdesktop.controllers.ContentController#onActivate()
+     */
     @Override
     public void onActivate() {
         System.out.println("disciplina ON");
     }
 
+    /*
+     * (non-Javadoc)
+     * @see org.xine.qtime.fxdesktop.controllers.ContentController#onDeactivate()
+     */
     @Override
     public void onDeactivate() {
         System.out.println("disciplinas OFF");
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see org.xine.qtime.fxdesktop.controllers.MachineStatesController#getContent()
+     */
+    @Override
+    public Pane getContent() {
+        return this.root;
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
+     */
+    @Override
+    public void initialize(final URL location, final ResourceBundle resources) {
+
+        super.loadStates(this.views, location, resources);
+
     }
 
 }

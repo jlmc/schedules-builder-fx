@@ -1,5 +1,7 @@
 package org.xine.qtime.fxdesktop.controllers;
 
+import org.xine.fx.guice.FXMLController;
+
 import java.io.IOException;
 
 import javafx.concurrent.Task;
@@ -9,8 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.AnchorPane;
-
-import org.xine.fx.guice.FXMLController;
 
 @FXMLController
 public class StartUpController extends ContentController {
@@ -26,6 +26,7 @@ public class StartUpController extends ContentController {
     @FXML
     private ProgressIndicator progress;
 
+    @SuppressWarnings("unused")
     private Task<Void> counter;
 
     /**

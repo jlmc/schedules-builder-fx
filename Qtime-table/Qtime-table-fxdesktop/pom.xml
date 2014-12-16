@@ -39,7 +39,12 @@
             <version>${guice-fx.version}</version>
             <scope>compile</scope>
         </dependency>
-
+        <!-- http://code.makery.ch/blog/javafx-8-dialogs/ -->
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>8.20.8</version>
+        </dependency>
 
         <!-- Provided by system -->
         <!-- <dependency> -->
