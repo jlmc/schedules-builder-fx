@@ -1,6 +1,14 @@
 package org.xine.qtime.fxdesktop;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Locale;
+import java.util.Properties;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 import javafx.scene.Parent;
 import javafx.scene.text.Font;
@@ -28,6 +36,8 @@ public class Launcher extends GuiceApplication {
 
     /** The Constant MIN_HEIGHT. */
     public static final int MIN_HEIGHT = 650;
+    
+    private static final Logger LOGGER = Logger.getLogger(Launcher.class.getName());
 
     /** The application controller. */
     private ApplicationController applicationController;
@@ -43,6 +53,14 @@ public class Launcher extends GuiceApplication {
         loadFont("/font/awesome/fontawesome-webfont.ttf");
         loadFont("/font/awesome/ubuntu/Ubuntu-L.ttf");
     }
+    
+    private ResourceBundle loadResourceBundle(){
+      Locale currentLocale = new Locale("pt");
+      ResourceBundle resourceBundle = ResourceBundle.getBundle("org.xine.qtime.fxdesktop.language", currentLocale);
+      return resourceBundle;
+    }
+    
+    
 
     /**
      * Load font.
@@ -59,21 +77,24 @@ public class Launcher extends GuiceApplication {
      */
     @Override
     public void start(final Stage primaryStage) throws Exception {
-        loadFonts();
+         loadFonts();
+         
 
         // Mac OS X workaround for Smack debugging and JavaFX (Swing + JavaFX issue).
         System.setProperty("java.awt.headless", "false");
 
+        ResourceBundle resources = loadResourceBundle();
+        
         // stage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.setTitle("Qxine");
+        primaryStage.setTitle(resources.getString("AppName"));
         primaryStage.setMinHeight(MIN_HEIGHT);
         primaryStage.setMinWidth(MIN_WIDTH);
         primaryStage.setHeight(MIN_HEIGHT);
         primaryStage.setWidth(MIN_WIDTH);
 
         // stage.getIcons().add(new Image(this.getClass().getResourceAsStream("/org/spout/platform/resources/spout.png")));
-
-        final Result appViewResult = this.fxmlLoader.load(getClass().getResource(Views.APP_VIEW));
+       
+        final Result appViewResult = this.fxmlLoader.load(getClass().getResource(Views.APP_VIEW), resources);
 
         final FxDecorateScene fxDecorateScene = new FxDecorateScene((Parent) appViewResult.getRoot(), primaryStage);
 
@@ -112,6 +133,8 @@ public class Launcher extends GuiceApplication {
      *            the arguments
      */
     public static void main(final String[] args) {
+       
+      
         launch(args);
     }
 

@@ -1,8 +1,10 @@
 package org.xine.qtime.fxdesktop.controllers;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -37,6 +39,12 @@ public class ApplicationController {
     // private ScreensController screensController;
 
     private static AtomicInteger threadCount = new AtomicInteger(0);
+    
+    @FXML
+    private ResourceBundle resources;
+
+    @FXML
+    private URL location;
 
     /** The navigation background. */
     @FXML
