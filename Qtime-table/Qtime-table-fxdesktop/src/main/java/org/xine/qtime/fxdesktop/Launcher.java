@@ -1,21 +1,5 @@
 package org.xine.qtime.fxdesktop;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.List;
-import java.util.Locale;
-import java.util.Properties;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
-
-import javafx.scene.Parent;
-import javafx.scene.text.Font;
-import javafx.stage.Stage;
-
-import javax.inject.Inject;
-
 import org.xine.fx.guice.GuiceApplication;
 import org.xine.fx.guice.GuiceFXMLLoader;
 import org.xine.fx.guice.GuiceFXMLLoader.Result;
@@ -26,9 +10,21 @@ import org.xine.qtime.fxdesktop.gui.Views;
 import com.google.inject.Injector;
 import com.google.inject.Module;
 
+import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.logging.Logger;
+
+import javafx.scene.Parent;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
+import javax.inject.Inject;
+
 /**
  * The Class Launcher.
  */
+
 public class Launcher extends GuiceApplication {
 
     /** The Constant MIN_WIDTH. */
@@ -36,7 +32,9 @@ public class Launcher extends GuiceApplication {
 
     /** The Constant MIN_HEIGHT. */
     public static final int MIN_HEIGHT = 650;
-    
+
+    /** The Constant LOGGER. */
+    @SuppressWarnings("unused")
     private static final Logger LOGGER = Logger.getLogger(Launcher.class.getName());
 
     /** The application controller. */
@@ -53,14 +51,17 @@ public class Launcher extends GuiceApplication {
         loadFont("/font/awesome/fontawesome-webfont.ttf");
         loadFont("/font/awesome/ubuntu/Ubuntu-L.ttf");
     }
-    
-    private ResourceBundle loadResourceBundle(){
-      Locale currentLocale = new Locale("pt");
-      ResourceBundle resourceBundle = ResourceBundle.getBundle("org.xine.qtime.fxdesktop.language", currentLocale);
-      return resourceBundle;
+
+    /**
+     * Load resource bundle.
+     * @return the resource bundle
+     */
+    private static ResourceBundle loadResourceBundle() {
+        final Locale currentLocale = new Locale("pt");
+        final ResourceBundle resourceBundle = ResourceBundle.getBundle(
+                "org.xine.qtime.fxdesktop.language", currentLocale);
+        return resourceBundle;
     }
-    
-    
 
     /**
      * Load font.
@@ -77,14 +78,13 @@ public class Launcher extends GuiceApplication {
      */
     @Override
     public void start(final Stage primaryStage) throws Exception {
-         loadFonts();
-         
+        loadFonts();
 
         // Mac OS X workaround for Smack debugging and JavaFX (Swing + JavaFX issue).
         System.setProperty("java.awt.headless", "false");
 
-        ResourceBundle resources = loadResourceBundle();
-        
+        final ResourceBundle resources = loadResourceBundle();
+
         // stage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle(resources.getString("AppName"));
         primaryStage.setMinHeight(MIN_HEIGHT);
@@ -92,11 +92,14 @@ public class Launcher extends GuiceApplication {
         primaryStage.setHeight(MIN_HEIGHT);
         primaryStage.setWidth(MIN_WIDTH);
 
-        // stage.getIcons().add(new Image(this.getClass().getResourceAsStream("/org/spout/platform/resources/spout.png")));
-       
-        final Result appViewResult = this.fxmlLoader.load(getClass().getResource(Views.APP_VIEW), resources);
+        // stage.getIcons().add(new Image(this.getClass()
+        // .getResourceAsStream("/org/spout/platform/resources/spout.png")));
 
-        final FxDecorateScene fxDecorateScene = new FxDecorateScene((Parent) appViewResult.getRoot(), primaryStage);
+        final Result appViewResult = this.fxmlLoader.load(getClass().getResource(Views.APP_VIEW),
+                resources);
+
+        final FxDecorateScene fxDecorateScene = new FxDecorateScene(
+                (Parent) appViewResult.getRoot(), primaryStage);
 
         fxDecorateScene.setEdgeSize(5);
 
@@ -113,7 +116,8 @@ public class Launcher extends GuiceApplication {
      * This method is used to fetch and/or create (Guice) modules necessary
      * to fully construct this application.
      * <p>
-     * The modules that are initialized in this method and added to the passed List will be used to create the {@link Injector} instance that is used in the context of this application.
+     * The modules that are initialized in this method and added to the passed List will be used to
+     * create the {@link Injector} instance that is used in the context of this application.
      * </p>
      * @param modules
      *            A list of modules (initially empty) that shall be used to create the
@@ -124,7 +128,7 @@ public class Launcher extends GuiceApplication {
      */
     @Override
     public void init(final List<Module> modules) throws Exception {
-        // TODO::
+        // TODO:: no modules configurated eat
     }
 
     /**
@@ -133,8 +137,7 @@ public class Launcher extends GuiceApplication {
      *            the arguments
      */
     public static void main(final String[] args) {
-       
-      
+
         launch(args);
     }
 

@@ -20,11 +20,11 @@ public final class Views {
     /** The Constant BACKOFFICE_SUBJECT. */
     public static final String BACKOFFICE_SUBJECT = "/views/backoffice/subjects/subjectsView.fxml";
 
+    /** The Constant BACKOFFICE_PERSONS. */
     public static final String BACKOFFICE_PERSONS = "/views/backoffice/persons/personsView.fxml";
 
     /**
      * Instantiates a new views.
      */
-    private Views() {
-    }
+    private Views() {}
 }

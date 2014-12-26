@@ -20,6 +20,8 @@
  */
 package org.xine.qtime.fxdesktop.gui;
 
+import org.xine.qtime.fxdesktop.utils.OperatingSystem;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,8 +34,6 @@ import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
-import org.xine.qtime.fxdesktop.utils.OperatingSystem;
 
 /**
  * The Class FxDecorateController.
@@ -67,20 +67,28 @@ public class FxDecorateController {
                 final double dX = e.getScreenX() - FxDecorateController.this.moveStartPoint.getX();
                 final double dY = e.getScreenY() - FxDecorateController.this.moveStartPoint.getY();
                 final Stage stage = getScene().getStage();
-                if (FxDecorateController.this.currentResizeHandle == Cursor.W_RESIZE || FxDecorateController.this.currentResizeHandle == Cursor.NW_RESIZE || FxDecorateController.this.currentResizeHandle == Cursor.SW_RESIZE) {
+                if (FxDecorateController.this.currentResizeHandle == Cursor.W_RESIZE
+                        || FxDecorateController.this.currentResizeHandle == Cursor.NW_RESIZE
+                        || FxDecorateController.this.currentResizeHandle == Cursor.SW_RESIZE) {
                     if (setWindowWidth(FxDecorateController.this.startWidth - dX)) {
                         stage.setX(FxDecorateController.this.startX + dX);
                     }
                 }
-                if (FxDecorateController.this.currentResizeHandle == Cursor.N_RESIZE || FxDecorateController.this.currentResizeHandle == Cursor.NW_RESIZE || FxDecorateController.this.currentResizeHandle == Cursor.NE_RESIZE) {
+                if (FxDecorateController.this.currentResizeHandle == Cursor.N_RESIZE
+                        || FxDecorateController.this.currentResizeHandle == Cursor.NW_RESIZE
+                        || FxDecorateController.this.currentResizeHandle == Cursor.NE_RESIZE) {
                     if (setWindowHeight(FxDecorateController.this.startHeight - dY)) {
                         stage.setY(FxDecorateController.this.startY + dY);
                     }
                 }
-                if (FxDecorateController.this.currentResizeHandle == Cursor.E_RESIZE || FxDecorateController.this.currentResizeHandle == Cursor.SE_RESIZE || FxDecorateController.this.currentResizeHandle == Cursor.NE_RESIZE) {
+                if (FxDecorateController.this.currentResizeHandle == Cursor.E_RESIZE
+                        || FxDecorateController.this.currentResizeHandle == Cursor.SE_RESIZE
+                        || FxDecorateController.this.currentResizeHandle == Cursor.NE_RESIZE) {
                     setWindowWidth(FxDecorateController.this.startWidth + dX);
                 }
-                if (FxDecorateController.this.currentResizeHandle == Cursor.S_RESIZE || FxDecorateController.this.currentResizeHandle == Cursor.SE_RESIZE || FxDecorateController.this.currentResizeHandle == Cursor.SW_RESIZE) {
+                if (FxDecorateController.this.currentResizeHandle == Cursor.S_RESIZE
+                        || FxDecorateController.this.currentResizeHandle == Cursor.SE_RESIZE
+                        || FxDecorateController.this.currentResizeHandle == Cursor.SW_RESIZE) {
                     setWindowHeight(FxDecorateController.this.startHeight + dY);
                 }
                 e.consume();
@@ -114,26 +122,32 @@ public class FxDecorateController {
         @Override
         public void handle(final MouseEvent e) {
             if (FxDecorateController.this.currentMoveNode.equals(this.added)) {
-                final Point2D delta = new Point2D(e.getScreenX() - FxDecorateController.this.moveStartPoint.getX(), e.getScreenY() - FxDecorateController.this.moveStartPoint.getY());
+                final Point2D delta = new Point2D(e.getScreenX()
+                        - FxDecorateController.this.moveStartPoint.getX(), e.getScreenY()
+                        - FxDecorateController.this.moveStartPoint.getY());
                 double stageX = getScene().getWindow().getX();
                 double stageY = getScene().getWindow().getY();
 
                 stageX += delta.getX();
                 stageY += delta.getY();
 
-                final Rectangle2D newBounds = new Rectangle2D(stageX, stageY, getScene().getWindow().getWidth(), getScene().getWindow().getHeight());
+                final Rectangle2D newBounds = new Rectangle2D(stageX, stageY, getScene()
+                        .getWindow().getWidth(), getScene().getWindow().getHeight());
 
                 // check screen bounds
                 for (final Screen screen : Screen.getScreensForRectangle(newBounds)) {
                     // Limit dragging over menu bar
-                    if (screen.getVisualBounds().equals(Screen.getPrimary().getVisualBounds()) && OperatingSystem.getOS().isMac() && stageY < screen.getVisualBounds().getMinY()) {
+                    if (screen.getVisualBounds().equals(Screen.getPrimary().getVisualBounds())
+                            && OperatingSystem.getOS().isMac()
+                            && stageY < screen.getVisualBounds().getMinY()) {
                         stageY = screen.getVisualBounds().getMinY();
                     }
                 }
 
                 getScene().getWindow().setX(stageX);
                 getScene().getWindow().setY(stageY);
-                FxDecorateController.this.moveStartPoint = new Point2D(e.getScreenX(), e.getScreenY());
+                FxDecorateController.this.moveStartPoint = new Point2D(e.getScreenX(),
+                        e.getScreenY());
                 e.consume();
             }
         }
@@ -178,7 +192,8 @@ public class FxDecorateController {
             @Override
             public void handle(final MouseEvent e) {
                 FxDecorateController.this.currentMoveNode = added;
-                FxDecorateController.this.moveStartPoint = new Point2D(e.getScreenX(), e.getScreenY());
+                FxDecorateController.this.moveStartPoint = new Point2D(e.getScreenX(), e
+                        .getScreenY());
                 e.consume();
             }
         });
@@ -295,7 +310,8 @@ public class FxDecorateController {
                     FxDecorateController.this.startY = getScene().getWindow().getY();
                     FxDecorateController.this.startWidth = getScene().getWindow().getWidth();
                     FxDecorateController.this.startHeight = getScene().getWindow().getHeight();
-                    FxDecorateController.this.moveStartPoint = new Point2D(e.getScreenX(), e.getScreenY());
+                    FxDecorateController.this.moveStartPoint = new Point2D(e.getScreenX(), e
+                            .getScreenY());
                     FxDecorateController.this.currentResizeHandle = handle.getCursor();
                     e.consume();
                 }
@@ -407,7 +423,8 @@ public class FxDecorateController {
         windowX += scenepos.getX();
         windowY += scenepos.getY();
 
-        return new Rectangle2D(windowX, windowY, node.getLayoutBounds().getWidth(), node.getLayoutBounds().getHeight());
+        return new Rectangle2D(windowX, windowY, node.getLayoutBounds().getWidth(), node
+                .getLayoutBounds().getHeight());
     }
 
     /**
@@ -425,7 +442,9 @@ public class FxDecorateController {
      * @return the rectangle2 d
      */
     @SuppressWarnings("boxing")
-    private static Rectangle2D cloneRect(final Rectangle2D c, final Double x, final Double y, final Double width, final Double height) {
-        return new Rectangle2D(x != null ? x : c.getMinX(), y != null ? y : c.getMinY(), width != null ? width : c.getWidth(), height != null ? height : c.getHeight());
+    private static Rectangle2D cloneRect(final Rectangle2D c, final Double x, final Double y,
+            final Double width, final Double height) {
+        return new Rectangle2D(x != null ? x : c.getMinX(), y != null ? y : c.getMinY(),
+                width != null ? width : c.getWidth(), height != null ? height : c.getHeight());
     }
 }

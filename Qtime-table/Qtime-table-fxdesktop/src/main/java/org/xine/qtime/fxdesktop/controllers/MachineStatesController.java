@@ -159,7 +159,7 @@ public abstract class MachineStatesController extends ContentController {
 
             this.states.put(state, controller);
 
-            controller.setApplicationController(this.applicationController);
+            controller.setApplicationController(getApplicationController());
 
             // final Button btn = addControllerButton(controller);
             // controller.setNavigationButton(btn);
@@ -253,7 +253,9 @@ public abstract class MachineStatesController extends ContentController {
         this.states.keySet().forEach(s -> {
             try {
                 this.states.get(s).onQuit();
-            } catch (final Exception e) {/* nothing */}
+            } catch (final Exception e) {
+                /**/
+            }
         });
 
         super.onQuit();

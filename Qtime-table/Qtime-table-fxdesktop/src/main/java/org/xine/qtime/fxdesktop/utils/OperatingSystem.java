@@ -61,7 +61,8 @@ public enum OperatingSystem {
      * @return true, if checks if is windows
      */
     public boolean isWindows() {
-        return this == WINDOWS_XP || this == WINDOWS_VISTA || this == WINDOWS_7 || this == WINDOWS_8 || this == WINDOWS_UNKNOWN;
+        return this == WINDOWS_XP || this == WINDOWS_VISTA || this == WINDOWS_7
+                || this == WINDOWS_8 || this == WINDOWS_UNKNOWN;
     }
 
     /**

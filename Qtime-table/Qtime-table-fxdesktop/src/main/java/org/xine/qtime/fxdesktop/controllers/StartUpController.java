@@ -12,6 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * The Class StartUpController.
+ */
 @FXMLController
 public class StartUpController extends ContentController {
     /** The root. */
@@ -26,6 +29,7 @@ public class StartUpController extends ContentController {
     @FXML
     private ProgressIndicator progress;
 
+    /** The counter. */
     @SuppressWarnings("unused")
     private Task<Void> counter;
 

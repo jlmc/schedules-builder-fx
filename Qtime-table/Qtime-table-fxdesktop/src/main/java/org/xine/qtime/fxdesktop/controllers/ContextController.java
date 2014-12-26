@@ -86,7 +86,7 @@ public abstract class ContextController extends ContentController {
             final ContentController controller = loadSubView(subController, resources);
             this.subcontrollers.add(controller);
 
-            controller.setApplicationController(this.applicationController);
+            controller.setApplicationController(getApplicationController());
 
             final Button btn = addControllerButton(controller);
             controller.setNavigationButton(btn);
@@ -99,7 +99,9 @@ public abstract class ContextController extends ContentController {
 
         } catch (final Exception e) {
             System.out.println("SubController OF:" + subController + " - " + e.toString());
-            // If any goes wrong, ignore just load we don't want the aplication break because of a internal sub view
+            // If any goes wrong, ignore just load we don't
+            // want the aplication break because of a
+            // internal sub view
         }
     }
 

@@ -4,7 +4,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 /**
- * Credit to Jens Deter for this code <a href="from http://www.jensd.de/wordpress/?p=132">www.jensd.de</a>.
+ * Credit to Jens Deter for this code <a
+ * href="from http://www.jensd.de/wordpress/?p=132">www.jensd.de</a>.
  */
 public class FontAwesome {
 
@@ -802,7 +803,8 @@ public class FontAwesome {
      *            the icon size
      * @return the button
      */
-    public static Button createIconButton(final String iconName, final String text, final int iconSize) {
+    public static Button createIconButton(final String iconName, final String text,
+            final int iconSize) {
         final Label icon = createIconLabel(iconName);
         icon.setStyle("-fx-font-size: " + iconSize + "px;");
         final Button b = new Button(text, icon);
@@ -850,7 +852,9 @@ public class FontAwesome {
         l.setStyle("-fx-font-size: " + iconSize + "px;");
         return l;
 
-        // ///return LabelBuilder.create().text(iconName).styleClass("icon").style("-fx-font-size: " + iconSize + "px;").build();
+        // ///return
+        // LabelBuilder.create().text(iconName).styleClass("icon").style("-fx-font-size: " +
+        // iconSize + "px;").build();
     }
 
     /**
@@ -860,5 +864,12 @@ public class FontAwesome {
      */
     public static void stylise(final Label label) {
         label.setStyle("-fx-font-size: " + DEFAULT_SIZE + "px;");
+    }
+
+    /**
+     * Instantiates a new font awesome.
+     */
+    private FontAwesome() {
+        super();
     }
 }

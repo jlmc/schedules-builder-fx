@@ -1,12 +1,12 @@
 package org.xine.qtime.fxdesktop.backoffice;
 
+import org.xine.qtime.fxdesktop.controllers.ContentController;
+
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-
-import org.xine.qtime.fxdesktop.controllers.ContentController;
 
 /**
  * The Class PersonsController.
