@@ -63,6 +63,9 @@ public class SubjectResource {
     //TODO:: update implementation missing
     
     ResponseBuilder rb = Response.ok(subject);
+    
+    //Response.status(Response.Status.NOT_FOUND).entity("Entity not found for UUID: " ).build();
+    
     return rb.build();
   }
   

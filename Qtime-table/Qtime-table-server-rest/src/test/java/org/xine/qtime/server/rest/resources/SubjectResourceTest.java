@@ -55,6 +55,7 @@ public class SubjectResourceTest {
                               .put(Entity.entity(subject, MediaType.APPLICATION_JSON));
     
     response.close();
+    client.close();
     
     assertEquals(Status.OK.getStatusCode(), response.getStatus());
   }
@@ -81,6 +82,7 @@ public class SubjectResourceTest {
 
     
     response.close();
+    client.close();
   
     assertEquals(Status.OK.getStatusCode(), response.getStatus());
   }
@@ -120,6 +122,8 @@ public class SubjectResourceTest {
     
     //response.close();
    
+    client.close();
+    
     assertEquals(Status.OK.getStatusCode(), response.getStatus());
     assertNotNull(out);
   }
@@ -127,6 +131,19 @@ public class SubjectResourceTest {
   @Test
   public void testDelete() {
     //fail("Not yet implemented");
+    Client client = ClientBuilder.newClient();
+    
+    Response response = client.target(HTTP_LOCALHOST_SUBJECTS)
+                              .path("subjects")
+                              .path("{id}")
+                              .resolveTemplate("id", "10")
+                              .request()
+                              .delete();
+    
+    response.close();
+    //client.close();
+    
+    assertEquals(Status.OK.getStatusCode(), response.getStatus());
   }
 
 }
