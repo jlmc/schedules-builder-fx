@@ -32,7 +32,7 @@ public class SubjectResourceTest {
                              .get(new GenericType<List<Subject>>(){});
     
     //assertThat(subjects, ));
-    assertTrue(subjects != null && subjects.isEmpty());
+    assertTrue(subjects != null && !subjects.isEmpty());
   }
 
   @Test
@@ -77,10 +77,51 @@ public class SubjectResourceTest {
                               .path("subjects")
                               .request(MediaType.APPLICATION_JSON)
                               .post(Entity.entity(subject, MediaType.APPLICATION_JSON));
+
+
     
     response.close();
-    
+  
     assertEquals(Status.OK.getStatusCode(), response.getStatus());
+  }
+  
+  @Test
+  public void testCreate2() {
+    //fail("Not yet implemented");
+    //POST
+    
+    Client client = ClientBuilder.newClient();
+    
+    Subject subject = new Subject();
+    subject.setId(1L);
+    subject.setAcronym("AXR");
+    subject.setDescription("AXR description");
+    subject.setName("astros xinos rascos");
+    
+    
+    Response response = client.target(HTTP_LOCALHOST_SUBJECTS)
+        .path("subjects")
+        .request(MediaType.APPLICATION_JSON)
+        .post(Entity.entity(subject, MediaType.APPLICATION_JSON));
+    
+    Subject out = response.readEntity(Subject.class); 
+    
+//    Subject s = client.target(HTTP_LOCALHOST_SUBJECTS)
+//    .path("subjects")
+//    .request(MediaType.APPLICATION_JSON).post(Entity.entity(subject, MediaType.APPLICATION_JSON))
+//    .readEntity(Subject.class);
+    
+    
+//    
+//    Subject subjectOut = client.target(HTTP_LOCALHOST_SUBJECTS)
+//        .path("subjects")
+//        .request(MediaType.APPLICATION_JSON)
+//        .post(Entity.entity(subject, MediaType.APPLICATION_JSON),new GenericType<Subject>(){});
+    
+    //response.close();
+   
+    assertEquals(Status.OK.getStatusCode(), response.getStatus());
+    assertNotNull(out);
   }
 
   @Test

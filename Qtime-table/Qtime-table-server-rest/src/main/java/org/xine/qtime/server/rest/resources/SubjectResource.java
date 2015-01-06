@@ -36,7 +36,14 @@ public class SubjectResource {
   @Produces(MediaType.APPLICATION_JSON)
   public Response list(){
     List<Subject> subjects = new ArrayList<>();
-
+    for(int i = 0; i< 3; i++){
+      Subject subject = new Subject();
+      subject.setId(10L+i);
+      subject.setAcronym("Acronym");
+      subject.setDescription("description");
+      subject.setName("name-"+i);
+      subjects.add(subject);
+    }
     //TODO:: missing subjects fill implementation.
 
     ResponseBuilder rb = Response.ok(subjects);
