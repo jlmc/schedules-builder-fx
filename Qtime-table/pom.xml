@@ -17,6 +17,7 @@
 		
 		<module>schedules-builder-fx</module>
 		<module>Qtime-table-fxdesktop</module>
+		<module>Qtime-table-server-rest</module>
     </modules>
 
 
