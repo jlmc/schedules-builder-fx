@@ -1,17 +1,18 @@
 package org.xine.qtime.fxdesktop.controllers;
 
+import org.xine.fx.guice.GuiceFXMLLoader;
+import org.xine.fx.guice.GuiceFXMLLoader.Result;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
 import javax.inject.Inject;
-
-import org.xine.fx.guice.GuiceFXMLLoader;
-import org.xine.fx.guice.GuiceFXMLLoader.Result;
 
 /**
  * The Class ContextController.
@@ -34,15 +35,19 @@ public abstract class ContextController extends ContentController {
      *            the generic type
      * @param subController
      *            the sub controller
+     * @param resources
+     *            the resources
      * @return the t
      */
-    protected <T> T loadSubView(final String subController) {
+    protected <T> T loadSubView(final String subController, final ResourceBundle resources) {
         try {
-            final Result loadResult = this.fxmlLoader.load(ContextController.class.getResource(subController));
+            final Result loadResult = this.fxmlLoader.load(
+                    ContextController.class.getResource(subController), resources);
             final T controller = loadResult.getController();
             return controller;
         } catch (final IOException e) {
-            throw new RuntimeException("Can't Load the subcontroller " + subController + " caused by: " + e);
+            throw new RuntimeException("Can't Load the subcontroller " + subController
+                    + " caused by: " + e);
         }
 
     }
@@ -51,12 +56,14 @@ public abstract class ContextController extends ContentController {
      * Loadsubviews.
      * @param subviews
      *            the subviews
+     * @param resources
+     *            the resources
      */
-    public void loadsubviews(final Collection<String> subviews) {
+    public void loadsubviews(final Collection<String> subviews, final ResourceBundle resources) {
         if (subviews != null) {
             for (final String subview : subviews) {
                 if (subview != null) {
-                    loadSubController(subview);
+                    loadSubController(subview, resources);
                 }
             }
         }
@@ -71,13 +78,15 @@ public abstract class ContextController extends ContentController {
      * Load sub controller.
      * @param subController
      *            the sub controller
+     * @param resources
+     *            the resources
      */
-    private void loadSubController(final String subController) {
+    private void loadSubController(final String subController, final ResourceBundle resources) {
         try {
-            final ContentController controller = this.loadSubView(subController);
+            final ContentController controller = loadSubView(subController, resources);
             this.subcontrollers.add(controller);
 
-            controller.setApplicationController(this.applicationController);
+            controller.setApplicationController(getApplicationController());
 
             final Button btn = addControllerButton(controller);
             controller.setNavigationButton(btn);
@@ -90,7 +99,9 @@ public abstract class ContextController extends ContentController {
 
         } catch (final Exception e) {
             System.out.println("SubController OF:" + subController + " - " + e.toString());
-            // If any goes wrong, ignore just load we don't want the aplication break because of a internal sub view
+            // If any goes wrong, ignore just load we don't
+            // want the aplication break because of a
+            // internal sub view
         }
     }
 
@@ -164,10 +175,15 @@ public abstract class ContextController extends ContentController {
      * @param direction
      *            the direction
      */
-    private void animateController(final ContentController contentController, final ContentController oldController, final int direction) {
+    private void animateController(final ContentController contentController,
+            final ContentController oldController, final int direction) {
         // TODO Auto-generated method stub
     }
 
+    /*
+     * (non-Javadoc)
+     * @see org.xine.qtime.fxdesktop.controllers.ContentController#onQuit()
+     */
     @Override
     public void onQuit() {
         this.subcontrollers.forEach(controller -> {

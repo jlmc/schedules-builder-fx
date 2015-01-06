@@ -1,7 +1,12 @@
 package org.xine.qtime.fxdesktop.controllers;
 
+import org.xine.fx.guice.FXMLController;
+import org.xine.qtime.fxdesktop.gui.Views;
+
+import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -9,14 +14,19 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-import org.xine.fx.guice.FXMLController;
-import org.xine.qtime.fxdesktop.gui.Views;
-
 /**
  * The Class BackOfficeController.
  */
 @FXMLController
 public class BackOfficeController extends ContextController {
+
+    /** The resources. */
+    @FXML
+    private ResourceBundle resources;
+
+    /** The location. */
+    @FXML
+    private URL location;
 
     /** The root. */
     @FXML
@@ -66,7 +76,7 @@ public class BackOfficeController extends ContextController {
     @FXML
     public void initialize() {
         // TODO: thing in other way of loading the subviews using a task
-        super.loadsubviews(this.subviews);
+        super.loadsubviews(this.subviews, this.resources);
 
     }
 

@@ -98,7 +98,7 @@ public abstract class MachineStatesController extends ContentController {
 
         for (final State state : subviews.keySet()) {
             if (subviews.get(state) != null) {
-                loadSubController(state, subviews.get(state));
+                loadSubController(state, subviews.get(state), resources);
             }
         }
         if (this.states != null && !this.states.isEmpty() && this.stateState != null) {
@@ -145,18 +145,21 @@ public abstract class MachineStatesController extends ContentController {
      *            the state
      * @param subController
      *            the sub controller
+     * @param resources
+     *            the resources
      * @return the content controller
      */
-    private ContentController loadSubController(final State state, final String subController) {
+    private ContentController loadSubController(final State state, final String subController,
+            final ResourceBundle resources) {
         try {
-            final StateController controller = this.loadSubView(subController);
+            final StateController controller = loadSubView(subController, resources);
 
             // this.subcontrollers.add(controller);
             controller.setMachineStatesController(this);
 
             this.states.put(state, controller);
 
-            controller.setApplicationController(this.applicationController);
+            controller.setApplicationController(getApplicationController());
 
             // final Button btn = addControllerButton(controller);
             // controller.setNavigationButton(btn);
@@ -224,12 +227,14 @@ public abstract class MachineStatesController extends ContentController {
      *            the generic type
      * @param subController
      *            the sub controller
+     * @param resources
+     *            the resources
      * @return the t
      */
-    protected <T> T loadSubView(final String subController) {
+    protected <T> T loadSubView(final String subController, final ResourceBundle resources) {
         try {
-            final Result loadResult = this.fxmlLoader.load(MachineStatesController.class
-                    .getResource(subController));
+            final Result loadResult = this.fxmlLoader.load(
+                    MachineStatesController.class.getResource(subController), resources);
             final T controller = loadResult.getController();
             return controller;
         } catch (final IOException e) {
@@ -248,7 +253,9 @@ public abstract class MachineStatesController extends ContentController {
         this.states.keySet().forEach(s -> {
             try {
                 this.states.get(s).onQuit();
-            } catch (final Exception e) {/* nothing */}
+            } catch (final Exception e) {
+                /**/
+            }
         });
 
         super.onQuit();

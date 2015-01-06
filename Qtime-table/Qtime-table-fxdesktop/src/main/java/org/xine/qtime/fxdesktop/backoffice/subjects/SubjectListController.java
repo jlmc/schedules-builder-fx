@@ -69,11 +69,9 @@ public class SubjectListController extends StateController {
         return this.root;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
+    /**
+     * Initialize.
      */
-
     @FXML
     public void initialize() {
 

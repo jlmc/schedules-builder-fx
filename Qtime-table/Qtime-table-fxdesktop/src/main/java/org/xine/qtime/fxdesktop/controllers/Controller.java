@@ -8,27 +8,24 @@ import javafx.scene.layout.AnchorPane;
  */
 public interface Controller {
 
-    /** The application controller. */
-    ApplicationController applicationController = null;
-
     /**
      * On activate.
      */
-    default public void onActivate() {
+    default void onActivate() {
         // Callback - design for extension
     }
 
     /**
      * On deactivate.
      */
-    default public void onDeactivate() {
+    default void onDeactivate() {
         // Callback - design for extension
     }
 
     /**
      * On quit.
      */
-    default public void onQuit() {
+    default void onQuit() {
         // Callback - design for extension
     }
 
@@ -43,14 +40,12 @@ public interface Controller {
      * @param applicationController
      *            the new application controller
      */
-    default public void setApplicationController(final ApplicationController applicationController) {
+    default void setApplicationController(final ApplicationController applicationController) {
         // default implementation
     }
 
     /**
      * Sets the controller constrains.
-     * @param controller
-     *            the new controller constrains
      */
     public default void setControllerConstrains() {
         if (getRootNode() != null) {

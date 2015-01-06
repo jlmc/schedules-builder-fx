@@ -14,10 +14,18 @@ public abstract class ContentController implements Controller {
     private final StringProperty name = new SimpleStringProperty("<name>");
 
     /** The navigation button. */
-    protected Button navigationButton = null;
+    private Button navigationButton = null;
 
     /** The application controller. */
-    protected ApplicationController applicationController = null;
+    private ApplicationController applicationController = null;
+
+    /**
+     * Gets the application controller.
+     * @return the application controller
+     */
+    public ApplicationController getApplicationController() {
+        return this.applicationController;
+    }
 
     /**
      * On activate.

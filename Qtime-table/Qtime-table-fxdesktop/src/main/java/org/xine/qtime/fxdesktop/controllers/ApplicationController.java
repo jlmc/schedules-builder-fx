@@ -1,5 +1,10 @@
 package org.xine.qtime.fxdesktop.controllers;
 
+import org.xine.fx.guice.GuiceFXMLLoader;
+import org.xine.fx.guice.GuiceFXMLLoader.Result;
+import org.xine.qtime.fxdesktop.gui.FxDecorateScene;
+import org.xine.qtime.fxdesktop.gui.Views;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -25,24 +30,20 @@ import javafx.util.Duration;
 
 import javax.inject.Inject;
 
-import org.xine.fx.guice.GuiceFXMLLoader;
-import org.xine.fx.guice.GuiceFXMLLoader.Result;
-import org.xine.qtime.fxdesktop.gui.FxDecorateScene;
-import org.xine.qtime.fxdesktop.gui.Views;
-
 /**
  * The Class ApplicationController.
  */
+
 public class ApplicationController {
 
-    /** The screens controller. */
-    // private ScreensController screensController;
-
+    /** The thread count. */
     private static AtomicInteger threadCount = new AtomicInteger(0);
-    
+
+    /** The resources. */
     @FXML
     private ResourceBundle resources;
 
+    /** The location. */
     @FXML
     private URL location;
 
@@ -78,19 +79,17 @@ public class ApplicationController {
     private final List<ContentController> controllers = new ArrayList<>();
 
     /** The notification controller. */
-    @SuppressWarnings("unused")
     private NotificationController notificationController;
 
     /** The active controller. */
     private ContentController activeController = null;
 
     /** The fx decorate scene. */
-    @SuppressWarnings("unused")
     private FxDecorateScene fxDecorateScene;
 
     /** The executer service. */
-    @SuppressWarnings("unused")
-    private final ExecutorService executerService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors(), new ThreadFactory() {
+    private final ExecutorService executerService = Executors.newFixedThreadPool(Runtime
+            .getRuntime().availableProcessors(), new ThreadFactory() {
         @SuppressWarnings("synthetic-access")
         @Override
         public Thread newThread(final Runnable r) {
@@ -139,7 +138,8 @@ public class ApplicationController {
      */
     private void loadSubController(final String subController) {
         try {
-            final Result loadResult = this.fxmlLoader.load(ApplicationController.class.getResource(subController));
+            final Result loadResult = this.fxmlLoader.load(
+                    ApplicationController.class.getResource(subController), this.resources);
             final ContentController controller = loadResult.getController();
 
             this.controllers.add(controller);
@@ -191,10 +191,11 @@ public class ApplicationController {
      * Sets the active Controller in the content area.
      * @param contentController
      *            the new active controller.
-     * @param animate
+     * @param animated
      *            wether the change of controllers should be animated.
      */
-    private void activateController(final ContentController contentController, final boolean animate) {
+    private void activateController(final ContentController contentController,
+            final boolean animated) {
         if (this.activeController == contentController) {
             return;
         }
@@ -210,7 +211,7 @@ public class ApplicationController {
         this.activeController = contentController;
         this.activeController.getNavigationButton().getStyleClass().add("selected");
         final int direction = from < to ? -1 : 1;
-        if (animate && oldController != null) {
+        if (animated && oldController != null) {
             animateController(contentController, oldController, direction);
         }
         this.activeController.onActivate();
@@ -226,23 +227,29 @@ public class ApplicationController {
      *            the direction
      */
     @SuppressWarnings("boxing")
-    private void animateController(final ContentController contentController, final ContentController oldController, final int direction) {
+    private void animateController(final ContentController contentController,
+            final ContentController oldController, final int direction) {
         oldController.getRootNode().setVisible(true);
         if (this.activeController.getRootNode() instanceof Pane) {
-            ((Pane) this.activeController.getRootNode()).setPrefSize(this.content.getWidth(), this.content.getHeight());
+            ((Pane) this.activeController.getRootNode()).setPrefSize(this.content.getWidth(),
+                    this.content.getHeight());
         }
         if (oldController.getRootNode() instanceof Pane) {
-            ((Pane) oldController.getRootNode()).setPrefSize(this.content.getWidth(), this.content.getHeight());
+            ((Pane) oldController.getRootNode()).setPrefSize(this.content.getWidth(),
+                    this.content.getHeight());
         }
         AnchorPane.clearConstraints(this.activeController.getRootNode());
         AnchorPane.clearConstraints(oldController.getRootNode());
         final Timeline timeline = new Timeline();
         timeline.setCycleCount(1);
-        KeyValue kvNew = new KeyValue(this.activeController.getRootNode().layoutXProperty(), this.content.getWidth() * -direction);
-        KeyValue kvNewOpac = new KeyValue(this.activeController.getRootNode().opacityProperty(), 0.0);
+        KeyValue kvNew = new KeyValue(this.activeController.getRootNode().layoutXProperty(),
+                this.content.getWidth() * -direction);
+        KeyValue kvNewOpac = new KeyValue(this.activeController.getRootNode().opacityProperty(),
+                0.0);
         KeyFrame kf = new KeyFrame(Duration.ZERO, kvNew, kvNewOpac);
         timeline.getKeyFrames().add(kf);
-        final KeyValue kvOld = new KeyValue(oldController.getRootNode().layoutXProperty(), this.content.getWidth() * direction);
+        final KeyValue kvOld = new KeyValue(oldController.getRootNode().layoutXProperty(),
+                this.content.getWidth() * direction);
         kvNew = new KeyValue(this.activeController.getRootNode().layoutXProperty(), 0);
         kvNewOpac = new KeyValue(this.activeController.getRootNode().opacityProperty(), 1.0);
         final KeyValue kvOldOpac = new KeyValue(oldController.getRootNode().opacityProperty(), 0.0);
@@ -276,15 +283,6 @@ public class ApplicationController {
     }
 
     /**
-     * Sets the decorate scene.
-     * @param fxDecorateScene
-     *            the new decorate scene
-     */
-    public void setDecorateScene(final FxDecorateScene fxDecorateScene) {
-        this.fxDecorateScene = fxDecorateScene;
-    }
-
-    /**
      * On quit.
      */
     public void onQuit() {
@@ -303,6 +301,44 @@ public class ApplicationController {
                 e.printStackTrace();
             }
         });
+    }
+
+    /**
+     * Gets the executer service.
+     * @return the executer service
+     */
+    public ExecutorService getExecuterService() {
+        return this.executerService;
+    }
+
+    /**
+     * Gets the notification controller.
+     * @return the notification controller
+     */
+    public NotificationController getNotificationController() {
+        return this.notificationController;
+    }
+
+    /**
+     * Sets the decorate scene.
+     * @param fxDecorateScene
+     *            the new decorate scene
+     */
+    public void setDecorateScene(final FxDecorateScene fxDecorateScene) {
+        this.fxDecorateScene = fxDecorateScene;
+
+        fxDecorateScene.getController().addMoveNode(this.navigationBackground);
+        fxDecorateScene.getController().addMoveNode(this.spoutLogo);
+        // fxDecorateScene.getController().addMoveNode(username);
+        // fxDecorateScene.getController().addMoveNode(avatar);
+    }
+
+    /**
+     * Gets the decorate scene.
+     * @return the decorate scene
+     */
+    public FxDecorateScene getDecorateScene() {
+        return this.fxDecorateScene;
     }
 
 }
