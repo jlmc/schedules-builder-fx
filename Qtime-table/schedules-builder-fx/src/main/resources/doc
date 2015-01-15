@@ -1,7 +1,0 @@
-all --> ALL
-trace --> FINER
-debug --> FINE
-info --> INFO
-warn --> WARNING
-error --> SEVERE
-fatal --> SEVERE
