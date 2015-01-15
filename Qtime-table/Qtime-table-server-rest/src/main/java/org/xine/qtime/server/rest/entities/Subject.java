@@ -25,6 +25,33 @@ public class Subject implements Serializable{
 
   /** The description. */
   private String description;
+  
+  /**
+   * Instantiates a new subject.
+   */
+  public Subject(){
+    super();
+  }
+  
+  
+
+  /**
+   * Instantiates a new subject.
+   *
+   * @param id the id
+   * @param name the name
+   * @param acronym the acronym
+   * @param description the description
+   */
+  public Subject(Long id, String name, String acronym, String description) {
+    super();
+    this.id = id;
+    this.name = name;
+    this.acronym = acronym;
+    this.description = description;
+  }
+
+
 
   /**
    * Gets the id.
