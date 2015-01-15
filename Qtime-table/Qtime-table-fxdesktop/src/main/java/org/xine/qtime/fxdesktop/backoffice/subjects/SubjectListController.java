@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 /**
  * The Class SubjectListController.
@@ -60,6 +61,10 @@ public class SubjectListController extends StateController {
     @FXML
     private TableColumn<?, ?> descriptionColumn;
 
+    /** The glass pane. */
+    @FXML
+    private BorderPane glassPane;
+
     /*
      * (non-Javadoc)
      * @see org.xine.qtime.fxdesktop.controllers.ContentController#getRootNode()
@@ -74,6 +79,15 @@ public class SubjectListController extends StateController {
      */
     @FXML
     public void initialize() {
+
+        assert this.nameColumn != null : "fx:id=\"nameColumn\" was not injected: check your FXML file 'subjectListView.fxml'.";
+        assert this.actionsColumn != null : "fx:id=\"actionsColumn\" was not injected: check your FXML file 'subjectListView.fxml'.";
+        assert this.root != null : "fx:id=\"root\" was not injected: check your FXML file 'subjectListView.fxml'.";
+        assert this.createButton != null : "fx:id=\"createButton\" was not injected: check your FXML file 'subjectListView.fxml'.";
+        assert this.title != null : "fx:id=\"title\" was not injected: check your FXML file 'subjectListView.fxml'.";
+        assert this.table != null : "fx:id=\"table\" was not injected: check your FXML file 'subjectListView.fxml'.";
+        assert this.descriptionColumn != null : "fx:id=\"descriptionColumn\" was not injected: check your FXML file 'subjectListView.fxml'.";
+        assert this.glassPane != null : "fx:id=\"glassPane\" was not injected: check your FXML file 'subjectListView.fxml'.";
 
         this.createButton.setOnAction(e -> getMachineStatesController().setActiveController(
                 getMachineStatesController().getCreateController()));

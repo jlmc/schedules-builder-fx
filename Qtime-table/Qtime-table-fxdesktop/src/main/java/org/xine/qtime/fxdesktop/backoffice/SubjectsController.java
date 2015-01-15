@@ -68,7 +68,7 @@ public class SubjectsController extends MachineStatesController implements Initi
      */
     @Override
     public void onActivate() {
-        System.out.println("disciplina ON");
+        System.out.println("subjects ON");
     }
 
     /*
@@ -77,7 +77,7 @@ public class SubjectsController extends MachineStatesController implements Initi
      */
     @Override
     public void onDeactivate() {
-        System.out.println("disciplinas OFF");
+        System.out.println("subjects OFF");
     }
 
     /*

@@ -16,24 +16,29 @@
                   <Label fx:id="title" minHeight="25.0" text="Disciplinas" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <VBox minWidth="525.0" prefHeight="200.0" prefWidth="525.0" VBox.vgrow="ALWAYS">
+            <StackPane VBox.vgrow="ALWAYS">
                <children>
-                  <TableView fx:id="table" minWidth="690.0" prefHeight="200.0" prefWidth="690.0" VBox.vgrow="ALWAYS">
-                    <columns>
-                      <TableColumn fx:id="nameColumn" prefWidth="75.0" text="name" />
-                      <TableColumn fx:id="descriptionColumn" prefWidth="75.0" text="description" />
-                      <TableColumn fx:id="actionsColumn" editable="false" prefWidth="75.0" sortable="false" />
-                    </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
+                  <VBox>
+                     <children>
+                        <TableView fx:id="table" minWidth="690.0" prefHeight="200.0" prefWidth="690.0" VBox.vgrow="ALWAYS">
+                          <columns>
+                            <TableColumn fx:id="nameColumn" prefWidth="75.0" text="name" />
+                            <TableColumn fx:id="descriptionColumn" prefWidth="75.0" text="description" />
+                            <TableColumn fx:id="actionsColumn" editable="false" prefWidth="75.0" sortable="false" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" />
                </children>
                <styleClass>
                   <String fx:value="bodybox" />
                   <String fx:value="many" />
                </styleClass>
-            </VBox>
+            </StackPane>
             <HBox maxHeight="25.0" minHeight="25.0" minWidth="525.0" prefHeight="25.0" prefWidth="525.0" styleClass="footerbox">
                <children>
                   <HBox alignment="CENTER_LEFT" spacing="5.0" HBox.hgrow="ALWAYS">
