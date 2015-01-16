@@ -26,6 +26,7 @@
             <!-- <version>7.0</version> -->
         </dependency>
 
+           <!-- SLF4J Logger dependency -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>

@@ -29,7 +29,7 @@
         <!-- Log services -->
         <log4j.version>1.2.17</log4j.version>
         <slf4j.version>1.7.10</slf4j.version>
-        <slf4j.log4j12.version>1.7.10</slf4j.log4j12.version>
+        <slf4j.log4j12.version>1.7.5</slf4j.log4j12.version>
         <commons-logging-version>1.1.1</commons-logging-version>
         <!-- hibernate -->
         <!-- <hibernate.version>4.1.1.Final</hibernate.version> -->
@@ -56,29 +56,25 @@
         <!-- Logging dependencies to be used by EVERY module -->
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.log4j12.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>${commons-logging-version}</version>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
+        
+
 
     <dependencyManagement>
         <dependencies>
