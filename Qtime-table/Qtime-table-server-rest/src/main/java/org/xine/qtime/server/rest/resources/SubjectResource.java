@@ -1,5 +1,7 @@
 package org.xine.qtime.server.rest.resources;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xine.qtime.server.rest.entities.Subject;
 import org.xine.qtime.server.rest.services.SubjectDao;
 
@@ -25,7 +27,7 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 @Path("subjects")
 public class SubjectResource {
 
-    // private static final Logger LOGGER = LoggerFactory.getLogger(SubjectResource.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SubjectResource.class);
 
     /** The subject dao. */
     @Inject
@@ -39,7 +41,7 @@ public class SubjectResource {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response list() {
-
+        LOGGER.info("testing log on Subject Resource");
         final List<Subject> subjects = this.subjectDao.list();
 
         final ResponseBuilder rb = Response.ok(subjects);

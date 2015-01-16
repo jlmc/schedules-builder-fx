@@ -1,5 +1,8 @@
 package org.xine.qtime.server.rest.filters;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 
 import javax.ws.rs.container.ContainerRequestContext;
@@ -44,6 +47,8 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class LogginFilter implements ContainerRequestFilter, ContainerResponseFilter {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(LogginFilter.class);
+
     /**
      * Filter method called before a request has been dispatched to a resource.
      * <p>
@@ -64,7 +69,7 @@ public class LogginFilter implements ContainerRequestFilter, ContainerResponseFi
      */
     @Override
     public void filter(final ContainerRequestContext requestContext) throws IOException {
-        System.out.println(requestContext.getMethod() + "-");
+        LOGGER.info(requestContext.getMethod());
     }
 
     /**
