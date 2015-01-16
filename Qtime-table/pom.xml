@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.xine</groupId>
     <artifactId>Qtime-table</artifactId>
@@ -8,16 +9,16 @@
     <modules>
         <module>Qtime-table-entities</module>
         <module>Qtime-table-dal</module>
-<!--         <module>Qtime-table-web</module> -->
-<!--         <module>Qtime-table-ear</module> -->
-        <module>Qtime-table-bl</module>
-		<module>Qtime-table-client-swing</module>
 
-	   
-		
-		
-		<module>Qtime-table-fxdesktop</module>
-		<module>Qtime-table-server-rest</module>
+        <module>Qtime-table-ear</module>
+        <module>Qtime-table-bl</module>
+        <module>Qtime-table-client-swing</module>
+
+
+
+
+        <module>Qtime-table-fxdesktop</module>
+        <module>Qtime-table-server-rest</module>
     </modules>
 
 
@@ -26,9 +27,10 @@
         <!-- Java EE 7 -->
         <javaee.api.version>7.0</javaee.api.version>
         <!-- Log services -->
-        <log4j.version>1.2.16</log4j.version>
-        <slf4j.version>1.6.4</slf4j.version>
-        <slf4j.log4j12.version>1.7.7</slf4j.log4j12.version>
+        <log4j.version>1.2.17</log4j.version>
+        <slf4j.version>1.7.10</slf4j.version>
+        <slf4j.log4j12.version>1.7.10</slf4j.log4j12.version>
+        <commons-logging-version>1.1.1</commons-logging-version>
         <!-- hibernate -->
         <!-- <hibernate.version>4.1.1.Final</hibernate.version> -->
         <hibernate.version>4.3.5.Final</hibernate.version>
@@ -48,6 +50,35 @@
         <maven.ejb.plugin.version>2.3</maven.ejb.plugin.version>
         <maven.release.plugin.version>2.4.1</maven.release.plugin.version>
     </properties>
+
+
+    <dependencies>
+        <!-- Logging dependencies to be used by EVERY module -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>${commons-logging-version}</version>
+        </dependency>
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>
@@ -111,7 +142,7 @@
                 <artifactId>hibernate-c3p0</artifactId>
                 <version>${hibernate.version}</version>
             </dependency>
-           
+
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-commons-annotations</artifactId>

@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.xine</groupId>
@@ -10,6 +11,11 @@
     <name>Qtime-table :: Application Archive</name>
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>1.0.2.Final</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -34,8 +40,8 @@
                             <modules>
                                 <webModule>
                                     <groupId>org.xine</groupId>
-                                    <artifactId>Qtime-table-web</artifactId>
-                                    <contextRoot>/Qtime-table</contextRoot>
+                                    <artifactId>Qtime-table-server-rest</artifactId>
+                                    <contextRoot>/Qtime-table-server-rest</contextRoot>
                                 </webModule>
                             </modules>
                         </configuration>
@@ -45,7 +51,7 @@
             <dependencies>
                 <dependency>
                     <groupId>org.xine</groupId>
-                    <artifactId>Qtime-table-web</artifactId>
+                    <artifactId>Qtime-table-server-rest</artifactId>
                     <version>${project.version}</version>
                     <type>war</type>
                 </dependency>
@@ -64,8 +70,8 @@
                             <modules>
                                 <webModule>
                                     <groupId>org.xine</groupId>
-                                    <artifactId>Qtime-table-web</artifactId>
-                                    <contextRoot>/Qtime-table</contextRoot>
+                                    <artifactId>Qtime-table-server-rest</artifactId>
+                                    <contextRoot>/Qtime-table-server-rest</contextRoot>
                                 </webModule>
                             </modules>
                         </configuration>
@@ -75,7 +81,7 @@
             <dependencies>
                 <dependency>
                     <groupId>org.xine</groupId>
-                    <artifactId>Qtime-table-web</artifactId>
+                    <artifactId>Qtime-table-server-rest</artifactId>
                     <type>war</type>
                     <version>${project.version}</version>
                 </dependency>
