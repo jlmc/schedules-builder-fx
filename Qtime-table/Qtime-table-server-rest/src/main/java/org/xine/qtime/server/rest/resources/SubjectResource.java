@@ -2,7 +2,7 @@ package org.xine.qtime.server.rest.resources;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.xine.qtime.server.rest.entities.Subject;
+import org.xine.qtime.entities.Subject;
 import org.xine.qtime.server.rest.services.SubjectDao;
 
 import java.util.List;

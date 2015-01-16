@@ -25,6 +25,8 @@
             <artifactId>javaee-api</artifactId>
             <!-- <version>7.0</version> -->
         </dependency>
+        
+        
 
            <!-- SLF4J Logger dependency -->
         <dependency>
@@ -98,6 +100,11 @@
                     <artifactId>hibernate-validator</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+        	<groupId>org.xine</groupId>
+        	<artifactId>Qtime-table-entities</artifactId>
+        	<version>0.0.1</version>
         </dependency>
     </dependencies>
 

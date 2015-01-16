@@ -5,7 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-import org.xine.qtime.server.rest.entities.Subject;
+import org.xine.qtime.entities.*;
 
 import java.util.List;
 

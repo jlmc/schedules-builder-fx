@@ -1,6 +1,6 @@
 package org.xine.qtime.server.rest.services;
 
-import org.xine.qtime.server.rest.entities.Subject;
+import org.xine.qtime.entities.Subject;
 
 /**
  * The Interface SubjectDao.

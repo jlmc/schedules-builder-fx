@@ -45,6 +45,29 @@ public class Subject implements Serializable {
     private final Set<Unit> units = new HashSet<>(0);
 
     /**
+     * Instantiates a new subject.
+     */
+    public Subject(){
+      super();
+    }
+    
+    /**
+     * Instantiates a new subject.
+     *
+     * @param id the id
+     * @param name the name
+     * @param acronym the acronym
+     * @param description the description
+     */
+    public Subject(Long id, String name, String acronym, String description) {
+      super();
+      setId(id);
+      setName(name);
+      setAcronym(acronym);
+      setDescription(description);
+    }
+
+    /**
      * Gets the id.
      * @return the id
      */
