@@ -104,7 +104,6 @@
         <dependency>
         	<groupId>org.xine</groupId>
         	<artifactId>Qtime-table-entities</artifactId>
-        	<version>0.0.1</version>
         </dependency>
     </dependencies>
 

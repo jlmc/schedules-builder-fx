@@ -19,6 +19,8 @@
 
 		<module>Qtime-table-fxdesktop</module>
 		<module>Qtime-table-server-rest</module>
+
+		<module>Qtime-table-client</module>
 	</modules>
 
 
@@ -153,6 +155,26 @@
 				<artifactId>guava</artifactId>
 				<version>${guava.version}</version>
 			</dependency>
+			
+			
+			<!--internal project dependencies -->
+			
+			 <dependency>
+                <groupId>org.xine</groupId>
+                <artifactId>Qtime-table-entities</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+			 <dependency>
+                <groupId>org.xine</groupId>
+                <artifactId>Qtime-table-client-connector</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.xine</groupId>
+                <artifactId>Qtime-table-client-connector-rest</artifactId>
+                <version>${project.version}</version>
+                <scope>runtime</scope>
+            </dependency>
 		</dependencies>
 	</dependencyManagement>
 </project>

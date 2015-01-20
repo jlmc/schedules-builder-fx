@@ -3,10 +3,15 @@ package org.xine.qtime.fxdesktop;
 import org.xine.fx.guice.GuiceApplication;
 import org.xine.fx.guice.GuiceFXMLLoader;
 import org.xine.fx.guice.GuiceFXMLLoader.Result;
+import org.xine.qtime.client.connector.SubjectConnector;
+import org.xine.qtime.client.connector.rest.SubjectConnectorService;
 import org.xine.qtime.fxdesktop.controllers.ApplicationController;
 import org.xine.qtime.fxdesktop.gui.FxDecorateScene;
 import org.xine.qtime.fxdesktop.gui.Views;
+import org.xine.qtime.fxdesktop.services.PropertyManager;
+import org.xine.qtime.fxdesktop.services.SimplePropertyManager;
 
+import com.google.inject.AbstractModule;
 import com.google.inject.Injector;
 import com.google.inject.Module;
 
@@ -20,6 +25,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 /**
  * The Class Launcher.
@@ -119,6 +125,7 @@ public class Launcher extends GuiceApplication {
      * The modules that are initialized in this method and added to the passed List will be used to
      * create the {@link Injector} instance that is used in the context of this application.
      * </p>
+     * @param <Module>
      * @param modules
      *            A list of modules (initially empty) that shall be used to create the
      *            injector to be used in the context of this application.
@@ -127,9 +134,19 @@ public class Launcher extends GuiceApplication {
      * @see #getInjector()
      */
     @Override
-    public void init(final List<Module> modules) throws Exception {
-        // TODO:: no modules configurated eat
-    }
+	public void init(List<Module> modules) throws Exception {
+		modules.add(new AbstractModule() {
+			@Override
+			protected void configure() {
+				bind(SubjectConnector.class).to(SubjectConnectorService.class).in(Singleton.class);
+				bind(PropertyManager.class).to(SimplePropertyManager.class).in(Singleton.class);
+				//bind(PropertyManager.class).to(SimplePropertyManager.class).in(Singleton.class);
+				//Names.bindProperties(binder(), getProperties());
+			}
+
+			
+		});
+	}
 
     /**
      * The main method.
