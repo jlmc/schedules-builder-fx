@@ -89,7 +89,7 @@ public abstract class ContentController implements Controller {
      *            the new application controller
      */
     @Override
-    public final void setApplicationController(final ApplicationController applicationController) {
+    public void setApplicationController(final ApplicationController applicationController) {
         if (this.applicationController != null) {
             throw new IllegalStateException("application controller was already set");
         }
