@@ -1,3 +1,11 @@
+/* 
+* Copyright (c) 2015 Qxine <https://github.com/jlmc>
+* All Rights Reserved, unless otherwise granted permission.
+*
+* You may use and modify for private use, fork the official repository
+* for contribution purposes, contribute code, and reuse your own code.
+*/
+
 package org.xine.qtime.fxdesktop.backoffice.subjects;
 
 import org.xine.qtime.client.connector.SubjectConnector;
@@ -87,6 +95,7 @@ public class SubjectCreateController extends StateController {
 	@FXML
 	private Button saveButton; //
 	
+	/** The subject connector. */
 	@Inject
 	private SubjectConnector subjectConnector;
 
@@ -98,6 +107,7 @@ public class SubjectCreateController extends StateController {
 	void initialize() {
 		this.backButton.setOnAction(e -> getMachineStatesController().setActiveController(
 				getMachineStatesController().getListController()));
+		
 		
 		
 	}

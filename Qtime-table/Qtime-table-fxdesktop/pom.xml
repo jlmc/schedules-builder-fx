@@ -9,6 +9,9 @@
 	<artifactId>Qtime-table-fxdesktop</artifactId>
 	<name>Qtime-table-Fxdesktop</name>
 	<description>Qtime Table Java FX desktop</description>
+	<inceptionYear>2015</inceptionYear>
+
+
 
 	<!-- Project developers -->
 	<developers>
@@ -65,13 +68,15 @@
 		<dependency>
 			<groupId>org.xine</groupId>
 			<artifactId>Qtime-table-client-connector-rest</artifactId>
-			<scope>runtime</scope>
+			<scope>compile</scope>
 		</dependency>
 
 	</dependencies>
 
 
 	<build>
+		
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
