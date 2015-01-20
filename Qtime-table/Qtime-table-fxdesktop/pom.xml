@@ -29,6 +29,7 @@
 		<log4j.version>1.2.16</log4j.version>
 		<slf4j.version>1.6.4</slf4j.version>
 		<slf4j.log4j12.version>1.7.7</slf4j.log4j12.version>
+        <controlsfx.version>8.20.8</controlsfx.version>
 		<guice-fx.version>0.0.1</guice-fx.version>
 		<javafx.version>2.3+</javafx.version>
 		<javafx.runtime.jar>${java.home}/lib/jfxrt.jar</javafx.runtime.jar>
@@ -47,7 +48,7 @@
 		<dependency>
 			<groupId>org.controlsfx</groupId>
 			<artifactId>controlsfx</artifactId>
-			<version>8.20.8</version>
+			<version>${controlsfx.version}</version>
 		</dependency>
 
 		<!-- Provided by system -->
@@ -58,9 +59,13 @@
 		<!-- <systemPath>${java.home}/lib/jfxrt.jar</systemPath> -->
 		<!-- <scope>system</scope> -->
 		<!-- </dependency> -->
-
-
-
+       
+        <!-- LOG API dependencies -->
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-api</artifactId>
+		</dependency>
+        <!-- project internal dependencies -->
 		<dependency>
 			<groupId>org.xine</groupId>
 			<artifactId>Qtime-table-client-connector</artifactId>
@@ -70,7 +75,6 @@
 			<artifactId>Qtime-table-client-connector-rest</artifactId>
 			<scope>compile</scope>
 		</dependency>
-
 	</dependencies>
 
 
