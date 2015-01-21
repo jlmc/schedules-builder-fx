@@ -8,23 +8,19 @@
 
 package org.xine.qtime.fxdesktop.backoffice.subjects;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.xine.qtime.entities.Subject;
-import org.xine.qtime.fxdesktop.backoffice.utils.ActionsTableCell;
-import org.xine.qtime.fxdesktop.controllers.StateController;
-
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -32,167 +28,243 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.xine.qtime.entities.Subject;
+import org.xine.qtime.fxdesktop.backoffice.utils.ActionsTableCell;
+import org.xine.qtime.fxdesktop.controllers.StateController;
 
 /**
  * The Class SubjectListController.
  */
 public class SubjectListController extends StateController {
 
-    /** The Constant LOGGER. */
-    private static final Logger LOGGER = LoggerFactory.getLogger(SubjectListController.class);
+	/** The Constant LOGGER. */
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(SubjectListController.class);
 
-    /**
-     * The resources.
-     * ResourceBundle that was given to the FXMLLoader.
-     */
-    @FXML
-    private ResourceBundle resources;
+	/**
+	 * The resources. ResourceBundle that was given to the FXMLLoader.
+	 */
+	@FXML
+	private ResourceBundle resources;
 
-    /**
-     * The location.
-     * URL location of the FXML file that was given to the FXMLLoader.
-     */
-    @FXML
-    private URL location;
+	/**
+	 * The location. URL location of the FXML file that was given to the
+	 * FXMLLoader.
+	 */
+	@FXML
+	private URL location;
 
-    /** The search button. */
-    @FXML
-    private Button searchButton;
+	/** The search button. */
+	@FXML
+	private Button searchButton;
 
-    /** The search text. */
-    @FXML
-    private TextField searchText;
+	/** The search text. */
+	@FXML
+	private TextField searchText;
 
-    /** The name column. */
-    @FXML
-    private TableColumn<Subject, String> nameColumn;
+	/** The name column. */
+	@FXML
+	private TableColumn<Subject, String> nameColumn;
 
-    /** The actions column. */
-    @FXML
-    private TableColumn<Subject, Subject> actionsColumn;
+	/** The actions column. */
+	@FXML
+	private TableColumn<Subject, Subject> actionsColumn;
 
-    /** The root. */
-    @FXML
-    private AnchorPane root;
+	/** The root. */
+	@FXML
+	private AnchorPane root;
 
-    /** The create button. */
-    @FXML
-    private Button createButton;
+	/** The create button. */
+	@FXML
+	private Button createButton;
 
-    /** The title. */
-    @FXML
-    private Label title;
+	/** The title. */
+	@FXML
+	private Label title;
 
-    /** The table. */
-    @FXML
-    private TableView<Subject> table;
+	/** The table. */
+	@FXML
+	private TableView<Subject> table;
 
-    /** The description column. */
-    @FXML
-    private TableColumn<Subject, String> descriptionColumn;
+	/** The description column. */
+	@FXML
+	private TableColumn<Subject, String> descriptionColumn;
 
-    /** The glass pane. */
-    @FXML
-    private BorderPane glassPane;
+	/** The glass pane. */
+	@FXML
+	private BorderPane glassPane;
 
-    /** The subjects. */
-    private final ListProperty<Subject> subjects = new SimpleListProperty<>(
-            FXCollections.observableArrayList());
+	/* *************************************************
+	 * MODEL properties
+	 ***************************************************/
+	
+	/** The subjects. */
+	private final ListProperty<Subject> subjects = new SimpleListProperty<>(
+			FXCollections.observableArrayList());
 
-    private final ObjectProperty<Subject> selected = new SimpleObjectProperty<Subject>(null);
 
-    /*
-     * (non-Javadoc)
-     * @see org.xine.qtime.fxdesktop.controllers.ContentController#getRootNode()
-     */
-    @Override
-    public Node getRootNode() {
-        return this.root;
-    }
+	private SimpleBooleanProperty busy;
 
-    /**
-     * Gets the list property.
-     * @return the list property
-     */
-    public ListProperty<Subject> getListProperty() {
-        return this.subjects;
-    }
 
-    /**
-     * Initialize.
-     */
-    @FXML
-    public void initialize() {
+	private LoadService service;
 
-        // definition of cell factory
-        this.nameColumn.setCellValueFactory(cdf -> new SimpleStringProperty(cdf.getValue()
-                .getName()));
-        this.descriptionColumn.setCellValueFactory(cdf -> new SimpleStringProperty(cdf.getValue()
-                .getDescription()));
-        this.actionsColumn.setCellFactory(tc -> {
-            final ActionsTableCell<Subject, Subject> cell = new ActionsTableCell<>(false);
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.xine.qtime.fxdesktop.controllers.ContentController#getRootNode()
+	 */
+	@Override
+	public Node getRootNode() {
+		return this.root;
+	}
 
-            cell.setOnDeleteAction(e -> {
+	/**
+	 * Gets the list property.
+	 * 
+	 * @return the list property
+	 */
+	public ListProperty<Subject> getListProperty() {
+		return this.subjects;
+	}
 
-                final Subject s = cell.getData();
-                this.table.getSelectionModel().select(s);
-                delete(s);
-            });
+	/**
+	 * Initialize.
+	 */
+	@FXML
+	public void initialize() {
 
-            cell.setOnEditAction(e -> {
-                final Subject s = cell.getData();
-                this.table.getSelectionModel().select(s);
-                edit(s);
-            });
+		//
+		busy = new SimpleBooleanProperty();
+		glassPane.visibleProperty().bind(busy);
 
-            return cell;
-        });
+		// lastNameCol.setCellValueFactory(new PropertyValueFactory<Person,
+		// String>("lastName"));
+		this.nameColumn
+				.setCellValueFactory(new PropertyValueFactory<Subject, String>(
+						"name"));
+		// this.nameColumn.setCellValueFactory(cdf -> new
+		// SimpleStringProperty(cdf
+		// .getValue().getName()));
+		this.descriptionColumn
+				.setCellValueFactory(cdf -> new SimpleStringProperty(cdf
+						.getValue().getDescription()));
+		this.actionsColumn
+				.setCellValueFactory(cdf -> new SimpleObjectProperty<Subject>(
+						cdf.getValue()));
+		this.actionsColumn
+				.setCellFactory(tc -> {
+					final ActionsTableCell<Subject, Subject> cell = new ActionsTableCell<>(
+							false);
 
-        this.table.setItems(getListProperty());
+					cell.setOnDeleteAction(e -> {
 
-        // /
-        this.createButton.setOnAction(e -> getMachineStatesController().setActiveController(
-                getMachineStatesController().getCreateController()));
+						final Subject s = cell.getData();
+//						this.table.getSelectionModel().getSelectedItems()
+//								.add(s);
+						delete(s);
+					});
 
-        this.searchButton.setOnAction(e -> search());
-    }
+					cell.setOnEditAction(e -> {
+						final Subject s = cell.getData();
+//						this.table.getSelectionModel().getSelectedItems()
+//								.add(s);
+						
+						cell.getTableRow();
+						edit(s);
+					});
 
-    /**
-     * Edits the.
-     * @param data
-     *            the data
-     */
-    private void edit(final Subject data) {
-        LOGGER.info("edit:  " + data.getName());
-    }
+					return cell;
+				});
 
-    /**
-     * Delete.
-     * @param s
-     *            the s
-     */
-    private void delete(final Subject s) {
-        LOGGER.info("delete: " + s.getName());
+		this.table.setItems(getListProperty());
 
-    }
+		// /
+		this.createButton.setOnAction(e -> {
 
-    /**
-     * Search.
-     */
-    private void search() {
+			getMachineStatesController().setActiveController(
+					getMachineStatesController().getCreateController());
+		});
 
-        // TODO Auto-generated method stub
-        LOGGER.info("Logger operation not implemented");
+		this.searchButton.setOnAction(e -> search());
 
-        final List<Subject> ss = new ArrayList<>();
-        for (int i = 0; i < 150; i++) {
-            ss.add(new Subject(Long.valueOf(i), "name" + i, "N" + i, "the name " + i));
-        }
+		// ///////////////////
+		this.service = new LoadService();
+		this.getListProperty().bind(service.valueProperty());
+		// this.table.itemsProperty().bind(service.valueProperty());
+		this.busy.bind(this.service.runningProperty());
+	}
 
-        getListProperty().clear();
-        getListProperty().addAll(ss);
-    }
+	/**
+	 * Edits the.
+	 * 
+	 * @param data
+	 *            the data
+	 */
+	private void edit(final Subject data) {
+		LOGGER.info("edit:  " + data.getName());
+	}
+
+	/**
+	 * Delete.
+	 * 
+	 * @param s
+	 *            the s
+	 */
+	private void delete(final Subject s) {
+		LOGGER.info("delete: " + s.getName());
+
+	}
+
+	/**
+	 * Search.
+	 */
+	private void search() {
+
+		// TODO Auto-generated method stub
+		LOGGER.info("Logger operation not implemented");
+
+		this.service.reset();
+		this.service.start();
+
+		//
+		// Platform.runLater(() -> {
+		// final List<Subject> ss = new ArrayList<>();
+		// for (int i = 0; i < 150; i++) {
+		// ss.add(new Subject(Long.valueOf(i), "name" + i, "N" + i,
+		// "the name " + i));
+		// }
+		//
+		// getListProperty().clear();
+		// getListProperty().addAll(ss);
+		// this.glassPane.visibleProperty().set(false);
+		// });
+	}
+
+	private class LoadService extends Service<ObservableList<Subject>> {
+
+		@Override
+		protected Task<ObservableList<Subject>> createTask() {
+			return new Task<ObservableList<Subject>>() {
+
+				@Override
+				protected ObservableList<Subject> call() throws Exception {
+					// TODO Auto-generated method stub
+					ObservableList<Subject> subjects = FXCollections
+							.observableArrayList();
+					for (int i = 0; i < 200; i++) {
+						subjects.add(new Subject(12L, "Name " + i, "", ""));
+					}
+					return subjects;
+				}
+			};
+		}
+
+	}
 
 }

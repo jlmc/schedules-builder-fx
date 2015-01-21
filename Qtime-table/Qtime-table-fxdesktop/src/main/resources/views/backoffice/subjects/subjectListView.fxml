@@ -22,8 +22,8 @@
                      <children>
                         <HBox styleClass="searchBox">
                            <children>
-                              <TextField fx:id="searchText"  HBox.hgrow="ALWAYS" />
-                              <Button fx:id="searchButton" mnemonicParsing="false"   text="" />
+                              <TextField fx:id="searchText" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="searchButton" mnemonicParsing="false" text="" />
                            </children>
                            <VBox.margin>
                               <Insets bottom="1.0" top="1.0" />
@@ -44,7 +44,10 @@
                         </TableView>
                      </children>
                   </VBox>
-<!--                   <BorderPane fx:id="searchButton" prefHeight="200.0" prefWidth="200.0" /> -->
+                  <BorderPane fx:id="glassPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000000; -fx-opacity: 0.1;">
+                     <center>
+                        <ProgressIndicator maxHeight="50.0" maxWidth="50.0" prefHeight="50.0" prefWidth="50.0" BorderPane.alignment="CENTER" />
+                     </center></BorderPane>
                </children>
                <styleClass>
                   <String fx:value="bodybox" />
