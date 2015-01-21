@@ -1,6 +1,5 @@
 * {
 	-fx-font-family: "Ubuntu Light";
-	
 }
 
 #root {
@@ -17,10 +16,13 @@
 	-fx-font-smoothing-type: gray !important;
 	-fx-font-size: 12pt;
 }
- 
-.xine-button{ 
-	
-		/* Default button colors */
+
+.button {
+	-fx-background-radius: 0;
+}
+
+.xine-button {
+	/* Default button colors */
 	-spout-button-top-color: white;
 	-spout-button-gradient-top-color: white;
 	-spout-button-gradient-bottom-color: #ECEFF2;
@@ -42,9 +44,7 @@
 	-fx-background-insets: 0, 2 0 0 0;
 	-fx-background-radius: 0;
 	-fx-padding: 10;
-	
 }
-
 
 .xine-button:hover {
 	-fx-border-color: -spout-button-hover-border-color;
@@ -100,8 +100,8 @@
 	-spout-button-hover-text-color: white;
 }
 
-.xine-button:default:armed, .xine-button.alert:armed, .xine-button.alert:armed, .xine-button.confirm:armed
-	{
+.xine-button:default:armed, .xine-button.alert:armed, .xine-button.alert:armed,
+	.xine-button.confirm:armed {
 	-fx-effect: innershadow(three-pass-box, black, 25, 0.0, 0, 0);
 }
 
@@ -201,42 +201,70 @@
 	-fx-effect: dropshadow(gaussian, grey, 2, 0.0, 0, -1);
 }
 */
-
-
-
-
-
-searchablekeyboard .text-field{
-	-fx-border-top-right-radius: 0px; 
-	-fx-background-top-right-radius: 0px;
-	
-	-fx-border-radius: 2 0 0 2;
-  	-fx-background-radius: 2 0 0 2;
+.text-field {
+	-fx-border-radius: 0 0 0 0;
+	-fx-background-radius: 0 0 0 0;
 }
-.searchablekeyboard .button{
+
+.text-area {
+	-fx-border-radius: 0 0 0 0;
+	-fx-background-radius: 0 0 0 0;
+}
+
+.searchBox {
+	-fx-min-height: 25;
+	-fx-max-height: 25;
+}
+
+.searchBox .text-field {
+	-fx-min-height: 25;
+	-fx-max-height: 25;
+	/* 	-fx-border-width: 1 0 1 1; -fx-border-color: red transparent green yellow; */
+	/* 	-fx-background-radius: 0, 1, 4, 10; */
+	/* 	-fx-background-insets: 3,2,1,0; */
+	/* 	-fx-border-width-right: 0px; */
+	/* 	-fx-background-insets: 2.0 1.0 1.0 1.0; */
+}
+
+.searchBox .button {
+	-fx-min-height: 25;
+	-fx-max-height: 25;
+	-fx-graphic: url('../images/search-10.png');
+}
+
+searchablekeyboard .text-field {
+	-fx-border-top-right-radius: 0px;
+	-fx-background-top-right-radius: 0px;
+	-fx-border-rigth: 0px; -fx-border-radius : 2 0 0 2;
+	-fx-background-radius: 2 0 0 2;
+	-fx-border-radius: 2 0 0 2;
+}
+
+.searchablekeyboard .button {
 	-fx-graphic: url('../images/search-16.png');
 	-fx-border-radius: 0 3 3 0;
-  	-fx-background-radius: 0 3 3 0;
-  	
-  	
+	-fx-background-radius: 0 3 3 0;
+
 	/*
   	-fx-border-color: transparent;
 	 -fx-background-insets: -1.4, 0, 1, 2;
 	-fx-border-top-left-radius: 0px; 
 	-fx-border-bottom-left-radius: 0px; 	
-	 top-left, top-right, bottom-right, and bottom-left corners, in that order. */ 
+	 top-left, top-right, bottom-right, and bottom-left corners, in that order. */
 }
-
 
 .progress-indicator .indicator {
-    -fx-background-color: transparent ;
+	-fx-background-color: transparent;
 }
+
 .progress-indicator {
-    -fx-progress-color: green ;
+	-fx-progress-color: green;
 }
+
 .progress-indicator:critical {
-    -fx-progress-color: red ;
+	-fx-progress-color: red;
 }
+
 .progress-indicator:warning {
-    -fx-progress-color: orange ;
+	-fx-progress-color: orange;
 }

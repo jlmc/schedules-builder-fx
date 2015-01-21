@@ -28,6 +28,11 @@
 	
 }
 
+.searchButton{
+-fx-graphic: url('../../../images/search-16.png'); 
+
+} 
+
 .many{
 	-fx-padding: 5px 5px 5px 5px;
 }
