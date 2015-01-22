@@ -10,6 +10,7 @@ package org.xine.qtime.fxdesktop.backoffice.subjects;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.Executor;
 
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -109,9 +110,11 @@ public class SubjectListController extends StateController {
 			FXCollections.observableArrayList());
 
 
+	/** The busy. */
 	private SimpleBooleanProperty busy;
 
 
+	/** The service. */
 	private LoadService service;
 
 	/*
@@ -143,14 +146,11 @@ public class SubjectListController extends StateController {
 		busy = new SimpleBooleanProperty();
 		glassPane.visibleProperty().bind(busy);
 
-		// lastNameCol.setCellValueFactory(new PropertyValueFactory<Person,
-		// String>("lastName"));
+	
 		this.nameColumn
 				.setCellValueFactory(new PropertyValueFactory<Subject, String>(
 						"name"));
-		// this.nameColumn.setCellValueFactory(cdf -> new
-		// SimpleStringProperty(cdf
-		// .getValue().getName()));
+	
 		this.descriptionColumn
 				.setCellValueFactory(cdf -> new SimpleStringProperty(cdf
 						.getValue().getDescription()));
@@ -161,42 +161,23 @@ public class SubjectListController extends StateController {
 				.setCellFactory(tc -> {
 					final ActionsTableCell<Subject, Subject> cell = new ActionsTableCell<>(
 							false);
-
-					cell.setOnDeleteAction(e -> {
-
-						final Subject s = cell.getData();
-//						this.table.getSelectionModel().getSelectedItems()
-//								.add(s);
-						delete(s);
-					});
-
-					cell.setOnEditAction(e -> {
-						final Subject s = cell.getData();
-//						this.table.getSelectionModel().getSelectedItems()
-//								.add(s);
-						
-						cell.getTableRow();
-						edit(s);
-					});
-
+					cell.setOnDeleteAction(e -> delete(cell.getData()));
+					cell.setOnEditAction(e -> edit(cell.getData()));
 					return cell;
 				});
 
 		this.table.setItems(getListProperty());
 
 		// /
-		this.createButton.setOnAction(e -> {
-
-			getMachineStatesController().setActiveController(
-					getMachineStatesController().getCreateController());
-		});
+		this.createButton.setOnAction(e -> getMachineStatesController().setActiveController(
+					getMachineStatesController().getCreateController()));
 
 		this.searchButton.setOnAction(e -> search());
 
-		// ///////////////////
+		/// define the service 
+		//
 		this.service = new LoadService();
 		this.getListProperty().bind(service.valueProperty());
-		// this.table.itemsProperty().bind(service.valueProperty());
 		this.busy.bind(this.service.runningProperty());
 	}
 
@@ -226,28 +207,33 @@ public class SubjectListController extends StateController {
 	 */
 	private void search() {
 
-		// TODO Auto-generated method stub
-		LOGGER.info("Logger operation not implemented");
+		LOGGER.info("Logger operation search");
 
 		this.service.reset();
+		this.service.setExecutor(this.getApplicationController().getExecuterService());
+		
 		this.service.start();
 
-		//
-		// Platform.runLater(() -> {
-		// final List<Subject> ss = new ArrayList<>();
-		// for (int i = 0; i < 150; i++) {
-		// ss.add(new Subject(Long.valueOf(i), "name" + i, "N" + i,
-		// "the name " + i));
-		// }
-		//
-		// getListProperty().clear();
-		// getListProperty().addAll(ss);
-		// this.glassPane.visibleProperty().set(false);
-		// });
+		
 	}
 
+	/**
+	 * The Class LoadService.
+	 */
 	private class LoadService extends Service<ObservableList<Subject>> {
-
+		
+		/**
+		 * Instantiates a new load service.
+		 */
+		public LoadService(){
+			super();
+		}
+		
+		
+		
+		/* (non-Javadoc)
+		 * @see javafx.concurrent.Service#createTask()
+		 */
 		@Override
 		protected Task<ObservableList<Subject>> createTask() {
 			return new SubjectListTask();

@@ -15,7 +15,7 @@ public interface Connector<T> {
 	 *
 	 * @return the list
 	 */
-	List<T> list();
+	List<T> list() throws ConnectorException;
 
 	/**
 	 * Update.
@@ -23,7 +23,7 @@ public interface Connector<T> {
 	 * @param subject the subject
 	 * @return the t
 	 */
-	T update(final T subject);
+	T update(final T subject)  throws ConnectorException;
 
 	/**
 	 * Creates the.
@@ -31,14 +31,14 @@ public interface Connector<T> {
 	 * @param subject the subject
 	 * @return the t
 	 */
-	T create(final T subject);
+	T create(final T subject) throws ConnectorException;
 
 	/**
 	 * Delete.
 	 *
 	 * @param id the id
 	 */
-	void delete( final Integer id);
+	void delete( final Integer id) throws ConnectorException;
 	
 	/**
 	 * Gets the.
@@ -46,5 +46,5 @@ public interface Connector<T> {
 	 * @param id the id
 	 * @return the t
 	 */
-	T get(Integer id);
+	T get(Integer id) throws ConnectorException;
 }
