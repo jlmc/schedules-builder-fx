@@ -39,8 +39,7 @@
 		<junit.version>4.11</junit.version>
 		<mockito.version>1.8.4</mockito.version>
 		<guava.version>17.0</guava.version>
-
-
+		<commons-io.version>2.4</commons-io.version>
 
 		<!-- Maven -->
 		<maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
@@ -149,32 +148,39 @@
 				<version>1.0.2</version>
 			</dependency>
 
+
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+
 			<!-- com.google.guava -->
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
 				<version>${guava.version}</version>
 			</dependency>
-			
-			
+
+
 			<!--internal project dependencies -->
-			
-			 <dependency>
-                <groupId>org.xine</groupId>
-                <artifactId>Qtime-table-entities</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-			 <dependency>
-                <groupId>org.xine</groupId>
-                <artifactId>Qtime-table-client-connector</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.xine</groupId>
-                <artifactId>Qtime-table-client-connector-rest</artifactId>
-                <version>${project.version}</version>
-                <scope>runtime</scope>
-            </dependency>
+
+			<dependency>
+				<groupId>org.xine</groupId>
+				<artifactId>Qtime-table-entities</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.xine</groupId>
+				<artifactId>Qtime-table-client-connector</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.xine</groupId>
+				<artifactId>Qtime-table-client-connector-rest</artifactId>
+				<version>${project.version}</version>
+				<scope>runtime</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 </project>
