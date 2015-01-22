@@ -8,6 +8,18 @@
 
 package org.xine.qtime.fxdesktop;
 
+import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.logging.Logger;
+
+import javafx.scene.Parent;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import org.xine.fx.guice.GuiceApplication;
 import org.xine.fx.guice.GuiceFXMLLoader;
 import org.xine.fx.guice.GuiceFXMLLoader.Result;
@@ -18,23 +30,11 @@ import org.xine.qtime.fxdesktop.gui.FxDecorateScene;
 import org.xine.qtime.fxdesktop.gui.Views;
 import org.xine.qtime.fxdesktop.services.PropertyManager;
 import org.xine.qtime.fxdesktop.services.SimplePropertyManager;
+import org.xine.qtime.fxdesktop.utils.ImageUtils;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Injector;
 import com.google.inject.Module;
-
-import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.logging.Logger;
-
-import javafx.scene.Parent;
-import javafx.scene.image.Image;
-import javafx.scene.text.Font;
-import javafx.stage.Stage;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
 
 /**
  * The Class Launcher.
@@ -108,7 +108,7 @@ public class Launcher extends GuiceApplication {
 		primaryStage.setWidth(MIN_WIDTH);
 
 		//define the Aolication icon
-		primaryStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/images/Qicon.png")));
+		primaryStage.getIcons().add(ImageUtils.getFXImageSafely("/images/Qicon.png"));
 
 		final Result appViewResult = this.fxmlLoader.load(getClass().getResource(Views.APP_VIEW),
 				resources);
