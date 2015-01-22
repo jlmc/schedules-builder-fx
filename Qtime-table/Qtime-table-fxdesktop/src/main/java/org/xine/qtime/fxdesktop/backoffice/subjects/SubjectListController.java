@@ -12,7 +12,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.ListProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -34,6 +33,7 @@ import javafx.scene.layout.BorderPane;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.xine.qtime.client.connector.manager.SubjectListTask;
 import org.xine.qtime.entities.Subject;
 import org.xine.qtime.fxdesktop.backoffice.utils.ActionsTableCell;
 import org.xine.qtime.fxdesktop.controllers.StateController;
@@ -250,19 +250,21 @@ public class SubjectListController extends StateController {
 
 		@Override
 		protected Task<ObservableList<Subject>> createTask() {
-			return new Task<ObservableList<Subject>>() {
-
-				@Override
-				protected ObservableList<Subject> call() throws Exception {
-					// TODO Auto-generated method stub
-					ObservableList<Subject> subjects = FXCollections
-							.observableArrayList();
-					for (int i = 0; i < 200; i++) {
-						subjects.add(new Subject(12L, "Name " + i, "", ""));
-					}
-					return subjects;
-				}
-			};
+			return new SubjectListTask();
+			
+//			return new Task<ObservableList<Subject>>() {
+//
+//				@Override
+//				protected ObservableList<Subject> call() throws Exception {
+//					// TODO Auto-generated method stub
+//					ObservableList<Subject> subjects = FXCollections
+//							.observableArrayList();
+//					for (int i = 0; i < 200; i++) {
+//						subjects.add(new Subject(12L, "Name " + i, "", ""));
+//					}
+//					return subjects;
+//				}
+//			};
 		}
 
 	}
