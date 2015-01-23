@@ -17,6 +17,7 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Service;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -101,8 +102,9 @@ public class SubjectListController extends StateController {
 	private BorderPane glassPane;
 	
 	
+	/** The service provider. */
 	@Inject
-	ServiceProvider serviceProvider;
+	private ServiceProvider serviceProvider;
 
 	/* *************************************************
 	 * MODEL properties
@@ -118,7 +120,7 @@ public class SubjectListController extends StateController {
 
 
 	/** The service. */
-	private Service service;
+	private Service<ObservableList<Subject>> service;
 
 	/*
 	 * (non-Javadoc)
