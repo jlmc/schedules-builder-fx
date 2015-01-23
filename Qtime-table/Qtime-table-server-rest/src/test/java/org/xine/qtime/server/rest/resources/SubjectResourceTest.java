@@ -141,6 +141,17 @@ public class SubjectResourceTest {
 
 	}
 
+//	@Test
+//	public void tttttt(){
+//		final Client client = ClientBuilder.newClient();
+//		Response response =   client.target(HTTP_LOCALHOST_SUBJECTS)
+//				.path("subjects").request(MediaType.APPLICATION_JSON).get();
+//		List<Subject> subjects = response.readEntity(new GenericType<List<Subject>>(){});
+//		
+//		System.out.println("Size: "+subjects.size());
+//		
+//	}
+	
 	/**
 	 * Test list.
 	 */

@@ -98,10 +98,8 @@ public class SubjectCreateController extends StateController {
 	@FXML
 	private Button saveButton; //
 
-	/** The subject connector. */
-	@Inject
-	private SubjectConnector subjectConnector;
-
+	
+	/** The is busy. */
 	private BooleanProperty isBusy = new SimpleBooleanProperty(false);
 
 	/**
@@ -130,7 +128,7 @@ public class SubjectCreateController extends StateController {
 
 			try {
 
-				this.subjectConnector.create(subject);
+				//this.subjectConnector.create(subject);
 
 				// TODO:: missing handler o response
 				

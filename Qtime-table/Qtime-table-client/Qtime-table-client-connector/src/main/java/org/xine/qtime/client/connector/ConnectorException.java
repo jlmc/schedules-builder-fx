@@ -10,7 +10,7 @@ package org.xine.qtime.client.connector;
 /**
  * The Class ConnectorExeption.
  */
-public class ConnectorException extends Exception {
+public class ConnectorException extends RuntimeException {
 	
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;

@@ -10,7 +10,6 @@ package org.xine.qtime.fxdesktop.backoffice.subjects;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.concurrent.Executor;
 
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -18,9 +17,7 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.concurrent.Service;
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -34,10 +31,12 @@ import javafx.scene.layout.BorderPane;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.xine.qtime.client.connector.manager.SubjectListTask;
 import org.xine.qtime.entities.Subject;
 import org.xine.qtime.fxdesktop.backoffice.utils.ActionsTableCell;
 import org.xine.qtime.fxdesktop.controllers.StateController;
+import org.xine.qtime.fxdesktop.services.ServiceProvider;
+
+import com.google.inject.Inject;
 
 /**
  * The Class SubjectListController.
@@ -100,6 +99,10 @@ public class SubjectListController extends StateController {
 	/** The glass pane. */
 	@FXML
 	private BorderPane glassPane;
+	
+	
+	@Inject
+	ServiceProvider serviceProvider;
 
 	/* *************************************************
 	 * MODEL properties
@@ -115,7 +118,7 @@ public class SubjectListController extends StateController {
 
 
 	/** The service. */
-	private LoadService service;
+	private Service service;
 
 	/*
 	 * (non-Javadoc)
@@ -176,7 +179,7 @@ public class SubjectListController extends StateController {
 
 		/// define the service 
 		//
-		this.service = new LoadService();
+		this.service = this.serviceProvider.getLoadSubjects();
 		this.getListProperty().bind(service.valueProperty());
 		this.busy.bind(this.service.runningProperty());
 	}
@@ -217,42 +220,28 @@ public class SubjectListController extends StateController {
 		
 	}
 
-	/**
-	 * The Class LoadService.
-	 */
-	private class LoadService extends Service<ObservableList<Subject>> {
-		
-		/**
-		 * Instantiates a new load service.
-		 */
-		public LoadService(){
-			super();
-		}
-		
-		
-		
-		/* (non-Javadoc)
-		 * @see javafx.concurrent.Service#createTask()
-		 */
-		@Override
-		protected Task<ObservableList<Subject>> createTask() {
-			return new SubjectListTask();
-			
-//			return new Task<ObservableList<Subject>>() {
+//	/**
+//	 * The Class LoadService.
+//	 */
+//	private class LoadService extends Service<ObservableList<Subject>> {
+//		
+//		/**
+//		 * Instantiates a new load service.
+//		 */
+//		public LoadService(){
+//			super();
+//		}
+//		
+//		
+//		
+//		/* (non-Javadoc)
+//		 * @see javafx.concurrent.Service#createTask()
+//		 */
+//		@Override
+//		protected Task<ObservableList<Subject>> createTask() {
+//			return taskProveider.getLoadSubjectsListTask();
+//		}
 //
-//				@Override
-//				protected ObservableList<Subject> call() throws Exception {
-//					// TODO Auto-generated method stub
-//					ObservableList<Subject> subjects = FXCollections
-//							.observableArrayList();
-//					for (int i = 0; i < 200; i++) {
-//						subjects.add(new Subject(12L, "Name " + i, "", ""));
-//					}
-//					return subjects;
-//				}
-//			};
-		}
-
-	}
+//	}
 
 }

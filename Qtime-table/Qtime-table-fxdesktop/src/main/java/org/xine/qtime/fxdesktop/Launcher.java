@@ -29,7 +29,11 @@ import org.xine.qtime.fxdesktop.controllers.ApplicationController;
 import org.xine.qtime.fxdesktop.gui.FxDecorateScene;
 import org.xine.qtime.fxdesktop.gui.Views;
 import org.xine.qtime.fxdesktop.services.PropertyManager;
+import org.xine.qtime.fxdesktop.services.ServiceProvider;
 import org.xine.qtime.fxdesktop.services.SimplePropertyManager;
+import org.xine.qtime.fxdesktop.services.SimpleServiceProvider;
+import org.xine.qtime.fxdesktop.tasks.TaskProvider;
+import org.xine.qtime.fxdesktop.tasks.TaskProviderImpl;
 import org.xine.qtime.fxdesktop.utils.ImageUtils;
 
 import com.google.inject.AbstractModule;
@@ -147,11 +151,9 @@ public class Launcher extends GuiceApplication {
 			protected void configure() {
 				bind(SubjectConnector.class).to(SubjectConnectorService.class).in(Singleton.class);
 				bind(PropertyManager.class).to(SimplePropertyManager.class).in(Singleton.class);
-				//bind(PropertyManager.class).to(SimplePropertyManager.class).in(Singleton.class);
-				//Names.bindProperties(binder(), getProperties());
+				bind(TaskProvider.class).to(TaskProviderImpl.class).in(Singleton.class);
+				bind(ServiceProvider.class).to(SimpleServiceProvider.class).in(Singleton.class);
 			}
-
-
 		});
 	}
 
