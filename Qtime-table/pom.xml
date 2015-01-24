@@ -53,6 +53,12 @@
 
 	<dependencies>
 		<!-- Logging dependencies to be used by EVERY module -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.5</version>
+            <scope>runtime</scope>
+        </dependency>
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
