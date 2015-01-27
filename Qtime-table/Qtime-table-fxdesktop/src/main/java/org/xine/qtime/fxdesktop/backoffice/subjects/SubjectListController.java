@@ -243,7 +243,7 @@ public class SubjectListController extends StateController<Subject> {
      *            the objs
      */
     @Override
-    public void add(final Collection<Subject> objs) {
+    public void added(final Collection<Subject> objs) {
         if (objs != null) {
             this.subjects.addAll(objs);
         }
@@ -255,10 +255,28 @@ public class SubjectListController extends StateController<Subject> {
      *            the objs
      */
     @Override
-    public void remove(final Collection<Subject> objs) {
+    public void removed(final Collection<Subject> objs) {
         if (objs != null) {
             this.subjects.removeAll(objs);
         }
+    }
+
+    /**
+     * Edited.
+     * @param objs
+     *            the objs
+     */
+    @Override
+    public void edited(final Subject o) {
+        final Subject s = this.subjects.stream().filter(p -> p.getId().equals(o.getId()))
+                .findFirst().get();
+        if (s != null) {
+
+            final int index = this.subjects.indexOf(s);
+            this.subjects.remove(index);
+            this.subjects.add(index, o);
+        }
+
     }
 
 }

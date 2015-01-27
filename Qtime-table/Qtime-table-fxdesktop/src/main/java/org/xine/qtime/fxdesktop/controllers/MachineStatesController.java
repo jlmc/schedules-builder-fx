@@ -237,9 +237,9 @@ public abstract class MachineStatesController<T> extends ContentController {
      * @param objs
      *            the objs
      */
-    public void onAdd(final Collection<T> objs) {
+    public void onAdded(final Collection<T> objs) {
         this.activateController(getListController());
-        getListController().add(objs);
+        getListController().added(objs);
     }
 
     /**
@@ -247,9 +247,19 @@ public abstract class MachineStatesController<T> extends ContentController {
      * @param objs
      *            the objs
      */
-    public void onRemove(final Collection<T> objs) {
+    public void onRemoved(final Collection<T> objs) {
         this.activateController(getListController());
-        getListController().remove(objs);
+        getListController().removed(objs);
+    }
+
+    /**
+     * On edited.
+     * @param obj
+     *            the obj
+     */
+    public void onEdited(final T obj) {
+        this.activateController(getListController());
+        getListController().edited(obj);
     }
 
     /**

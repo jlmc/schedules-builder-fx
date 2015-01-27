@@ -144,10 +144,10 @@ public class SubjectCreateController extends StateController<Subject> {
             LOGGER.info("Subject saved with sucess");
             final Subject s = this.saveService.getValue();
             final Collection<Subject> ss = Arrays.asList(s);
-            getMachineStatesController().onAdd(ss);
+            getMachineStatesController().onAdded(ss);
             // getMachineStatesController().setActiveController(
             // getMachineStatesController().getListController());
-            });
+        });
 
         this.saveService.execute(() -> {
             return this.subjectConnector.create(subject);

@@ -1,10 +1,10 @@
-/* 
-* Copyright (c) 2015 Qxine <https://github.com/jlmc>
-* All Rights Reserved, unless otherwise granted permission.
-*
-* You may use and modify for private use, fork the official repository
-* for contribution purposes, contribute code, and reuse your own code.
-*/
+/*
+ * Copyright (c) 2015 Qxine <https://github.com/jlmc>
+ * All Rights Reserved, unless otherwise granted permission.
+ *
+ * You may use and modify for private use, fork the official repository
+ * for contribution purposes, contribute code, and reuse your own code.
+ */
 package org.xine.qtime.server.rest.resources;
 
 import org.slf4j.Logger;
@@ -43,39 +43,39 @@ public class SubjectResource {
     @Inject
     private SubjectDao subjectDao;
 
-    
     /**
      * Read.
-     *
-     * @param id the id
-     * @param uriInfo the uri info
+     * @param id
+     *            the id
+     * @param uriInfo
+     *            the uri info
      * @return the response
-     * @throws InterruptedException the interrupted exception
+     * @throws InterruptedException
+     *             the interrupted exception
      */
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response read(@PathParam("id") Integer id, @Context UriInfo uriInfo) throws InterruptedException {
-        //Link purchaseLink = Link.fromPath(uriInfo.getRequestUri().toString() + "/purchase").rel("purchase").build();
-        //Thread.sleep(5000L);
-    	LOGGER.info("read: {0}",uriInfo.getRequestUri().toString());
-    	
-    	try {
-            final Subject s = this.subjectDao.read(Long.valueOf(id));
+    public Response read(@PathParam("id") final Integer id, @Context final UriInfo uriInfo)
+            throws InterruptedException {
+        // Link purchaseLink = Link.fromPath(uriInfo.getRequestUri().toString() +
+        // "/purchase").rel("purchase").build();
+        // Thread.sleep(5000L);
+        LOGGER.info("read: {0}", uriInfo.getRequestUri().toString());
+
+        try {
+            final Subject s = this.subjectDao.read(Long.valueOf(id.longValue()));
             return Response.ok(s).build();
         } catch (final RuntimeException e) {
 
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
-//        return Response.ok(readObject(id))
-//        		.links(purchaseLink)
-//        		.link(uriInfo.getRequestUri().toString() + "/genre/programming", "genre")
-//        		.build();
+        // return Response.ok(readObject(id))
+        // .links(purchaseLink)
+        // .link(uriInfo.getRequestUri().toString() + "/genre/programming", "genre")
+        // .build();
     }
-    
-   
-    
-    
+
     /**
      * List.
      * @return the response

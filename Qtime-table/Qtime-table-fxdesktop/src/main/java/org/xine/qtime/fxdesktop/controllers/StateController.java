@@ -40,7 +40,7 @@ public abstract class StateController<T> extends ContentController {
      * @param objs
      *            the objs
      */
-    public void add(final Collection<T> objs) {
+    public void added(final Collection<T> objs) {
         //
     }
 
@@ -49,7 +49,16 @@ public abstract class StateController<T> extends ContentController {
      * @param objs
      *            the objs
      */
-    public void remove(final Collection<T> objs) {
+    public void removed(final Collection<T> objs) {
+        // nothing
+    }
+
+    /**
+     * Edited.
+     * @param objs
+     *            the objs
+     */
+    public void edited(final T objs) {
         // nothing
     }
 

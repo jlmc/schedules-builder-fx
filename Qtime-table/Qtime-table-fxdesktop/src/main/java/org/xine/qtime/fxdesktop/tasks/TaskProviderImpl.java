@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2015 Qxine <https://github.com/jlmc>
  * All Rights Reserved, unless otherwise granted permission.
  *
@@ -7,52 +7,70 @@
  */
 package org.xine.qtime.fxdesktop.tasks;
 
-import javafx.concurrent.Task;
-
 import org.xine.qtime.client.connector.SubjectConnector;
 import org.xine.qtime.entities.Subject;
 
 import com.google.inject.Inject;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 
 /**
  * The Class TaskProveiderImpl.
  */
 public class TaskProviderImpl implements TaskProvider {
 
-	/** The connector. */
-	@Inject
-	private SubjectConnector connector;
+    /** The connector. */
+    @Inject
+    private SubjectConnector connector;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.xine.qtime.fxdesktop.tasks.TaskProveider#getLoadSubjectsListTask()
-	 */
-	public LoadSubjectsTask getLoadSubjectsListTask() {
-		return new LoadSubjectsTask(connector);
-	}
+    /*
+     * (non-Javadoc)
+     * @see org.xine.qtime.fxdesktop.tasks.TaskProvider#getLoadSubjectsListTask()
+     */
+    @Override
+    public Task<ObservableList<Subject>> getLoadSubjectsListTask() {
+        return new Task<ObservableList<Subject>>() {
+            @SuppressWarnings("synthetic-access")
+            @Override
+            protected ObservableList<Subject> call() throws Exception {
+                return FXCollections.observableArrayList(TaskProviderImpl.this.connector.list());
+            }
 
-	/**
-	 * Gets the gets the subject task.
-	 *
-	 * @param id
-	 *            the id
-	 * @return the gets the subject task
-	 */
-	public Task<Subject> getGetSubjectTask(Integer id) {
-		return new GetSubjectTask(connector, id);
-	}
+        };
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.xine.qtime.fxdesktop.tasks.TaskProvider#getSaveSubjectTask(org.xine
-	 * .qtime.entities.Subject)
-	 */
-	@Override
-	public Task<Subject> getSaveSubjectTask(Subject subject) {
-		return new SaveSubjectTask(this.connector, subject);
-	}
+    /*
+     * (non-Javadoc)
+     * @see org.xine.qtime.fxdesktop.tasks.TaskProvider#getGetSubjectTask(java.lang.Integer)
+     */
+    @SuppressWarnings("synthetic-access")
+    @Override
+    public Task<Subject> getGetSubjectTask(final Integer id) {
+        return new Task<Subject>() {
+            @Override
+            protected final Subject call() throws Exception {
+                return TaskProviderImpl.this.connector.get(id);
+            }
+        };
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.xine.qtime.fxdesktop.tasks.TaskProvider#getSaveSubjectTask(org.xine.qtime.entities.Subject
+     * )
+     */
+    @SuppressWarnings("synthetic-access")
+    @Override
+    public Task<Subject> getSaveSubjectTask(final Subject subject) {
+        return new Task<Subject>() {
+
+            @Override
+            protected Subject call() throws Exception {
+                return TaskProviderImpl.this.connector.create(subject);
+            }
+        };
+    }
 }
