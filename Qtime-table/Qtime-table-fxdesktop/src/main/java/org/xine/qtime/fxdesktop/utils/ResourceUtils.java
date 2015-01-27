@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2015 Qxine <https://github.com/jlmc>
  * All Rights Reserved, unless otherwise granted permission.
  *
@@ -19,30 +19,28 @@ import java.io.InputStream;
  */
 public class ResourceUtils {
 
-	/** The Constant RESOURCE_PATH. */
-	public static final String RESOURCE_PATH = "/org/xine/qtime/fxdesktop/resources/";
+    /** The Constant RESOURCE_PATH. */
+    public static final String RESOURCE_PATH = "/org/xine/qtime/fxdesktop/resources/";
 
-	/**
-	 * Gets the resource as stream.
-	 *
-	 * @param path
-	 *            the path
-	 * @return the resource as stream
-	 */
-	public static InputStream getResourceAsStream(String path) {
-		InputStream stream = ResourceUtils.class
-				.getResourceAsStream(RESOURCE_PATH + path);
-		if (stream == null) {
-			// Eclipse path
-			File resource = new File(".\\src\\main\\resources\\" + path);
-			if (resource.exists()) {
-				try {
-					stream = new BufferedInputStream(new FileInputStream(
-							resource));
-				} catch (IOException ignore) {
-				}
-			}
-		}
-		return stream;
-	}
+    /**
+     * Gets the resource as stream.
+     * @param path
+     *            the path
+     * @return the resource as stream
+     */
+    public static InputStream getResourceAsStream(final String path) {
+        InputStream stream = ResourceUtils.class.getResourceAsStream(RESOURCE_PATH + path);
+        if (stream == null) {
+            // Eclipse path
+            final File resource = new File(".\\src\\main\\resources\\" + path);
+            if (resource.exists()) {
+                try {
+                    stream = new BufferedInputStream(new FileInputStream(resource));
+                } catch (final IOException ignore) {
+                    // Nothing
+                }
+            }
+        }
+        return stream;
+    }
 }

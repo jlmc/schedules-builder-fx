@@ -1,6 +1,7 @@
 package org.xine.qtime.fxdesktop.backoffice;
 
 import org.xine.fx.guice.FXMLController;
+import org.xine.qtime.entities.Subject;
 import org.xine.qtime.fxdesktop.controllers.MachineStatesController;
 
 import java.net.URL;
@@ -20,7 +21,7 @@ import javafx.scene.layout.Pane;
  * The Class SubjectsController.
  */
 @FXMLController
-public class SubjectsController extends MachineStatesController implements Initializable {
+public class SubjectsController extends MachineStatesController<Subject> implements Initializable {
 
     /** The identify. */
     @FXML
@@ -68,7 +69,7 @@ public class SubjectsController extends MachineStatesController implements Initi
      */
     @Override
     public void onActivate() {
-      
+        // Nothing
     }
 
     /*
@@ -77,7 +78,7 @@ public class SubjectsController extends MachineStatesController implements Initi
      */
     @Override
     public void onDeactivate() {
-       
+        // Nothing
     }
 
     /*
@@ -97,6 +98,9 @@ public class SubjectsController extends MachineStatesController implements Initi
     public void initialize(final URL location, final ResourceBundle resources) {
 
         super.loadStates(this.views, location, resources);
+        if (getEditController() != null && getListController() != null) {
+            getEditController().selectedProperty().bind(getListController().selectedProperty());
+        }
 
     }
 

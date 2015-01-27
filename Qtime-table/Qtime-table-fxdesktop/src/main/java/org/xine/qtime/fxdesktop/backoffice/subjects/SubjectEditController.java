@@ -1,13 +1,14 @@
-/* 
-* Copyright (c) 2015 Qxine <https://github.com/jlmc>
-* All Rights Reserved, unless otherwise granted permission.
-*
-* You may use and modify for private use, fork the official repository
-* for contribution purposes, contribute code, and reuse your own code.
-*/
+/*
+ * Copyright (c) 2015 Qxine <https://github.com/jlmc>
+ * All Rights Reserved, unless otherwise granted permission.
+ *
+ * You may use and modify for private use, fork the official repository
+ * for contribution purposes, contribute code, and reuse your own code.
+ */
 
 package org.xine.qtime.fxdesktop.backoffice.subjects;
 
+import org.xine.qtime.entities.Subject;
 import org.xine.qtime.fxdesktop.controllers.StateController;
 
 import java.net.URL;
@@ -24,7 +25,7 @@ import javafx.scene.layout.AnchorPane;
 /**
  * The Class SubjectEditController.
  */
-public class SubjectEditController extends StateController {
+public class SubjectEditController extends StateController<Subject> {
 
     /** The resources. */
     @FXML
@@ -67,8 +68,7 @@ public class SubjectEditController extends StateController {
      */
     @FXML
     void initialize() {
-        this.backButton.setOnAction(e -> getMachineStatesController().setActiveController(
-                getMachineStatesController().getListController()));
+        this.backButton.setOnAction(e -> getMachineStatesController().onBack());
     }
 
     /*
@@ -79,4 +79,15 @@ public class SubjectEditController extends StateController {
     public Node getRootNode() {
         return this.root;
     }
+
+    @Override
+    public void onActivate() {
+        super.onActivate();
+
+        if (getSelected() != null) {
+            this.nameField.setText(getSelected().getName());
+            this.descriptionField.setText(getSelected().getDescription());
+        }
+    }
+
 }

@@ -8,9 +8,19 @@
 
 package org.xine.qtime.fxdesktop.backoffice.subjects;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.xine.qtime.client.connector.SubjectConnector;
+import org.xine.qtime.entities.Subject;
+import org.xine.qtime.fxdesktop.backoffice.utils.ActionsTableCell;
+import org.xine.qtime.fxdesktop.controllers.StateController;
+import org.xine.qtime.fxdesktop.services.SimpleService;
+
 import java.net.URL;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -18,7 +28,6 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Service;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -30,220 +39,226 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.xine.qtime.entities.Subject;
-import org.xine.qtime.fxdesktop.backoffice.utils.ActionsTableCell;
-import org.xine.qtime.fxdesktop.controllers.StateController;
-import org.xine.qtime.fxdesktop.services.ServiceProvider;
-
-import com.google.inject.Inject;
+import javax.inject.Inject;
 
 /**
  * The Class SubjectListController.
  */
-public class SubjectListController extends StateController {
+public class SubjectListController extends StateController<Subject> {
 
-	/** The Constant LOGGER. */
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(SubjectListController.class);
+    /** The Constant LOGGER. */
+    private static final Logger LOGGER = LoggerFactory.getLogger(SubjectListController.class);
 
-	/**
-	 * The resources. ResourceBundle that was given to the FXMLLoader.
-	 */
-	@FXML
-	private ResourceBundle resources;
+    /**
+     * The resources. ResourceBundle that was given to the FXMLLoader.
+     */
+    @FXML
+    private ResourceBundle resources;
 
-	/**
-	 * The location. URL location of the FXML file that was given to the
-	 * FXMLLoader.
-	 */
-	@FXML
-	private URL location;
+    /**
+     * The location. URL location of the FXML file that was given to the
+     * FXMLLoader.
+     */
+    @FXML
+    private URL location;
 
-	/** The search button. */
-	@FXML
-	private Button searchButton;
+    /** The search button. */
+    @FXML
+    private Button searchButton;
 
-	/** The search text. */
-	@FXML
-	private TextField searchText;
+    /** The search text. */
+    @FXML
+    private TextField searchText;
 
-	/** The name column. */
-	@FXML
-	private TableColumn<Subject, String> nameColumn;
+    /** The name column. */
+    @FXML
+    private TableColumn<Subject, String> nameColumn;
 
-	/** The actions column. */
-	@FXML
-	private TableColumn<Subject, Subject> actionsColumn;
+    /** The actions column. */
+    @FXML
+    private TableColumn<Subject, Subject> actionsColumn;
 
-	/** The root. */
-	@FXML
-	private AnchorPane root;
+    /** The root. */
+    @FXML
+    private AnchorPane root;
 
-	/** The create button. */
-	@FXML
-	private Button createButton;
+    /** The create button. */
+    @FXML
+    private Button createButton;
 
-	/** The title. */
-	@FXML
-	private Label title;
+    /** The title. */
+    @FXML
+    private Label title;
 
-	/** The table. */
-	@FXML
-	private TableView<Subject> table;
+    /** The table. */
+    @FXML
+    private TableView<Subject> table;
 
-	/** The description column. */
-	@FXML
-	private TableColumn<Subject, String> descriptionColumn;
+    /** The description column. */
+    @FXML
+    private TableColumn<Subject, String> descriptionColumn;
 
-	/** The glass pane. */
-	@FXML
-	private BorderPane glassPane;
-	
-	
-	/** The service provider. */
-	@Inject
-	private ServiceProvider serviceProvider;
+    /** The glass pane. */
+    @FXML
+    private BorderPane glassPane;
 
-	/* *************************************************
-	 * MODEL properties
-	 ***************************************************/
-	
-	/** The subjects. */
-	private final ListProperty<Subject> subjects = new SimpleListProperty<>(
-			FXCollections.observableArrayList());
+    /* *************************************************
+     * Services properties
+     * *************************************************
+     */
 
+    /** The subject connector. */
+    @Inject
+    private SubjectConnector subjectConnector;
 
-	/** The busy. */
-	private SimpleBooleanProperty busy;
+    /** The load subjects. */
+    @Inject
+    private SimpleService<ObservableList<Subject>> loadSubjects;
 
+    /** The delete service. */
+    @Inject
+    private SimpleService<Void> deleteService;
 
-	/** The service. */
-	private Service<ObservableList<Subject>> service;
+    /* *************************************************
+     * MODEL properties
+     * *************************************************
+     */
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.xine.qtime.fxdesktop.controllers.ContentController#getRootNode()
-	 */
-	@Override
-	public Node getRootNode() {
-		return this.root;
-	}
+    /** The subjects. */
+    private final ListProperty<Subject> subjects = new SimpleListProperty<>(
+            FXCollections.observableArrayList());
 
-	/**
-	 * Gets the list property.
-	 * 
-	 * @return the list property
-	 */
-	public ListProperty<Subject> getListProperty() {
-		return this.subjects;
-	}
+    /** The busy. */
+    private SimpleBooleanProperty busy;
 
-	/**
-	 * Initialize.
-	 */
-	@FXML
-	public void initialize() {
+    /*
+     * (non-Javadoc)
+     * @see org.xine.qtime.fxdesktop.controllers.ContentController#getRootNode()
+     */
+    /**
+     * Gets the root node.
+     * @return the root node
+     */
+    @Override
+    public Node getRootNode() {
+        return this.root;
+    }
 
-		//
-		busy = new SimpleBooleanProperty();
-		glassPane.visibleProperty().bind(busy);
+    /**
+     * Gets the list property.
+     * @return the list property
+     */
+    public ListProperty<Subject> getListProperty() {
+        return this.subjects;
+    }
 
-	
-		this.nameColumn
-				.setCellValueFactory(new PropertyValueFactory<Subject, String>(
-						"name"));
-	
-		this.descriptionColumn
-				.setCellValueFactory(cdf -> new SimpleStringProperty(cdf
-						.getValue().getDescription()));
-		this.actionsColumn
-				.setCellValueFactory(cdf -> new SimpleObjectProperty<Subject>(
-						cdf.getValue()));
-		this.actionsColumn
-				.setCellFactory(tc -> {
-					final ActionsTableCell<Subject, Subject> cell = new ActionsTableCell<>(
-							false);
-					cell.setOnDeleteAction(e -> delete(cell.getData()));
-					cell.setOnEditAction(e -> edit(cell.getData()));
-					return cell;
-				});
+    /**
+     * Initialize.
+     */
+    @FXML
+    public void initialize() {
 
-		this.table.setItems(getListProperty());
+        //
+        this.busy = new SimpleBooleanProperty();
+        this.glassPane.visibleProperty().bind(this.busy);
 
-		// /
-		this.createButton.setOnAction(e -> getMachineStatesController().setActiveController(
-					getMachineStatesController().getCreateController()));
+        this.nameColumn.setCellValueFactory(new PropertyValueFactory<Subject, String>("name"));
 
-		this.searchButton.setOnAction(e -> search());
+        this.descriptionColumn.setCellValueFactory(cdf -> new SimpleStringProperty(cdf.getValue()
+                .getDescription()));
+        this.actionsColumn.setCellValueFactory(cdf -> new SimpleObjectProperty<>(cdf.getValue()));
+        this.actionsColumn.setCellFactory(tc -> {
+            final ActionsTableCell<Subject, Subject> cell = new ActionsTableCell<>(false);
+            cell.setOnDeleteAction(e -> delete(cell.getData()));
+            cell.setOnEditAction(e -> edit(cell.getData()));
+            return cell;
+        });
 
-		/// define the service 
-		//
-		this.service = this.serviceProvider.getLoadSubjects();
-		this.getListProperty().bind(service.valueProperty());
-		this.busy.bind(this.service.runningProperty());
-	}
+        this.table.setItems(getListProperty());
 
-	/**
-	 * Edits the.
-	 * 
-	 * @param data
-	 *            the data
-	 */
-	private void edit(final Subject data) {
-		LOGGER.info("edit:  " + data.getName());
-	}
+        // /
+        this.createButton.setOnAction(e -> getMachineStatesController().setActiveController(
+                getMachineStatesController().getCreateController()));
 
-	/**
-	 * Delete.
-	 * 
-	 * @param s
-	 *            the s
-	 */
-	private void delete(final Subject s) {
-		LOGGER.info("delete: " + s.getName());
+        this.searchButton.setOnAction(e -> search());
 
-	}
+        // / define the service
+        getListProperty().bind(this.loadSubjects.valueProperty());
+        this.busy.bind(this.loadSubjects.runningProperty());
 
-	/**
-	 * Search.
-	 */
-	private void search() {
+    }
 
-		LOGGER.info("Logger operation search");
+    /**
+     * Edits the.
+     * @param data
+     *            the data
+     */
+    private void edit(final Subject data) {
+        LOGGER.info("edit:  " + data.getName());
 
-		this.service.reset();
-		this.service.setExecutor(this.getApplicationController().getExecuterService());
-		
-		this.service.start();
+        setSelected(data);
 
-		
-	}
+        getMachineStatesController().setActiveController(
+                getMachineStatesController().getEditController());
+    }
 
-//	/**
-//	 * The Class LoadService.
-//	 */
-//	private class LoadService extends Service<ObservableList<Subject>> {
-//		
-//		/**
-//		 * Instantiates a new load service.
-//		 */
-//		public LoadService(){
-//			super();
-//		}
-//		
-//		
-//		
-//		/* (non-Javadoc)
-//		 * @see javafx.concurrent.Service#createTask()
-//		 */
-//		@Override
-//		protected Task<ObservableList<Subject>> createTask() {
-//			return taskProveider.getLoadSubjectsListTask();
-//		}
-//
-//	}
+    /**
+     * Delete.
+     * @param s
+     *            the s
+     */
+    private void delete(final Subject s) {
+        LOGGER.info("delete: " + s.getName());
+
+        this.deleteService.setOnFailed(e -> {
+            final Throwable ouch = this.deleteService.getException();
+            LOGGER.error(ouch.getClass().getName() + " -> " + ouch.getMessage());
+        });
+
+        this.deleteService.setOnSucceeded(e -> {
+            LOGGER.info("{} - {} deleted", s.getId(), s.getName());
+            Platform.runLater(() -> this.subjects.remove(s));
+        });
+
+        this.deleteService.execute(() -> {
+            this.subjectConnector.delete(Integer.valueOf(s.getId().intValue()));
+            return null;
+        }, getApplicationController().getExecuterService());
+
+    }
+
+    /**
+     * Search.
+     */
+    private void search() {
+        LOGGER.info("Logger operation search");
+        this.loadSubjects.execute(
+                () -> FXCollections.observableArrayList(this.subjectConnector.list()),
+                getApplicationController().getExecuterService());
+    }
+
+    /**
+     * Adds the.
+     * @param objs
+     *            the objs
+     */
+    @Override
+    public void add(final Collection<Subject> objs) {
+        if (objs != null) {
+            this.subjects.addAll(objs);
+        }
+    }
+
+    /**
+     * Removes the.
+     * @param objs
+     *            the objs
+     */
+    @Override
+    public void remove(final Collection<Subject> objs) {
+        if (objs != null) {
+            this.subjects.removeAll(objs);
+        }
+    }
 
 }

@@ -5,6 +5,12 @@
         <dependent-module archiveName="Qtime-table-server-rest-0.0.1.war" deploy-path="/" handle="module:/resource/Qtime-table-server-rest/Qtime-table-server-rest">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="slf4j-log4j12-1.7.5.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/slf4j/slf4j-log4j12/1.7.5/slf4j-log4j12-1.7.5.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="slf4j-api-1.7.5.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="log4j-1.2.17.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/log4j/log4j/1.2.17/log4j-1.2.17.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>

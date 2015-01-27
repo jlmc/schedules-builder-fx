@@ -191,3 +191,63 @@ INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.Subj
 INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - Logger operation search
 INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - Logger operation search
 INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - Logger operation search
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - Logger operation search
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - Logger operation search
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - delete: Aa
+ERROR JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - org.xine.qtime.client.connector.ConnectorException -> null
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - Logger operation search
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectCreateController - Subject saved with sucess
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - Logger operation search
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - delete: test
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - 4 - test deleted
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Bb
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Bb
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Bb
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Bb
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Bb
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Bb
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Bb
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Bb
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Bb
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - Logger operation search
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - Logger operation search
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - Logger operation search
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectCreateController - Subject saved with sucess
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - Logger operation search
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectCreateController - Subject saved with sucess
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - Logger operation search
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectCreateController - Subject saved with sucess
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - Logger operation search
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectCreateController - Subject saved with sucess
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - Logger operation search
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Aa
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  Bb
+INFO JavaFX Application Thread org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController - edit:  ola salvo
