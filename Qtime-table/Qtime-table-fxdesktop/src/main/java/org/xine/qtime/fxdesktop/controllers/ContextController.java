@@ -1,5 +1,14 @@
+/* 
+* Copyright (c) 2015 Qxine <https://github.com/jlmc>
+* All Rights Reserved, unless otherwise granted permission.
+*
+* You may use and modify for private use, fork the official repository
+* for contribution purposes, contribute code, and reuse your own code.
+*/
 package org.xine.qtime.fxdesktop.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xine.fx.guice.GuiceFXMLLoader;
 import org.xine.fx.guice.GuiceFXMLLoader.Result;
 
@@ -18,6 +27,9 @@ import javax.inject.Inject;
  * The Class ContextController.
  */
 public abstract class ContextController extends ContentController {
+
+	/** The Constant LOGGER. */
+	private static final Logger LOGGER = LoggerFactory.getLogger(ContextController.class);
 
 	/** The fxml loader. */
 	@Inject
@@ -106,7 +118,7 @@ public abstract class ContextController extends ContentController {
 			}
 
 		} catch (final Exception e) {
-			System.out.println("SubController OF:" + subController + " - "
+			LOGGER.warn("SubController OF:" + subController + " - "
 					+ e.toString());
 			// If any goes wrong, ignore just load we don't
 			// want the aplication break because of a
@@ -214,6 +226,9 @@ public abstract class ContextController extends ContentController {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see org.xine.qtime.fxdesktop.controllers.ContentController#setApplicationController(org.xine.qtime.fxdesktop.controllers.ApplicationController)
+	 */
 	@Override
 	public void setApplicationController(
 			ApplicationController applicationController) {

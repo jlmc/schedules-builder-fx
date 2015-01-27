@@ -105,9 +105,11 @@ public class SubjectCreateController extends StateController<Subject> {
      * Services properties
      * *************************************************
      */
+    /** The save service. */
     @Inject
     private SimpleService<Subject> saveService;
 
+    /** The subject connector. */
     @Inject
     private SubjectConnector subjectConnector;
 
@@ -117,15 +119,30 @@ public class SubjectCreateController extends StateController<Subject> {
      */
     @FXML
     void initialize() {
-        this.backButton.setOnAction(e -> getMachineStatesController().setActiveController(
-                getMachineStatesController().getListController()));
+        this.backButton.setOnAction(e -> getMachineStatesController().onBack());
         this.saveButton.setOnAction(e -> save());
-
+        this.cancelButton.setOnAction(e->clean());
         this.busy.bind(this.saveService.runningProperty());
-
     }
 
     /**
+     * Clean.
+     */
+    private void clean() {
+		this.nameField.clear();
+		this.descriptionField.clear();
+	}
+    
+    /* (non-Javadoc)
+     * @see org.xine.qtime.fxdesktop.controllers.ContentController#onActivate()
+     */
+    @Override
+    public void onActivate() {
+    	super.onActivate();
+    	clean();
+    }
+
+	/**
      * Save.
      */
     private void save() {
@@ -144,15 +161,12 @@ public class SubjectCreateController extends StateController<Subject> {
             LOGGER.info("Subject saved with sucess");
             final Subject s = this.saveService.getValue();
             final Collection<Subject> ss = Arrays.asList(s);
-            getMachineStatesController().onAdded(ss);
-            // getMachineStatesController().setActiveController(
-            // getMachineStatesController().getListController());
+            this.getMachineStatesController().onAdded(ss);
         });
 
         this.saveService.execute(() -> {
             return this.subjectConnector.create(subject);
         }, getApplicationController().getExecuterService());
-
     }
 
     /*

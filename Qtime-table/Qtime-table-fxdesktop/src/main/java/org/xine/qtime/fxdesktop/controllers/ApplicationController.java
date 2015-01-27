@@ -106,7 +106,6 @@ public class ApplicationController {
         {
             add(Views.START_UP);
             add(Views.BACKOFFICE);
-
         }
     };
 
@@ -116,7 +115,6 @@ public class ApplicationController {
     @FXML
     public void initialize() {
         this.navigationBackground.widthProperty().bind(this.root.widthProperty());
-
         loadSubControllers();
     }
 

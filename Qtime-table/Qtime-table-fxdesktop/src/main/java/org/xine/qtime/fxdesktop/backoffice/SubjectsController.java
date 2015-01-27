@@ -1,8 +1,16 @@
+/* 
+* Copyright (c) 2015 Qxine <https://github.com/jlmc>
+* All Rights Reserved, unless otherwise granted permission.
+*
+* You may use and modify for private use, fork the official repository
+* for contribution purposes, contribute code, and reuse your own code.
+*/
 package org.xine.qtime.fxdesktop.backoffice;
 
 import org.xine.fx.guice.FXMLController;
 import org.xine.qtime.entities.Subject;
 import org.xine.qtime.fxdesktop.controllers.MachineStatesController;
+import org.xine.qtime.fxdesktop.gui.Views;
 
 import java.net.URL;
 import java.util.Collections;
@@ -36,16 +44,12 @@ public class SubjectsController extends MachineStatesController<Subject> impleme
             .unmodifiableMap(new HashMap<State, String>() {
                 private static final long serialVersionUID = 1L;
                 {
-                    put(State.LIST, "/views/backoffice/subjects/subjectListView.fxml");
-                    put(State.CREATE, "/views/backoffice/subjects/subjectCreateView.fxml");
-                    put(State.EDIT, "/views/backoffice/subjects/subjectEditView.fxml");
+                    put(State.LIST,   Views.BACKOFFICE_SUBJECTS_LIST);
+                    put(State.CREATE, Views.BACKOFFICE_SUBJECTS_CREATE);
+                    put(State.EDIT,   Views.BACKOFFICE_SUBJECTS_EDIT);
                 }
-
             });
-
-    // @FXML
-    // private StackPane content;
-
+  
     /**
      * Instantiates a new subjects controller.
      */
@@ -62,25 +66,7 @@ public class SubjectsController extends MachineStatesController<Subject> impleme
     public Node getRootNode() {
         return this.root;
     }
-
-    /*
-     * (non-Javadoc)
-     * @see org.xine.qtime.fxdesktop.controllers.ContentController#onActivate()
-     */
-    @Override
-    public void onActivate() {
-        // Nothing
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see org.xine.qtime.fxdesktop.controllers.ContentController#onDeactivate()
-     */
-    @Override
-    public void onDeactivate() {
-        // Nothing
-    }
-
+   
     /*
      * (non-Javadoc)
      * @see org.xine.qtime.fxdesktop.controllers.MachineStatesController#getContent()
@@ -101,7 +87,6 @@ public class SubjectsController extends MachineStatesController<Subject> impleme
         if (getEditController() != null && getListController() != null) {
             getEditController().selectedProperty().bind(getListController().selectedProperty());
         }
-
     }
 
 }

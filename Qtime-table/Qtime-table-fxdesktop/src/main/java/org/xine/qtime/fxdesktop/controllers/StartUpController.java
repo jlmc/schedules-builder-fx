@@ -1,3 +1,10 @@
+/* 
+* Copyright (c) 2015 Qxine <https://github.com/jlmc>
+* All Rights Reserved, unless otherwise granted permission.
+*
+* You may use and modify for private use, fork the official repository
+* for contribution purposes, contribute code, and reuse your own code.
+*/
 package org.xine.qtime.fxdesktop.controllers;
 
 import org.xine.fx.guice.FXMLController;
@@ -56,56 +63,6 @@ public class StartUpController extends ContentController {
     @FXML
     public void initialize() {
         this.progress.setVisible(false);
-
-        // ///////////////////////////////////
-
-        // final StackPane stack = new StackPane();
-        //
-        // this.counter = new Task<Void>() {
-        // @Override
-        // public Void call() throws Exception {
-        // StartUpController.this.progress.setVisible(true);
-        //
-        // for (int i = 1; i <= 100; i++) {
-        // Thread.sleep(200);
-        // updateProgress(i, 100);
-        // System.out.println(i + "%");
-        // }
-        //
-        // StartUpController.this.progress.setVisible(false);
-        // return null;
-        // }
-        // };
-        //
-        // this.progress.progressProperty().bind(this.counter.progressProperty());
-        // this.progress.progressProperty().addListener((obs, oldProgress, newProgress) -> {
-        // final PseudoClass warning = PseudoClass.getPseudoClass("warning");
-        // final PseudoClass critical = PseudoClass.getPseudoClass("critical");
-        // if (newProgress.doubleValue() < 0.3) {
-        // this.progress.pseudoClassStateChanged(warning, false);
-        // this.progress.pseudoClassStateChanged(critical, true);
-        // } else if (newProgress.doubleValue() < 0.65) {
-        // this.progress.pseudoClassStateChanged(warning, true);
-        // this.progress.pseudoClassStateChanged(critical, false);
-        // } else {
-        // this.progress.pseudoClassStateChanged(warning, false);
-        // this.progress.pseudoClassStateChanged(critical, false);
-        // }
-        // });
-        //
-        // stack.setStyle("-fx-background-color: antiqueWhite;");
-        // stack.getChildren().add(this.progress);
-        // AnchorPane.setTopAnchor(stack, Double.valueOf(0d));
-        // AnchorPane.setLeftAnchor(stack, Double.valueOf(0d));
-        // AnchorPane.setRightAnchor(stack, Double.valueOf(0d));
-        // AnchorPane.setBottomAnchor(stack, Double.valueOf(0d));
-        //
-        // this.root.getChildren().clear();
-        // this.root.getChildren().add(stack);
-        // stack.setVisible(true);
-        //
-        // new Thread(this.counter).start();
-
     }
 
     /**

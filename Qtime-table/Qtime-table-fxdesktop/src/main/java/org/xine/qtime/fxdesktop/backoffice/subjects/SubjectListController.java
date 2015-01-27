@@ -131,10 +131,6 @@ public class SubjectListController extends StateController<Subject> {
     /** The busy. */
     private SimpleBooleanProperty busy;
 
-    /*
-     * (non-Javadoc)
-     * @see org.xine.qtime.fxdesktop.controllers.ContentController#getRootNode()
-     */
     /**
      * Gets the root node.
      * @return the root node
@@ -158,7 +154,6 @@ public class SubjectListController extends StateController<Subject> {
     @FXML
     public void initialize() {
 
-        //
         this.busy = new SimpleBooleanProperty();
         this.glassPane.visibleProperty().bind(this.busy);
 
@@ -176,13 +171,11 @@ public class SubjectListController extends StateController<Subject> {
 
         this.table.setItems(getListProperty());
 
-        // /
         this.createButton.setOnAction(e -> getMachineStatesController().setActiveController(
                 getMachineStatesController().getCreateController()));
 
         this.searchButton.setOnAction(e -> search());
 
-        // / define the service
         getListProperty().bind(this.loadSubjects.valueProperty());
         this.busy.bind(this.loadSubjects.runningProperty());
 
@@ -194,10 +187,7 @@ public class SubjectListController extends StateController<Subject> {
      *            the data
      */
     private void edit(final Subject data) {
-        LOGGER.info("edit:  " + data.getName());
-
         setSelected(data);
-
         getMachineStatesController().setActiveController(
                 getMachineStatesController().getEditController());
     }
@@ -236,38 +226,32 @@ public class SubjectListController extends StateController<Subject> {
                 () -> FXCollections.observableArrayList(this.subjectConnector.list()),
                 getApplicationController().getExecuterService());
     }
-
-    /**
-     * Adds the.
-     * @param objs
-     *            the objs
+    
+    /* (non-Javadoc)
+     * @see org.xine.qtime.fxdesktop.controllers.StateControllable#onEntityAdded(java.util.Collection)
      */
     @Override
-    public void added(final Collection<Subject> objs) {
+    public void onEntityAdded(final Collection<Subject> objs) {
         if (objs != null) {
             this.subjects.addAll(objs);
         }
     }
-
-    /**
-     * Removes the.
-     * @param objs
-     *            the objs
+  
+    /* (non-Javadoc)
+     * @see org.xine.qtime.fxdesktop.controllers.StateControllable#onEntityRemoved(java.util.Collection)
      */
     @Override
-    public void removed(final Collection<Subject> objs) {
+    public void onEntityRemoved(final Collection<Subject> objs) {
         if (objs != null) {
             this.subjects.removeAll(objs);
         }
     }
-
-    /**
-     * Edited.
-     * @param objs
-     *            the objs
+   
+    /* (non-Javadoc)
+     * @see org.xine.qtime.fxdesktop.controllers.StateControllable#onEntityEdited(java.lang.Object)
      */
     @Override
-    public void edited(final Subject o) {
+    public void onEntityEdited(final Subject o) {
         final Subject s = this.subjects.stream().filter(p -> p.getId().equals(o.getId()))
                 .findFirst().get();
         if (s != null) {

@@ -114,7 +114,6 @@ public class SubjectEditController extends StateController<Subject> {
     @Override
     public void onActivate() {
         super.onActivate();
-
         fill();
     }
 

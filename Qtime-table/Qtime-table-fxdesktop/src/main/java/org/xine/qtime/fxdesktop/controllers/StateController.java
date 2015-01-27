@@ -1,6 +1,12 @@
+/* 
+* Copyright (c) 2015 Qxine <https://github.com/jlmc>
+* All Rights Reserved, unless otherwise granted permission.
+*
+* You may use and modify for private use, fork the official repository
+* for contribution purposes, contribute code, and reuse your own code.
+*/
 package org.xine.qtime.fxdesktop.controllers;
 
-import java.util.Collection;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -10,7 +16,7 @@ import javafx.beans.property.SimpleObjectProperty;
  * @param <T>
  *            the generic type
  */
-public abstract class StateController<T> extends ContentController {
+public abstract class StateController<T> extends ContentController implements StateControllable<T>{
 
     /** The machine states controller. */
     private MachineStatesController<T> machineStatesController;
@@ -33,33 +39,6 @@ public abstract class StateController<T> extends ContentController {
      */
     public void setMachineStatesController(final MachineStatesController<T> machineStatesController) {
         this.machineStatesController = machineStatesController;
-    }
-
-    /**
-     * Adds the.
-     * @param objs
-     *            the objs
-     */
-    public void added(final Collection<T> objs) {
-        //
-    }
-
-    /**
-     * Removes the.
-     * @param objs
-     *            the objs
-     */
-    public void removed(final Collection<T> objs) {
-        // nothing
-    }
-
-    /**
-     * Edited.
-     * @param objs
-     *            the objs
-     */
-    public void edited(final T objs) {
-        // nothing
     }
 
     /**

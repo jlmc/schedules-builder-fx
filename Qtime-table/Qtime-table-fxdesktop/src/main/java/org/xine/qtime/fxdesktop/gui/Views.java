@@ -22,6 +22,15 @@ public final class Views {
 
     /** The Constant BACKOFFICE_PERSONS. */
     public static final String BACKOFFICE_PERSONS = "/views/backoffice/persons/personsView.fxml";
+    
+    /** The Constant BACKOFFICE_SUBJECTS_LIST. */
+    public static final String BACKOFFICE_SUBJECTS_LIST = "/views/backoffice/subjects/subjectListView.fxml"; 
+    
+    /** The Constant BACKOFFICE_SUBJECTS_CREATE. */
+    public static final String BACKOFFICE_SUBJECTS_CREATE = "/views/backoffice/subjects/subjectCreateView.fxml"; 
+    
+    /** The Constant BACKOFFICE_SUBJECTS_EDIT. */
+    public static final String BACKOFFICE_SUBJECTS_EDIT = "/views/backoffice/subjects/subjectEditView.fxml"; 
 
     /**
      * Instantiates a new views.

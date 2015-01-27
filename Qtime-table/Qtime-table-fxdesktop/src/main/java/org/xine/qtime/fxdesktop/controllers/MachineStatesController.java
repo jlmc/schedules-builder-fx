@@ -1,3 +1,10 @@
+/* 
+* Copyright (c) 2015 Qxine <https://github.com/jlmc>
+* All Rights Reserved, unless otherwise granted permission.
+*
+* You may use and modify for private use, fork the official repository
+* for contribution purposes, contribute code, and reuse your own code.
+*/
 package org.xine.qtime.fxdesktop.controllers;
 
 import org.xine.fx.guice.GuiceFXMLLoader;
@@ -20,7 +27,7 @@ import javax.inject.Inject;
  * @param <T>
  *            the generic type
  */
-public abstract class MachineStatesController<T> extends ContentController {
+public abstract class MachineStatesController<T> extends ContentController implements MachineStatesControllable<T>{
 
     /**
      * The Enum States.
@@ -156,29 +163,19 @@ public abstract class MachineStatesController<T> extends ContentController {
             final ResourceBundle resources) {
         try {
             final StateController<T> controller = loadSubView(subController, resources);
-
-            // this.subcontrollers.add(controller);
             controller.setMachineStatesController(this);
-
             this.states.put(state, controller);
-
             controller.setApplicationController(getApplicationController());
-
-            // final Button btn = addControllerButton(controller);
-            // controller.setNavigationButton(btn);
-
             if (getContent() != null) {
                 getContent().getChildren().add(controller.getRootNode());
                 controller.setControllerConstrains();
                 controller.getRootNode().setVisible(false);
             }
-
             return controller;
-
         } catch (final Exception e) {
             System.out.println("SubController OF:" + subController + " - " + e.toString());
             // If any goes wrong, ignore just load we don't want the
-            // aplication break because of a internal sub view
+            // application break because of a internal sub view
             return null;
         }
     }
@@ -216,40 +213,39 @@ public abstract class MachineStatesController<T> extends ContentController {
     }
 
     /**
-     * On back.
-     */
-    public void onBack() {
-        activateController(getListController());
-    }
-
-    /**
      * Sets the active controller.
      * @param activeController
      *            the new active controller
      */
     public void setActiveController(final StateController<T> activeController) {
-
         activateController(activeController);
     }
-
+    
     /**
-     * On add.
-     * @param objs
-     *            the objs
+     * On back.
+     */
+    public void onBack() {
+        activateController(getListController());
+    }
+   
+    /**
+     * On added.
+     *
+     * @param objs the objs
      */
     public void onAdded(final Collection<T> objs) {
         this.activateController(getListController());
-        getListController().added(objs);
+        getListController().onEntityAdded(objs);
     }
-
+    
     /**
-     * On remove.
-     * @param objs
-     *            the objs
+     * On removed.
+     *
+     * @param objs the objs
      */
     public void onRemoved(final Collection<T> objs) {
         this.activateController(getListController());
-        getListController().removed(objs);
+        getListController().onEntityRemoved(objs);
     }
 
     /**
@@ -259,7 +255,7 @@ public abstract class MachineStatesController<T> extends ContentController {
      */
     public void onEdited(final T obj) {
         this.activateController(getListController());
-        getListController().edited(obj);
+        getListController().onEntityEdited(obj);
     }
 
     /**
@@ -282,7 +278,6 @@ public abstract class MachineStatesController<T> extends ContentController {
             throw new RuntimeException("Can't Load the subcontroller " + subController
                     + " caused by: " + e);
         }
-
     }
 
     /*
@@ -298,7 +293,6 @@ public abstract class MachineStatesController<T> extends ContentController {
                 /**/
             }
         });
-
         super.onQuit();
     }
 
