@@ -1,23 +1,22 @@
 /* 
-* Copyright (c) 2015 Qxine <https://github.com/jlmc>
-* All Rights Reserved, unless otherwise granted permission.
-*
-* You may use and modify for private use, fork the official repository
-* for contribution purposes, contribute code, and reuse your own code.
-*/
+ * Copyright (c) 2015 Qxine <https://github.com/jlmc>
+ * All Rights Reserved, unless otherwise granted permission.
+ *
+ * You may use and modify for private use, fork the official repository
+ * for contribution purposes, contribute code, and reuse your own code.
+ */
 package org.xine.qtime.dal.exceptions;
-
-import java.util.Arrays;
 
 import org.slf4j.LoggerFactory;
 import org.xine.qtime.dal.exceptions.types.DalExceptionType;
 import org.xine.qtime.dal.exceptions.types.DalExceptionUtil;
 
+import java.util.Arrays;
 
 /**
  * The Class DalRuntimeException.
  */
-class DalRuntimeException extends RuntimeException implements IDalException {
+public class DalRuntimeException extends RuntimeException implements IDalException {
 
     /**
      * The Constant serialVersionUID.
@@ -40,16 +39,22 @@ class DalRuntimeException extends RuntimeException implements IDalException {
 
     /**
      * The Constructor.
-     *
-     * @param message the message
-     * @param cause the cause
-     * @param type the type
-     * @param subType the sub type
+     * @param message
+     *            the message
+     * @param cause
+     *            the cause
+     * @param type
+     *            the type
+     * @param subType
+     *            the sub type
      */
     @SuppressWarnings("rawtypes")
-    DalRuntimeException(final String message, final Throwable cause, final DalExceptionType.ExceptionType type, final DalExceptionType.ExceptionSubType subType) {
+    DalRuntimeException(final String message, final Throwable cause,
+            final DalExceptionType.ExceptionType type,
+            final DalExceptionType.ExceptionSubType subType) {
         super(DalExceptionUtil.generateMessage(message, cause, type, subType), cause);
-        final StackTraceElement[] stackTrace = Arrays.copyOfRange(getStackTrace(), 1, getStackTrace().length);
+        final StackTraceElement[] stackTrace = Arrays.copyOfRange(getStackTrace(), 1,
+                getStackTrace().length);
         setStackTrace(stackTrace);
         this.dalExceptionMessage = message == null ? DalExceptionUtil.getMessage(cause) : message;
         this.type = type;
@@ -67,13 +72,18 @@ class DalRuntimeException extends RuntimeException implements IDalException {
 
     /**
      * The Constructor.
-     *
-     * @param message the message
-     * @param de the DalException
-     * @param type the type
-     * @param subType the sub type
+     * @param message
+     *            the message
+     * @param de
+     *            the DalException
+     * @param type
+     *            the type
+     * @param subType
+     *            the sub type
      */
-    DalRuntimeException(final String message, final IDalException de, final DalExceptionType.ExceptionType type, final DalExceptionType.ExceptionSubType subType) {
+    DalRuntimeException(final String message, final IDalException de,
+            final DalExceptionType.ExceptionType type,
+            final DalExceptionType.ExceptionSubType subType) {
         super(DalExceptionUtil.generateMessage(message, de, type, subType));
 
         this.dalExceptionMessage = message == null ? de.getMessage() : message;
@@ -82,10 +92,8 @@ class DalRuntimeException extends RuntimeException implements IDalException {
         setStackTrace(de.getStackTrace());
     }
 
-
-  /**
+    /**
      * Gets the type.
-     *
      * @return the type
      */
     @Override
@@ -95,7 +103,6 @@ class DalRuntimeException extends RuntimeException implements IDalException {
 
     /**
      * Gets the type.
-     *
      * @return the type
      */
     @Override
@@ -105,7 +112,6 @@ class DalRuntimeException extends RuntimeException implements IDalException {
 
     /**
      * Gets the dal exception message.
-     *
      * @return the dal exception message
      */
     @Override

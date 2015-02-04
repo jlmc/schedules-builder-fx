@@ -1,12 +1,12 @@
 package org.xine.qtime.dal.exceptions;
 
-import java.util.Arrays;
-
 import org.slf4j.LoggerFactory;
 import org.xine.qtime.dal.exceptions.types.DalExceptionType;
 import org.xine.qtime.dal.exceptions.types.DalExceptionUtil;
 
-class DalException extends Exception implements IDalException {
+import java.util.Arrays;
+
+public class DalException extends Exception implements IDalException {
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -986572596126844572L;
 
@@ -29,10 +29,14 @@ class DalException extends Exception implements IDalException {
      * @param subType
      *            the subType
      */
-    public DalException(final String message, final Throwable cause, final DalExceptionType.ExceptionType type, final DalExceptionType.ExceptionSubType subType) {
-//        super(message == null ? generateMessage(getMessage(cause), type) : generateMessage(message, type), cause);
+    DalException(final String message, final Throwable cause,
+            final DalExceptionType.ExceptionType type,
+            final DalExceptionType.ExceptionSubType subType) {
+        // super(message == null ? generateMessage(getMessage(cause), type) :
+        // generateMessage(message, type), cause);
         super(DalExceptionUtil.generateMessage(message, cause, type, subType), cause);
-        final StackTraceElement[] stackTrace = Arrays.copyOfRange(getStackTrace(), 1, getStackTrace().length);
+        final StackTraceElement[] stackTrace = Arrays.copyOfRange(getStackTrace(), 1,
+                getStackTrace().length);
         setStackTrace(stackTrace);
         this.dalExceptionMessage = message == null ? getMessage(cause) : message;
         this.type = type;
@@ -52,7 +56,9 @@ class DalException extends Exception implements IDalException {
      * @param subType
      *            the sub type
      */
-    public DalException(final String message, final IDalException de, final DalExceptionType.ExceptionType type, final DalExceptionType.ExceptionSubType subType) {
+    DalException(final String message, final IDalException de,
+            final DalExceptionType.ExceptionType type,
+            final DalExceptionType.ExceptionSubType subType) {
         super(DalExceptionUtil.generateMessage(message, de, type, subType), de.getCause());
         this.dalExceptionMessage = message == null ? de.getMessage() : message;
         this.type = type == null ? de.getType() : type;
@@ -87,6 +93,7 @@ class DalException extends Exception implements IDalException {
     public DalExceptionType.ExceptionType getType() {
         return this.type;
     }
+
     /**
      * Gets the type.
      * @return the type
@@ -107,7 +114,8 @@ class DalException extends Exception implements IDalException {
 
     /**
      * Log exception.
-     * @param stackTrace the stack trace
+     * @param stackTrace
+     *            the stack trace
      */
     private void logException(final StackTraceElement[] stackTrace) {
         Class<?> clazz;
