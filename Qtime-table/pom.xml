@@ -10,7 +10,6 @@
 		<module>Qtime-table-entities</module>
 		<module>Qtime-table-dal</module>
 		<module>Qtime-table-ear</module>
-		<module>Qtime-table-client-swing</module>
 		<module>Qtime-table-fxdesktop</module>
 		<module>Qtime-table-server-rest</module>
 		<module>Qtime-table-client</module>

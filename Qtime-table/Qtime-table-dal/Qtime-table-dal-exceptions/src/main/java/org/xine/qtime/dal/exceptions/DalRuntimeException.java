@@ -10,8 +10,8 @@ package org.xine.qtime.dal.exceptions;
 import java.util.Arrays;
 
 import org.slf4j.LoggerFactory;
-import org.xine.qtime.dal.exceptions.enumTypes.DalExceptionType;
-import org.xine.qtime.dal.exceptions.enumTypes.DalExceptionUtil;
+import org.xine.qtime.dal.exceptions.types.DalExceptionType;
+import org.xine.qtime.dal.exceptions.types.DalExceptionUtil;
 
 
 /**

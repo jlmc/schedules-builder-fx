@@ -1,16 +1,13 @@
 /* 
-* Copyright (c) 2015 Qxine <https://github.com/jlmc>
-* All Rights Reserved, unless otherwise granted permission.
-*
-* You may use and modify for private use, fork the official repository
-* for contribution purposes, contribute code, and reuse your own code.
-*/
-package org.xine.qtime.dal.exceptions.enumTypes;
+ * Copyright (c) 2015 Qxine <https://github.com/jlmc>
+ * All Rights Reserved, unless otherwise granted permission.
+ *
+ * You may use and modify for private use, fork the official repository
+ * for contribution purposes, contribute code, and reuse your own code.
+ */
+package org.xine.qtime.dal.exceptions.types;
 
 import org.xine.qtime.dal.exceptions.IDalException;
-
-
-
 
 /**
  * The Class DalExceptionUtil.
@@ -18,15 +15,20 @@ import org.xine.qtime.dal.exceptions.IDalException;
 public final class DalExceptionUtil {
     /**
      * Generate message.
-     *
-     * @param message the message
-     * @param de the IDalException
-     * @param type the type
-     * @param subType the subType
+     * @param message
+     *            the message
+     * @param de
+     *            the IDalException
+     * @param type
+     *            the type
+     * @param subType
+     *            the subType
      * @return the string in the format [<type>_<subType>] '<message>'
      */
-    public static String generateMessage(final String message, final IDalException de, final DalExceptionType.ExceptionType type, final DalExceptionType.ExceptionSubType subType) {
-        StringBuilder sReturn = new StringBuilder();
+    public static String generateMessage(final String message, final IDalException de,
+            final DalExceptionType.ExceptionType type,
+            final DalExceptionType.ExceptionSubType subType) {
+        final StringBuilder sReturn = new StringBuilder();
         sReturn.append("[");
         if (type == null) {
             sReturn.append(de.getType());
@@ -51,14 +53,19 @@ public final class DalExceptionUtil {
 
     /**
      * Generate message.
-     *
-     * @param message the message
-     * @param de the Throwable
-     * @param type the type
-     * @param subType the subType
+     * @param message
+     *            the message
+     * @param de
+     *            the Throwable
+     * @param type
+     *            the type
+     * @param subType
+     *            the subType
      * @return the string in the format {<ThrowableMessage>} [<type>_<subType>] '<message>'
      */
-    public static String generateMessage(final String message, final Throwable de, final DalExceptionType.ExceptionType type, final DalExceptionType.ExceptionSubType subType) {
+    public static String generateMessage(final String message, final Throwable de,
+            final DalExceptionType.ExceptionType type,
+            final DalExceptionType.ExceptionSubType subType) {
         StringBuilder sReturn;
         sReturn = new StringBuilder();
 
@@ -80,7 +87,7 @@ public final class DalExceptionUtil {
             sReturn.append(subType);
         }
         sReturn.append("] '");
-        if (message == null) {
+        if (message == null && de != null) {
             sReturn.append(de.getMessage());
         } else {
             sReturn.append(message);
@@ -89,10 +96,10 @@ public final class DalExceptionUtil {
         return new String(sReturn);
     }
 
-        /**
+    /**
      * Gets the message.
-     *
-     * @param cause the cause
+     * @param cause
+     *            the cause
      * @return the message
      */
     public static String getMessage(final Throwable cause) {
@@ -108,7 +115,7 @@ public final class DalExceptionUtil {
         return cause.getClass().getName();
     }
 
-     /**
+    /**
      * Constructor.
      */
     private DalExceptionUtil() {

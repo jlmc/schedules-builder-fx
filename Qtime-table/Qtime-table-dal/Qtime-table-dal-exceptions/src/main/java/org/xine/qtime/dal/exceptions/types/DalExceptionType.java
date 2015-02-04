@@ -5,7 +5,7 @@
 * You may use and modify for private use, fork the official repository
 * for contribution purposes, contribute code, and reuse your own code.
 */
-package org.xine.qtime.dal.exceptions.enumTypes;
+package org.xine.qtime.dal.exceptions.types;
 
 /**
  * The Class DalExceptionType.

@@ -1,10 +1,10 @@
 /* 
-* Copyright (c) 2015 Qxine <https://github.com/jlmc>
-* All Rights Reserved, unless otherwise granted permission.
-*
-* You may use and modify for private use, fork the official repository
-* for contribution purposes, contribute code, and reuse your own code.
-*/
+ * Copyright (c) 2015 Qxine <https://github.com/jlmc>
+ * All Rights Reserved, unless otherwise granted permission.
+ *
+ * You may use and modify for private use, fork the official repository
+ * for contribution purposes, contribute code, and reuse your own code.
+ */
 package org.xine.qtime.fxdesktop.controllers;
 
 import org.xine.fx.guice.GuiceFXMLLoader;
@@ -27,7 +27,8 @@ import javax.inject.Inject;
  * @param <T>
  *            the generic type
  */
-public abstract class MachineStatesController<T> extends ContentController implements MachineStatesControllable<T>{
+public abstract class MachineStatesController<T> extends ContentController implements
+        MachineStatesControllable<T> {
 
     /**
      * The Enum States.
@@ -220,29 +221,32 @@ public abstract class MachineStatesController<T> extends ContentController imple
     public void setActiveController(final StateController<T> activeController) {
         activateController(activeController);
     }
-    
+
     /**
      * On back.
      */
+    @Override
     public void onBack() {
         activateController(getListController());
     }
-   
+
     /**
      * On added.
-     *
-     * @param objs the objs
+     * @param objs
+     *            the objs
      */
+    @Override
     public void onAdded(final Collection<T> objs) {
         this.activateController(getListController());
         getListController().onEntityAdded(objs);
     }
-    
+
     /**
      * On removed.
-     *
-     * @param objs the objs
+     * @param objs
+     *            the objs
      */
+    @Override
     public void onRemoved(final Collection<T> objs) {
         this.activateController(getListController());
         getListController().onEntityRemoved(objs);
@@ -253,6 +257,7 @@ public abstract class MachineStatesController<T> extends ContentController imple
      * @param obj
      *            the obj
      */
+    @Override
     public void onEdited(final T obj) {
         this.activateController(getListController());
         getListController().onEntityEdited(obj);
@@ -306,11 +311,11 @@ public abstract class MachineStatesController<T> extends ContentController imple
     public void setApplicationController(final ApplicationController applicationController) {
         super.setApplicationController(applicationController);
         this.states
-        .keySet()
-        .parallelStream()
-        .forEach(
-                state -> this.states.get(state).setApplicationController(
-                        applicationController));
+                .keySet()
+                .parallelStream()
+                .forEach(
+                        state -> this.states.get(state).setApplicationController(
+                                applicationController));
     }
 
     /**

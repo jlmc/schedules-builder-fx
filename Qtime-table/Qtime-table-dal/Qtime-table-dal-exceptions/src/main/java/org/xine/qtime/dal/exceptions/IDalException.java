@@ -7,8 +7,8 @@
 */
 package org.xine.qtime.dal.exceptions;
 
-import org.xine.qtime.dal.exceptions.enumTypes.DalExceptionType.ExceptionSubType;
-import org.xine.qtime.dal.exceptions.enumTypes.DalExceptionType.ExceptionType;
+import org.xine.qtime.dal.exceptions.types.DalExceptionType.ExceptionSubType;
+import org.xine.qtime.dal.exceptions.types.DalExceptionType.ExceptionType;
 
 
 

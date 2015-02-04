@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2015 Qxine <https://github.com/jlmc>
  * All Rights Reserved, unless otherwise granted permission.
  *
@@ -6,6 +6,10 @@
  * for contribution purposes, contribute code, and reuse your own code.
  */
 package org.xine.qtime.server.rest.resources;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.xine.qtime.server.rest.services.SubjectDao;
 
 import java.util.concurrent.Executors;
 
@@ -17,49 +21,45 @@ import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.MediaType;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.xine.qtime.server.rest.services.SubjectDao;
-
 /**
  * The Class AsyncSubjectResource.
  */
 @Path("async/subjects")
 public class AsyncSubjectResource {
 
-	/** The Constant LOGGER. */
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(SubjectResource.class);
+    /** The Constant LOGGER. */
+    private static final Logger LOGGER = LoggerFactory.getLogger(SubjectResource.class);
 
-	/** The subject dao. */
-	@Inject
-	private SubjectDao subjectDao;
+    /** The subject dao. */
+    @Inject
+    private SubjectDao subjectDao;
 
-	/**
-	 * List.
-	 *
-	 * @param asyncResponse
-	 *            the async response
-	 */
-	@GET
-	@Path("/")
-	@Produces(MediaType.APPLICATION_JSON)
-	public void list(@Suspended final AsyncResponse asyncResponse) {
+    /**
+     * List.
+     * @param asyncResponse
+     *            the async response
+     */
+    @GET
+    @Path("/")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void list(@Suspended final AsyncResponse asyncResponse) {
 
-		LOGGER.info("ASYNC Subjects List: ");
+        LOGGER.info("ASYNC Subjects List: ");
 
-		Runnable command = new Runnable() {
-			public void run() {
-				try {
-					Thread.sleep(2000L);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+        final Runnable command = new Runnable() {
+            @SuppressWarnings("synthetic-access")
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(2000L);
+                } catch (final InterruptedException e) {
+                    e.printStackTrace();
+                }
 
-				asyncResponse.resume(subjectDao.list());
-			}
-		};
+                asyncResponse.resume(AsyncSubjectResource.this.subjectDao.list());
+            }
+        };
 
-		Executors.newSingleThreadExecutor().execute(command);
-	}
+        Executors.newSingleThreadExecutor().execute(command);
+    }
 }

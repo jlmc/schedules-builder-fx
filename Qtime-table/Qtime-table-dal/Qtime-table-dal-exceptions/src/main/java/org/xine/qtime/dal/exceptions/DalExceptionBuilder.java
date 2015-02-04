@@ -3,7 +3,7 @@ package org.xine.qtime.dal.exceptions;
 import java.util.regex.Matcher;
 
 import org.hibernate.HibernateException;
-import org.xine.qtime.dal.exceptions.enumTypes.DalExceptionType;
+import org.xine.qtime.dal.exceptions.types.DalExceptionType;
 
 
 
