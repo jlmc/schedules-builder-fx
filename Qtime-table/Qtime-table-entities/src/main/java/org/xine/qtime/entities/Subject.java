@@ -1,70 +1,73 @@
 package org.xine.qtime.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 /**
  * The Class Subject.
  */
 @Entity
-@Table(name = "SUBJECT")
 public class Subject implements Serializable {
+
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
 
     /** The id. */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /** The name. */
-    @Column(name = "name", length = 128, nullable = false)
     private String name;
 
     /** The acronym. */
-    @Column(name = "acronym", length = 15, nullable = false, unique = true)
     private String acronym;
 
     /** The description. */
-    @Column(name = "description", length = 256)
     private String description;
 
-    /** The units. */
-    @OneToMany(targetEntity = Unit.class, mappedBy = "subject", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private final Set<Unit> units = new HashSet<>(0);
+    /**
+     * Instantiates a new subject.
+     */
+    public Subject() {
+        super();
+    }
 
     /**
      * Instantiates a new subject.
+     * @param id
+     *            the id
+     * @param name
+     *            the name
+     * @param acronym
+     *            the acronym
+     * @param description
+     *            the description
      */
-    public Subject(){
-      super();
+    public Subject(final Long id, final String name, final String acronym, final String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.acronym = acronym;
     }
-    
+
     /**
      * Instantiates a new subject.
-     *
-     * @param id the id
-     * @param name the name
-     * @param acronym the acronym
-     * @param description the description
+     * @param name
+     *            the name
+     * @param acronym
+     *            the acronym
+     * @param description
+     *            the description
      */
-    public Subject(Long id, String name, String acronym, String description) {
-      super();
-      setId(id);
-      setName(name);
-      setAcronym(acronym);
-      setDescription(description);
+    public Subject(final String name, final String acronym, final String description) {
+        this.name = name;
+        this.description = description;
+        this.acronym = acronym;
     }
 
     /**
@@ -102,23 +105,6 @@ public class Subject implements Serializable {
     }
 
     /**
-     * Gets the acronym.
-     * @return the acronym
-     */
-    public String getAcronym() {
-        return this.acronym;
-    }
-
-    /**
-     * Sets the acronym.
-     * @param acronym
-     *            the new acronym
-     */
-    public void setAcronym(final String acronym) {
-        this.acronym = acronym;
-    }
-
-    /**
      * Gets the description.
      * @return the description
      */
@@ -136,11 +122,20 @@ public class Subject implements Serializable {
     }
 
     /**
-     * Gets the units.
-     * @return the units
+     * Gets the acronym.
+     * @return the acronym
      */
-    public Set<Unit> getUnits() {
-        return this.units;
+    public String getAcronym() {
+        return this.acronym;
+    }
+
+    /**
+     * Sets the acronym.
+     * @param acronym
+     *            the new acronym
+     */
+    public void setAcronym(final String acronym) {
+        this.acronym = acronym;
     }
 
 }

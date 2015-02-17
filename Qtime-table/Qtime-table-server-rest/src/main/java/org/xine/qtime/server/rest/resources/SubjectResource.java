@@ -9,8 +9,8 @@ package org.xine.qtime.server.rest.resources;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.xine.qtime.dal.core.services.SubjectService;
 import org.xine.qtime.entities.Subject;
-import org.xine.qtime.server.rest.services.SubjectDao;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class SubjectResource {
 
     /** The subject dao. */
     @Inject
-    private SubjectDao subjectDao;
+    private SubjectService service;
 
     /**
      * Read.
@@ -64,7 +64,7 @@ public class SubjectResource {
         LOGGER.info("read: {0}", uriInfo.getRequestUri().toString());
 
         try {
-            final Subject s = this.subjectDao.read(Long.valueOf(id.longValue()));
+            final Subject s = this.service.read(Long.valueOf(id.longValue()));
             return Response.ok(s).build();
         } catch (final RuntimeException e) {
 
@@ -85,7 +85,7 @@ public class SubjectResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response list() {
         LOGGER.info("testing log on Subject Resource");
-        final List<Subject> subjects = this.subjectDao.list();
+        final List<Subject> subjects = this.service.list();
 
         final ResponseBuilder rb = Response.ok(subjects);
         return rb.build();
@@ -103,7 +103,7 @@ public class SubjectResource {
         // TODO:: update implementation missing
 
         try {
-            final Subject s = this.subjectDao.update(subject);
+            final Subject s = this.service.update(subject);
             return Response.ok(s).build();
         } catch (final RuntimeException e) {
 
@@ -128,7 +128,7 @@ public class SubjectResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(final Subject subject) {
         try {
-            this.subjectDao.save(subject);
+            this.service.save(subject);
         } catch (final RuntimeException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
@@ -158,7 +158,7 @@ public class SubjectResource {
     // @Consumes(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("id") final Integer id) {
         try {
-            this.subjectDao.delete(new Subject(new Long(id.longValue()), null, null, null));
+            this.service.delete(new Subject(new Long(id.longValue()), null, null, null));
         } catch (final RuntimeException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }

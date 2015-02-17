@@ -95,6 +95,12 @@
         	<groupId>org.xine</groupId>
         	<artifactId>Qtime-table-entities</artifactId>
         </dependency>
+        
+       <!-- persistence module -->
+            <dependency>
+                <groupId>org.xine</groupId>
+                <artifactId>Qtime-table-dal-core</artifactId>
+            </dependency>
     </dependencies>
 
     <build>
