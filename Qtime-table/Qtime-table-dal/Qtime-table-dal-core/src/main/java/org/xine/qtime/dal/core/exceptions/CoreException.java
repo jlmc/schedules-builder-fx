@@ -1,22 +1,26 @@
-package org.xine.qtime.dal.exceptions;
+package org.xine.qtime.dal.core.exceptions;
 
 import org.slf4j.LoggerFactory;
-import org.xine.qtime.dal.exceptions.types.DalExceptionType;
-import org.xine.qtime.dal.exceptions.types.DalExceptionUtil;
+import org.xine.qtime.dal.core.exceptions.types.CoreExceptionType;
+import org.xine.qtime.dal.core.exceptions.types.CoreExceptionUtil;
 
 import java.util.Arrays;
 
-public class DalException extends Exception implements IDalException {
+/**
+ * The Class CoreException.
+ */
+public class CoreException extends Exception implements ICoreException {
+
     /** The Constant serialVersionUID. */
-    private static final long serialVersionUID = -986572596126844572L;
+    private static final long serialVersionUID = 1L;
 
     /** The type. */
-    private final DalExceptionType.ExceptionType type;
+    private final CoreExceptionType.ExceptionType type;
     /** The sub type. */
-    private final DalExceptionType.ExceptionSubType subType;
+    private final CoreExceptionType.ExceptionSubType subType;
 
-    /** The dal exception message. */
-    private final String dalExceptionMessage;
+    /** The Core exception message. */
+    private final String CoreExceptionMessage;
 
     /**
      * The Constructor.
@@ -29,16 +33,16 @@ public class DalException extends Exception implements IDalException {
      * @param subType
      *            the subType
      */
-    DalException(final String message, final Throwable cause,
-            final DalExceptionType.ExceptionType type,
-            final DalExceptionType.ExceptionSubType subType) {
+    CoreException(final String message, final Throwable cause,
+            final CoreExceptionType.ExceptionType type,
+            final CoreExceptionType.ExceptionSubType subType) {
         // super(message == null ? generateMessage(getMessage(cause), type) :
         // generateMessage(message, type), cause);
-        super(DalExceptionUtil.generateMessage(message, cause, type, subType), cause);
+        super(CoreExceptionUtil.generateMessage(message, cause, type, subType), cause);
         final StackTraceElement[] stackTrace = Arrays.copyOfRange(getStackTrace(), 1,
                 getStackTrace().length);
         setStackTrace(stackTrace);
-        this.dalExceptionMessage = message == null ? getMessage(cause) : message;
+        this.CoreExceptionMessage = message == null ? getMessage(cause) : message;
         this.type = type;
         this.subType = subType;
 
@@ -50,17 +54,17 @@ public class DalException extends Exception implements IDalException {
      * @param message
      *            the message
      * @param de
-     *            the DalException
+     *            the CoreException
      * @param type
      *            the type
      * @param subType
      *            the sub type
      */
-    DalException(final String message, final IDalException de,
-            final DalExceptionType.ExceptionType type,
-            final DalExceptionType.ExceptionSubType subType) {
-        super(DalExceptionUtil.generateMessage(message, de, type, subType), de.getCause());
-        this.dalExceptionMessage = message == null ? de.getMessage() : message;
+    CoreException(final String message, final ICoreException de,
+            final CoreExceptionType.ExceptionType type,
+            final CoreExceptionType.ExceptionSubType subType) {
+        super(CoreExceptionUtil.generateMessage(message, de, type, subType), de.getCause());
+        this.CoreExceptionMessage = message == null ? de.getMessage() : message;
         this.type = type == null ? de.getType() : type;
         this.subType = subType;
         setStackTrace(de.getStackTrace());
@@ -90,7 +94,7 @@ public class DalException extends Exception implements IDalException {
      * @return the type
      */
     @Override
-    public DalExceptionType.ExceptionType getType() {
+    public CoreExceptionType.ExceptionType getType() {
         return this.type;
     }
 
@@ -99,17 +103,17 @@ public class DalException extends Exception implements IDalException {
      * @return the type
      */
     @Override
-    public DalExceptionType.ExceptionSubType getSubType() {
+    public CoreExceptionType.ExceptionSubType getSubType() {
         return this.subType;
     }
 
     /**
-     * Gets the dal exception message.
-     * @return the dal exception message
+     * Gets the Core exception message.
+     * @return the Core exception message
      */
     @Override
-    public String getDalExceptionMessage() {
-        return this.dalExceptionMessage;
+    public String getCoreExceptionMessage() {
+        return this.CoreExceptionMessage;
     }
 
     /**

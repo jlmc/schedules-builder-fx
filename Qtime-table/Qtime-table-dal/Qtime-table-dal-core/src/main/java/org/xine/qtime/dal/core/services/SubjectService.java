@@ -1,6 +1,8 @@
 package org.xine.qtime.dal.core.services;
 
 import org.xine.qtime.dal.core.daos.SubjectDao;
+import org.xine.qtime.dal.core.exceptions.CoreExceptionBuilder;
+import org.xine.qtime.dal.core.exceptions.types.CoreExceptionType.ExceptionType;
 import org.xine.qtime.dal.core.util.Transactional;
 import org.xine.qtime.entities.Subject;
 
@@ -43,6 +45,11 @@ public class SubjectService {
      */
     @Transactional
     public Subject save(final Subject s) {
+        if (s == null) {
+            // TODO
+            CoreExceptionBuilder.init().addType(ExceptionType.BL_REQUEST);
+        }
+
         return this.dao.save(s);
     }
 
@@ -54,7 +61,7 @@ public class SubjectService {
      */
     @Transactional
     public Subject update(final Subject s) {
-        return this.dao.save(s);
+        return this.dao.update(s);
     }
 
     /**

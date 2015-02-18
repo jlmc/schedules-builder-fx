@@ -61,7 +61,8 @@ public class SubjectResource {
         // Link purchaseLink = Link.fromPath(uriInfo.getRequestUri().toString() +
         // "/purchase").rel("purchase").build();
         // Thread.sleep(5000L);
-        LOGGER.info("read: {0}", uriInfo.getRequestUri().toString());
+        // LOGGER.info("read: {0}", uriInfo.getRequestUri().toString());
+        LOGGER.info("Read Subject Request: {}", id);
 
         try {
             final Subject s = this.service.read(Long.valueOf(id.longValue()));
@@ -100,8 +101,7 @@ public class SubjectResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public Response update(final Subject subject) {
-        // TODO:: update implementation missing
-
+        LOGGER.info("Update Subject Request: {}", subject.getId());
         try {
             final Subject s = this.service.update(subject);
             return Response.ok(s).build();
@@ -111,10 +111,8 @@ public class SubjectResource {
         }
 
         // ResponseBuilder rb = Response.ok(subject);
-
         // Response.status(Response.Status.NOT_FOUND).entity("Entity not found for UUID: "
         // ).build();
-
         // return rb.build();
     }
 

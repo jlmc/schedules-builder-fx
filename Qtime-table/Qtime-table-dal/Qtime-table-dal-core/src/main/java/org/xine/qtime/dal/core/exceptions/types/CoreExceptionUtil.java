@@ -1,18 +1,8 @@
-/* 
- * Copyright (c) 2015 Qxine <https://github.com/jlmc>
- * All Rights Reserved, unless otherwise granted permission.
- *
- * You may use and modify for private use, fork the official repository
- * for contribution purposes, contribute code, and reuse your own code.
- */
-package org.xine.qtime.dal.exceptions.types;
+package org.xine.qtime.dal.core.exceptions.types;
 
-import org.xine.qtime.dal.exceptions.IDalException;
+import org.xine.qtime.dal.core.exceptions.ICoreException;
 
-/**
- * The Class DalExceptionUtil.
- */
-public final class DalExceptionUtil {
+public final class CoreExceptionUtil {
     /**
      * Generate message.
      * @param message
@@ -25,9 +15,9 @@ public final class DalExceptionUtil {
      *            the subType
      * @return the string in the format [<type>_<subType>] '<message>'
      */
-    public static String generateMessage(final String message, final IDalException de,
-            final DalExceptionType.ExceptionType type,
-            final DalExceptionType.ExceptionSubType subType) {
+    public static String generateMessage(final String message, final ICoreException de,
+            final CoreExceptionType.ExceptionType type,
+            final CoreExceptionType.ExceptionSubType subType) {
         final StringBuilder sReturn = new StringBuilder();
         sReturn.append("[");
         if (type == null) {
@@ -64,8 +54,8 @@ public final class DalExceptionUtil {
      * @return the string in the format {<ThrowableMessage>} [<type>_<subType>] '<message>'
      */
     public static String generateMessage(final String message, final Throwable de,
-            final DalExceptionType.ExceptionType type,
-            final DalExceptionType.ExceptionSubType subType) {
+            final CoreExceptionType.ExceptionType type,
+            final CoreExceptionType.ExceptionSubType subType) {
         StringBuilder sReturn;
         sReturn = new StringBuilder();
 
@@ -118,7 +108,7 @@ public final class DalExceptionUtil {
     /**
      * Constructor.
      */
-    private DalExceptionUtil() {
+    private CoreExceptionUtil() {
+        super();
     }
-
 }

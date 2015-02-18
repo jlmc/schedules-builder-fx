@@ -13,7 +13,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     </parent>
 
     <modules>
-        <module>Qtime-table-dal-exceptions</module>
+      
         <module>Qtime-table-dal-core</module>
     </modules>
 

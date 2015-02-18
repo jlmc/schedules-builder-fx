@@ -1,24 +1,19 @@
-/* 
-* Copyright (c) 2015 Qxine <https://github.com/jlmc>
-* All Rights Reserved, unless otherwise granted permission.
-*
-* You may use and modify for private use, fork the official repository
-* for contribution purposes, contribute code, and reuse your own code.
-*/
-package org.xine.qtime.dal.exceptions.types;
+package org.xine.qtime.dal.core.exceptions.types;
 
 /**
- * The Class DalExceptionType.
+ * The Class CoreExeptionType.
  */
-public class DalExceptionType {
+public final class CoreExceptionType {
 
     /**
-     * Enumerator to define each provider by type
-     * Types
-     * NONE No type is assign
-     * ERROR type represents a Error
-     * INFORMATION type represents exception as Information
-     * WARNING type represents exception as Warning.
+     * Instantiates a new core exeption type.
+     */
+    private CoreExceptionType() {
+        super();
+    }
+
+    /**
+     * The Enum ExceptionType.
      */
     public enum ExceptionType {
         /** The database. */
@@ -31,21 +26,15 @@ public class DalExceptionType {
         , HIBERNATE
         /** The spring. */
         , SPRING
-       
-        /** The DAS ORM CORE. */
-        , DAS_ORM_CORE
-        /** The DAS ORM FACTORY. */
-        , DAS_ORM_FACTORY
-        /** The DAS ORM MANAGER. */
-        , DAS_ORM_MANAGER
-        /** The DAS ORM SERVICES AUDIT. */
-        , DAS_ORM_SERVICES_AUDIT
 
-
+        ,
+        /** The service. */
+        SERVICE
 
         /** When receiving null arguments from BS. */
         , BL_REQUEST
     }
+
     /**
      * Enumerator to define sub type Exception.
      * Sub Types

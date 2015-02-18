@@ -8,6 +8,31 @@ import javax.persistence.EntityManager;
 
 public class JPAUtilTest {
 
+    @SuppressWarnings("static-method")
+    @Test
+    @Ignore
+    public void mergeTest() {
+        EntityManager em = JPAUtil.createEntityManager();
+
+        final Subject subject = em.find(Subject.class, Long.valueOf(1L));
+
+        em.close();
+
+        if (subject != null) {
+            subject.setAcronym("DP");
+            subject.setName("Design Patterns");
+        }
+
+        em = JPAUtil.createEntityManager();
+
+        em.getTransaction().begin();
+        em.merge(subject);
+        em.getTransaction().commit();
+
+        em.close();
+
+    }
+
     @Test
     @Ignore
     public void test() {
