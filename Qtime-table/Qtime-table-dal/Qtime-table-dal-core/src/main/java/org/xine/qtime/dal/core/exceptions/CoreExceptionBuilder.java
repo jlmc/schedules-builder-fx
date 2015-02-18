@@ -14,6 +14,9 @@ public class CoreExceptionBuilder {
      * The message.
      */
     private String message = null;
+    
+    
+    private String messageKey = null;
 
     /**
      * The type.
@@ -75,6 +78,11 @@ public class CoreExceptionBuilder {
         this.message = exceptionMessage;
         return this;
     }
+    
+    public CoreExceptionBuilder addMessagekey(final String messageKey){
+    	this.messageKey = messageKey;
+    	return this;
+    }
 
     /**
      * Adds the message.
@@ -108,7 +116,7 @@ public class CoreExceptionBuilder {
         if (this.cause != null) {
             if (this.cause instanceof ICoreException) {
                 return new CoreException(this.message, (ICoreException) this.cause, this.type,
-                        this.subType);
+                        this.subType, messageKey);
             } else if (this.cause instanceof HibernateException) {
                 return new CoreException(this.message, this.cause,
                         CoreExceptionType.ExceptionType.HIBERNATE, this.subType);

@@ -1,7 +1,9 @@
 package org.xine.qtime.dal.core.services;
 
 import org.xine.qtime.dal.core.daos.SubjectDao;
+import org.xine.qtime.dal.core.exceptions.CoreException;
 import org.xine.qtime.dal.core.exceptions.CoreExceptionBuilder;
+import org.xine.qtime.dal.core.exceptions.types.CoreExceptionType.ExceptionSubType;
 import org.xine.qtime.dal.core.exceptions.types.CoreExceptionType.ExceptionType;
 import org.xine.qtime.dal.core.util.Transactional;
 import org.xine.qtime.entities.Subject;
@@ -42,13 +44,21 @@ public class SubjectService {
      * @param s
      *            the s
      * @return the subject
+     * @throws CoreException 
      */
     @Transactional
-    public Subject save(final Subject s) {
-        if (s == null) {
-            // TODO
-            CoreExceptionBuilder.init().addType(ExceptionType.BL_REQUEST);
+    public Subject save(final Subject s) throws CoreException {
+    	
+    	
+        if ( s == null) {
+          throw  CoreExceptionBuilder.init()
+            					.addType(ExceptionType.SERVICE)
+            					.addSubType(ExceptionSubType.VALIDATION)
+            					.addMessage("Subject Can't be null")
+            					.build();
         }
+        
+        
 
         return this.dao.save(s);
     }

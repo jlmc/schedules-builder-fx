@@ -42,4 +42,7 @@ public interface ICoreException {
      * @return the dal exception message
      */
     String getCoreExceptionMessage();
+    
+    
+    String getMessageKey();
 }
