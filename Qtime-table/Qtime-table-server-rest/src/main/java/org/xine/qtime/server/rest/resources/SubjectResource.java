@@ -9,6 +9,7 @@ package org.xine.qtime.server.rest.resources;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.xine.qtime.dal.core.exceptions.CoreException;
 import org.xine.qtime.dal.core.services.SubjectService;
 import org.xine.qtime.entities.Subject;
 
@@ -27,6 +28,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
+import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
 
 /**
@@ -105,15 +107,14 @@ public class SubjectResource {
         try {
             final Subject s = this.service.update(subject);
             return Response.ok(s).build();
-        } catch (final RuntimeException e) {
 
+        } catch (final CoreException e) {
+            return Response.status(Status.BAD_REQUEST).entity(e.getMessageKey()).build();
+        } catch (final Exception e) {
+            LOGGER.error("inepected error: [{}] - {}", e.getMessage(), e.getCause());
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
-        // ResponseBuilder rb = Response.ok(subject);
-        // Response.status(Response.Status.NOT_FOUND).entity("Entity not found for UUID: "
-        // ).build();
-        // return rb.build();
     }
 
     /**
@@ -127,10 +128,12 @@ public class SubjectResource {
     public Response create(final Subject subject) {
         try {
             this.service.save(subject);
-        } catch (final RuntimeException e) {
-            return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (final CoreException e) {
+            return Response.status(Status.BAD_REQUEST).entity(e.getMessageKey()).build();
+        } catch (final Exception e) {
+            LOGGER.error("inepected error: [{}] - {}", e.getMessage(), e.getCause());
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
-
         return Response.ok(subject).build();
     }
 
@@ -140,23 +143,14 @@ public class SubjectResource {
      *            the id
      * @return the response
      */
-    // @DELETE
-    // @Consumes(MediaType.APPLICATION_JSON)
-    // public Response delete(Subject subject){
-    // try{
-    // this.subjectDao.delete(subject);
-    // }catch(RuntimeException e){
-    // return Response.status(Response.Status.BAD_REQUEST).build();
-    // }
-    // return Response.ok().build();
-    // }
-
     @DELETE
     @Path("{id}")
     // @Consumes(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("id") final Integer id) {
         try {
             this.service.delete(new Subject(new Long(id.longValue()), null, null, null));
+        } catch (final CoreException e) {
+            return Response.status(Status.BAD_REQUEST).entity(e.getMessageKey()).build();
         } catch (final RuntimeException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }

@@ -35,13 +35,7 @@
 			<scope>compile</scope>
 		</dependency>
 
-		<!-- PostgreSQL Driver -->
-		<dependency>
-			<groupId>postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>9.2-1002.jdbc4</version>
-			<scope>runtime</scope>
-		</dependency>
+		
 
 
 		<dependency>
@@ -51,14 +45,22 @@
 		</dependency>
 
 
-
-
+        <!-- LOG  -->
+        <!-- SLF4J Logger dependency -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        
+        
+        <!-- TEST -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+        
+        <!-- internal project -->
 		<dependency>
 			<groupId>org.xine</groupId>
 			<artifactId>Qtime-table-entities</artifactId>

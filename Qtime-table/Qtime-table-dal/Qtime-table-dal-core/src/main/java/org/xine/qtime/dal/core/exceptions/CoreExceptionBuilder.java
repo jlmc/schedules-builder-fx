@@ -14,8 +14,8 @@ public class CoreExceptionBuilder {
      * The message.
      */
     private String message = null;
-    
-    
+
+    /** The message key. */
     private String messageKey = null;
 
     /**
@@ -47,11 +47,23 @@ public class CoreExceptionBuilder {
         return new CoreExceptionBuilder();
     }
 
+    /**
+     * Adds the cause.
+     * @param exception
+     *            the exception
+     * @return the core exception builder
+     */
     public CoreExceptionBuilder addCause(final Throwable exception) {
         this.cause = exception;
         return this;
     }
 
+    /**
+     * Adds the type.
+     * @param exceptionType
+     *            the exception type
+     * @return the core exception builder
+     */
     public CoreExceptionBuilder addType(final CoreExceptionType.ExceptionType exceptionType) {
         this.type = exceptionType;
         return this;
@@ -78,10 +90,16 @@ public class CoreExceptionBuilder {
         this.message = exceptionMessage;
         return this;
     }
-    
-    public CoreExceptionBuilder addMessagekey(final String messageKey){
-    	this.messageKey = messageKey;
-    	return this;
+
+    /**
+     * Adds the messagekey.
+     * @param msgKey
+     *            the msg key
+     * @return the core exception builder
+     */
+    public CoreExceptionBuilder addMessagekey(final String msgKey) {
+        this.messageKey = msgKey;
+        return this;
     }
 
     /**
@@ -105,6 +123,10 @@ public class CoreExceptionBuilder {
         return this;
     }
 
+    /**
+     * Builds the.
+     * @return the core exception
+     */
     public CoreException build() {
         if (this.type == null) {
             this.type = CoreExceptionType.ExceptionType.GENERIC;
@@ -116,7 +138,7 @@ public class CoreExceptionBuilder {
         if (this.cause != null) {
             if (this.cause instanceof ICoreException) {
                 return new CoreException(this.message, (ICoreException) this.cause, this.type,
-                        this.subType, messageKey);
+                        this.subType, this.messageKey);
             } else if (this.cause instanceof HibernateException) {
                 return new CoreException(this.message, this.cause,
                         CoreExceptionType.ExceptionType.HIBERNATE, this.subType);

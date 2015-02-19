@@ -14,13 +14,15 @@ public class JPAUtilTest {
     public void mergeTest() {
         EntityManager em = JPAUtil.createEntityManager();
 
-        final Subject subject = em.find(Subject.class, Long.valueOf(1L));
+        Subject subject = em.find(Subject.class, Long.valueOf(1L));
 
         em.close();
 
         if (subject != null) {
             subject.setAcronym("DP");
             subject.setName("Design Patterns");
+        } else {
+            subject = new Subject("TEST", "T", "desc");
         }
 
         em = JPAUtil.createEntityManager();
@@ -33,6 +35,7 @@ public class JPAUtilTest {
 
     }
 
+    @SuppressWarnings("static-method")
     @Test
     @Ignore
     public void test() {

@@ -23,10 +23,10 @@
             <artifactId>javaee-api</artifactId>
             <!-- <version>7.0</version> -->
         </dependency>
-        
-        
 
-           <!-- SLF4J Logger dependency -->
+
+
+        <!-- SLF4J Logger dependency -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -92,15 +92,15 @@
             </exclusions>
         </dependency>
         <dependency>
-        	<groupId>org.xine</groupId>
-        	<artifactId>Qtime-table-entities</artifactId>
+            <groupId>org.xine</groupId>
+            <artifactId>Qtime-table-entities</artifactId>
         </dependency>
-        
-       <!-- persistence module -->
-            <dependency>
-                <groupId>org.xine</groupId>
-                <artifactId>Qtime-table-dal-core</artifactId>
-            </dependency>
+
+        <!-- persistence module -->
+        <dependency>
+            <groupId>org.xine</groupId>
+            <artifactId>Qtime-table-dal-core</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -110,8 +110,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
@@ -120,6 +120,9 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.3</version>
                 <configuration>
+                    <!-- since the Java EE 5 the web.xml file is no longer needed.
+                        then it may be hidden,
+                        but for the maven compile the project the flag must be false -->
                     <failOnMissingWebXml>true</failOnMissingWebXml>
                 </configuration>
             </plugin>
