@@ -87,7 +87,7 @@ public class SubjectResource {
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response list() {
-        LOGGER.info("testing log on Subject Resource");
+        LOGGER.info("List of Subjects");
         final List<Subject> subjects = this.service.list();
 
         final ResponseBuilder rb = Response.ok(subjects);
@@ -126,6 +126,7 @@ public class SubjectResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(final Subject subject) {
+        LOGGER.info("Create a new Subject Request ");
         try {
             this.service.save(subject);
         } catch (final CoreException e) {
@@ -147,6 +148,8 @@ public class SubjectResource {
     @Path("{id}")
     // @Consumes(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("id") final Integer id) {
+        LOGGER.info("DELETE Subject [id:{}]", id);
+
         try {
             this.service.delete(new Subject(new Long(id.longValue()), null, null, null));
         } catch (final CoreException e) {
