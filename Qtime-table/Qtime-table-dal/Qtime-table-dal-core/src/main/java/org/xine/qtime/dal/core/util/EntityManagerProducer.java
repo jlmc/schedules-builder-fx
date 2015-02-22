@@ -14,12 +14,9 @@ import javax.persistence.Persistence;
  * The Class EntityManagerProducer.
  */
 @ApplicationScoped
-public class EntityManagerProducer implements Serializable {
+public class EntityManagerProducer implements Serializable, Constants {
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
-
-    /** The Constant PERSISTENCE_UNIT_NAME. */
-    private static final String PERSISTENCE_UNIT_NAME = "QtimeTablePU";
 
     /** The factory. */
     private final EntityManagerFactory factory;

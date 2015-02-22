@@ -2,11 +2,34 @@ package org.xine.qtime.dal.core.util;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import org.xine.qtime.entities.ClassRoom;
 import org.xine.qtime.entities.Subject;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 public class JPAUtilTest {
+
+    @Test
+    public void testGetClassRoom() {
+        final EntityManager em = JPAUtil.createEntityManager();
+
+        final CriteriaBuilder cb = em.getCriteriaBuilder();
+        final CriteriaQuery<ClassRoom> cq = cb.createQuery(ClassRoom.class);
+        final Root<ClassRoom> rootEntry = cq.from(ClassRoom.class);
+        final CriteriaQuery<ClassRoom> all = cq.select(rootEntry);
+        final TypedQuery<ClassRoom> allQuery = em.createQuery(all);
+
+        final List<ClassRoom> objects = allQuery.getResultList();
+
+        System.out.println("size:" + objects.size());
+
+    }
 
     @SuppressWarnings("static-method")
     @Test

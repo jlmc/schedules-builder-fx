@@ -7,9 +7,7 @@ import javax.persistence.Persistence;
 /**
  * The Class JPAUtil.
  */
-public final class JPAUtil {
-    /** The Constant PERSISTENCE_UNIT_NAME. */
-    public static final String PERSISTENCE_UNIT_NAME = "QtimeTablePU";
+public final class JPAUtil implements Constants {
 
     /**
      * Instantiates a new JPA util.

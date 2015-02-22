@@ -4,6 +4,7 @@
 
     <persistence-unit name="QtimeTablePU" transaction-type="RESOURCE_LOCAL">
         <class>org.xine.qtime.entities.Subject</class>
+        <class>org.xine.qtime.entities.ClassRoom</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/QtimeTable" />
             <property name="javax.persistence.jdbc.user" value="root" />
