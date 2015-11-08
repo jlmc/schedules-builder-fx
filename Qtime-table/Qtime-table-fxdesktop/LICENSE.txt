@@ -1,4 +1,4 @@
-Copyright (c) 2013 Qxine <https://www.xine.org/>
+Copyright (c) 2013 Spout LLC <https://www.spout.org/>
 All Rights Reserved, unless otherwise granted permission.
 
 You may use and modify for private use, fork the official repository

@@ -32,7 +32,7 @@
         <junit.version>4.11</junit.version>
         <mockito.version>1.8.4</mockito.version>
         <guava.version>17.0</guava.version>
-        <commons-io.version>2.4</commons-io.version>
+        
 
 
         <version.gson>2.2.4</version.gson>
@@ -147,11 +147,7 @@
             </dependency>
 
 
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>${commons-io.version}</version>
-            </dependency>
+       
 
             <!-- com.google.guava -->
             <dependency>
@@ -162,9 +158,10 @@
 
 
             <!-- Client Rest API -->
-            <dependency>
+              <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
+                <version>${version.commons-io}</version>
             </dependency>
             <dependency>
                 <groupId>commons-codec</groupId>

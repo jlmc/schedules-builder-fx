@@ -1,10 +1,5 @@
 package org.xine.qtime.dal.core.util;
 
-import org.junit.Ignore;
-import org.junit.Test;
-import org.xine.qtime.entities.ClassRoom;
-import org.xine.qtime.entities.Subject;
-
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -13,9 +8,15 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.junit.Ignore;
+import org.junit.Test;
+import org.xine.qtime.entities.ClassRoom;
+import org.xine.qtime.entities.Subject;
+
 public class JPAUtilTest {
 
     @Test
+    @Ignore
     public void testGetClassRoom() {
         final EntityManager em = JPAUtil.createEntityManager();
 
