@@ -9,28 +9,15 @@ import javax.interceptor.InvocationContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-/**
- * The Class TransactionInterceptor.
- */
 @Interceptor
 @Transactional
 public class TransactionInterceptor implements Serializable {
 
-    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
 
-    /** The manager. */
     @Inject
     private EntityManager manager;
 
-    /**
-     * Invoke.
-     * @param context
-     *            the context
-     * @return the object
-     * @throws Exception
-     *             the exception
-     */
     @AroundInvoke
     public Object invoke(final InvocationContext context) throws Exception {
         final EntityTransaction transaction = this.manager.getTransaction();

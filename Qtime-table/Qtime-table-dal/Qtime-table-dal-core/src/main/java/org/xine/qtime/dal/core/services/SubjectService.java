@@ -1,5 +1,9 @@
 package org.xine.qtime.dal.core.services;
 
+import java.util.List;
+
+import javax.inject.Inject;
+
 import org.xine.qtime.dal.core.daos.SubjectDao;
 import org.xine.qtime.dal.core.exceptions.CoreException;
 import org.xine.qtime.dal.core.exceptions.CoreExceptionBuilder;
@@ -8,44 +12,19 @@ import org.xine.qtime.dal.core.exceptions.types.CoreExceptionType.ExceptionType;
 import org.xine.qtime.dal.core.util.Transactional;
 import org.xine.qtime.entities.Subject;
 
-import java.util.List;
-
-import javax.inject.Inject;
-
-/**
- * The Class SubjectService.
- */
 public class SubjectService {
 
-    /** The dao. */
     @Inject
     private SubjectDao dao;
 
-    /**
-     * List.
-     * @return the list
-     */
     public List<Subject> list() {
         return this.dao.list();
     }
 
-    /**
-     * Read.
-     * @param id
-     *            the id
-     * @return the subject
-     */
     public Subject read(final Long id) {
         return this.dao.read(id);
     }
 
-    /**
-     * Save.
-     * @param s
-     *            the s
-     * @return the subject
-     * @throws CoreException
-     */
     @Transactional
     public Subject save(final Subject s) throws CoreException {
 
@@ -64,12 +43,6 @@ public class SubjectService {
         return this.dao.save(s);
     }
 
-    /**
-     * Update.
-     * @param s
-     *            the s
-     * @return the subject
-     */
     @Transactional
     public Subject update(final Subject s) throws CoreException {
         if (s == null) {
@@ -87,12 +60,6 @@ public class SubjectService {
         return this.dao.update(s);
     }
 
-    /**
-     * Delete.
-     * @param s
-     *            the s
-     * @throws CoreException
-     */
     @Transactional
     public void delete(final Subject s) throws CoreException {
 
