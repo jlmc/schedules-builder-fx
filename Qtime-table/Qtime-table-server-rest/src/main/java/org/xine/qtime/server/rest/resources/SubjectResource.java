@@ -1,17 +1,4 @@
-/*
- * Copyright (c) 2015 Qxine <https://github.com/jlmc>
- * All Rights Reserved, unless otherwise granted permission.
- *
- * You may use and modify for private use, fork the official repository
- * for contribution purposes, contribute code, and reuse your own code.
- */
 package org.xine.qtime.server.rest.resources;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.xine.qtime.dal.core.exceptions.CoreException;
-import org.xine.qtime.dal.core.services.SubjectService;
-import org.xine.qtime.entities.Subject;
 
 import java.util.List;
 
@@ -31,58 +18,37 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
 
-/**
- * The Class SubjectResource.
- * http://localhost:8080/Qtime-table-server-rest-0.0.1/resources/subjects
- */
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.xine.qtime.dal.core.exceptions.CoreException;
+import org.xine.qtime.dal.core.services.SubjectService;
+import org.xine.qtime.entities.Subject;
+
 @Path("subjects")
 public class SubjectResource {
 
-    /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(SubjectResource.class);
 
-    /** The subject dao. */
     @Inject
     private SubjectService service;
 
-    /**
-     * Read.
-     * @param id
-     *            the id
-     * @param uriInfo
-     *            the uri info
-     * @return the response
-     * @throws InterruptedException
-     *             the interrupted exception
-     */
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response read(@PathParam("id") final Integer id, @Context final UriInfo uriInfo)
             throws InterruptedException {
-        // Link purchaseLink = Link.fromPath(uriInfo.getRequestUri().toString() +
-        // "/purchase").rel("purchase").build();
-        // Thread.sleep(5000L);
-        // LOGGER.info("read: {0}", uriInfo.getRequestUri().toString());
+
+		// http://localhost:8080/Qtime-table-server-rest-0.0.1/resources/subjects
         LOGGER.info("Read Subject Request: {}", id);
 
         try {
             final Subject s = this.service.read(Long.valueOf(id.longValue()));
             return Response.ok(s).build();
         } catch (final RuntimeException e) {
-
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
-        // return Response.ok(readObject(id))
-        // .links(purchaseLink)
-        // .link(uriInfo.getRequestUri().toString() + "/genre/programming", "genre")
-        // .build();
     }
 
-    /**
-     * List.
-     * @return the response
-     */
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
@@ -94,12 +60,6 @@ public class SubjectResource {
         return rb.build();
     }
 
-    /**
-     * Update.
-     * @param subject
-     *            the subject
-     * @return the response
-     */
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public Response update(final Subject subject) {
@@ -114,15 +74,8 @@ public class SubjectResource {
             LOGGER.error("inepected error: [{}] - {}", e.getMessage(), e.getCause());
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
-
     }
 
-    /**
-     * Creates the.
-     * @param subject
-     *            the subject
-     * @return the response
-     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(final Subject subject) {
@@ -138,12 +91,6 @@ public class SubjectResource {
         return Response.ok(subject).build();
     }
 
-    /**
-     * Delete.
-     * @param id
-     *            the id
-     * @return the response
-     */
     @DELETE
     @Path("{id}")
     // @Consumes(MediaType.APPLICATION_JSON)

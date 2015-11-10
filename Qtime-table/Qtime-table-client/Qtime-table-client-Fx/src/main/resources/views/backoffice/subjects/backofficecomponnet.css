@@ -1,0 +1,113 @@
+.backofficecomponnet
+{
+	
+}
+
+.headerbox
+{
+	-fx-border-color: #CCCCCC;
+	-fx-border-width: 1.0px 1.0px 1.0px 1.0px; 
+	-fx-background-color: #E5E5E5;
+	-fx-padding: 0.0 0.0 0.0 7px;
+}
+
+
+
+.footerbox
+{
+	-fx-border-color: #CCCCCC;
+	-fx-border-width: 0.0px 1.0px 1.0px 1.0px; 
+	-fx-background-color: #E5E5E5;
+	-fx-padding: 1.0px 5.0px 1.0px 5.0px;
+}
+
+.bodybox
+{
+	-fx-background-color: #FFFFFF;
+	
+	
+}
+
+.searchButton{
+-fx-graphic: url('../../../images/search-16.png'); 
+
+} 
+
+.many{
+	-fx-padding: 5px 5px 5px 5px;
+}
+
+.unique{
+	-fx-padding: 35px 0.0 0.0 0.0px;
+}
+
+
+.bodybox .form{
+	
+}
+
+.table-view .column-header
+{
+	-fx-background-color: #E6E6E6;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #3E3F41;
+    -fx-font-weight: bold;
+    -fx-alignment: center-left ;
+    
+}
+
+
+.table-cell{
+	-fx-alignment: center-left;
+	-fx-text-alignment: left ;
+}
+
+.table-cell .button{
+	-fx-padding: 2px 2px 2px 2px;
+}
+
+.table-view *.scroll-bar:horizontal *.increment-button,
+.table-view *.scroll-bar:horizontal *.decrement-button {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.table-view *.scroll-bar:horizontal *.increment-arrow, 
+.table-view *.scroll-bar:horizontal *.decrement-arrow {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: null;
+}
+
+.footerbox .button{
+	-fx-padding: 2.0px 5.0px 2.0px 5.0px;
+	-fx-font-size: 12px;
+}
+
+.footerbox .backButton{
+ 	-fx-graphic: url('../../../images/back-16.png'); 
+}
+
+.footerbox .saveButton{
+ 	-fx-graphic: url('../../../images/save-16.png');
+}
+
+.footerbox .editButton{
+	-fx-graphic: url('../../../images/edit-16.png');
+}
+
+.footerbox .deleteButton{
+	-fx-graphic: url('../../../images/delete-16.png');
+}
+
+.rigth-alignment{
+	
+	-fx-alignment: center-right;
+	-fx-text-alignment: right ;
+}

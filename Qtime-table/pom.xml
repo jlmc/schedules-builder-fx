@@ -10,11 +10,9 @@
 		<module>Qtime-table-entities</module>
 		<module>Qtime-table-dal</module>
 		<module>Qtime-table-ear</module>
-        
-        <module>Qtime-table-server-rest</module>
-
+		<module>Qtime-table-server-rest</module>
+		<module>Qtime-table-client</module>
 	</modules>
-
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -27,11 +25,9 @@
 		<junit.version>4.11</junit.version>
 		<mockito.version>1.8.4</mockito.version>
 		<guava.version>17.0</guava.version>
-
 		<version.gson>2.2.4</version.gson>
 		<version.commons-io>2.4</version.commons-io>
 		<version.commons-codec>1.7</version.commons-codec>
-
 		<maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
 		<maven.source.plugin.version>2.2.1</maven.source.plugin.version>
 		<maven.clean.plugin.version>2.5</maven.clean.plugin.version>
@@ -81,26 +77,11 @@
 				<artifactId>slf4j-api</artifactId>
 				<version>1.7.5</version>
 			</dependency>
-			<!-- End Logging dependencies -->
-
-		
 			<dependency>
 				<groupId>org.jasypt</groupId>
 				<artifactId>jasypt</artifactId>
 				<version>${jasypt.version}</version>
 			</dependency>
-
-
-
-
-			<dependency>
-				<groupId>org.mockito</groupId>
-				<artifactId>mockito-all</artifactId>
-				<version>${mockito.version}</version>
-			</dependency>
-
-
-
 			<dependency>
 				<groupId>org.hibernate.javax.persistence</groupId>
 				<artifactId>hibernate-jpa-2.0-api</artifactId>
@@ -132,18 +113,12 @@
 				<artifactId>persistence-api</artifactId>
 				<version>1.0.2</version>
 			</dependency>
-
-
-
-
 			<!-- com.google.guava -->
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
 				<version>${guava.version}</version>
 			</dependency>
-
-
 			<!-- Client Rest API -->
 			<dependency>
 				<groupId>commons-io</groupId>
@@ -191,10 +166,7 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-
-
 			<!--internal project dependencies -->
-
 			<dependency>
 				<groupId>org.xine</groupId>
 				<artifactId>Qtime-table-entities</artifactId>
@@ -206,7 +178,6 @@
 				<artifactId>Qtime-table-dal-core</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.xine</groupId>
 				<artifactId>Qtime-table-client-connector</artifactId>
@@ -218,14 +189,17 @@
 				<version>${project.version}</version>
 				<scope>runtime</scope>
 			</dependency>
-			
-			
 			<!-- test dependencies -->
-			
-				<dependency>
+			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>${mockito.version}</version>
 				<scope>test</scope>
 			</dependency>
 		</dependencies>
