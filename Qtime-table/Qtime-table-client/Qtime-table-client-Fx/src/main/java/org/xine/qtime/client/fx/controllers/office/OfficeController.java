@@ -53,13 +53,13 @@ public class OfficeController extends DecoraterController {
 		private static final long serialVersionUID = 1L;
 		{
 			add(Views.BACKOFFICE_SUBJECT);
-			add(Views.BACKOFFICE_PERSONS);
+			// add(Views.BACKOFFICE_PERSONS);
 		}
 	};
 
 	@FXML
 	public void initialize() {
-		// super.loadsubviews(this.subviews, this.resources);
+		super.loadsubviews(this.subviews, this.resources);
 
 	}
 

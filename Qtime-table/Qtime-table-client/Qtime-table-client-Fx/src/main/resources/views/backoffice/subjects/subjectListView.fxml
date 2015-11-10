@@ -7,7 +7,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="root" minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" stylesheets="@backofficecomponnet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.xine.qtime.fxdesktop.backoffice.subjects.SubjectListController">
+<AnchorPane fx:id="root" minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" stylesheets="@backofficecomponnet.css" 
+xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -58,7 +59,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" spacing="5.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Button fx:id="createButton" mnemonicParsing="false" text="create" />
+                        <Button fx:id="createButton" mnemonicParsing="false" text="create"  />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" spacing="5.0" HBox.hgrow="ALWAYS" />
