@@ -1,5 +1,6 @@
 package org.xine.qtime.client.fx.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -8,7 +9,6 @@ import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.inject.Inject;
 
@@ -16,22 +16,42 @@ import org.xine.fx.guice.GuiceFXMLLoader;
 import org.xine.fx.guice.GuiceFXMLLoader.Result;
 import org.xine.qtime.client.fx.gui.FxDecorateScene;
 import org.xine.qtime.client.fx.gui.Views;
+import org.xine.qtime.client.fx.gui.font.FontAwesomeDecorate;
+import org.xine.qtime.client.fx.gui.icons.Icons;
+import org.xine.qtime.client.fx.model.User;
+import org.xine.qtime.client.fx.utils.concurrence.ThreadFactoryBuilder;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.geometry.Bounds;
+import javafx.geometry.Point2D;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
+/**
+ * The Class ApplicationController.
+ */
 public class ApplicationController {
 
-	private static AtomicInteger threadCount = new AtomicInteger(0);
+	private User model;
+
+	/** The executor service. */
+	private final ExecutorService executorService = Executors.newFixedThreadPool(
+			Runtime.getRuntime().availableProcessors(),
+			new ThreadFactoryBuilder().setNamePrefix("E-Plan-").setDaemon(true).build());
+
+	@Inject
+	private GuiceFXMLLoader fxmlLoader;
 
 	@FXML
 	private ResourceBundle resources;
@@ -52,122 +72,108 @@ public class ApplicationController {
 	private AnchorPane root;
 
 	@FXML
-	private ImageView xineLogo;
+	private ImageView spoutLogo;
+
+	@FXML
+	private Label username;
+
+	@FXML
+	private ImageView avatar;
+
+	@FXML
+	private Label avatarDefault;
+
+	@FXML
+	private Button notifications;
 
 	@FXML
 	private AnchorPane content;
 
-	@Inject
-	private GuiceFXMLLoader fxmlLoader;
 
-	// private final List<ContentController> controllers = new ArrayList<>();
-	//
-	// private NotificationController notificationController;
-	//
-	// private ContentController activeController = null;
-
-	private final List<ContentController> controllers = new ArrayList<>();
-
-	private NotificationController notificationController;
-
-	private ContentController activeController = null;
-
-	private FxDecorateScene fxDecorateScene;
-
-	private final ExecutorService executerService = Executors
-			.newFixedThreadPool(Runtime.getRuntime().availableProcessors(), r -> {
-				final Thread t = new Thread(r);
-				t.setName("Executor #" + threadCount.getAndIncrement());
-				t.setDaemon(true);
-				return t;
-			});
-
+	/** The sub views. Sub views of the Application */
 	private final Set<String> subViews = new LinkedHashSet<String>() {
 		private static final long serialVersionUID = 1L;
 
 		{
-			add(Views.START_UP);
-			add(Views.BACKOFFICE);
+			add(Views.OFFICE_VIEW);
+			add(Views.WEB_VIEW);
+			add(Views.DASHBOARD_VIEW);
 		}
 	};
 
+	private FxDecorateScene fxDecorateScene;
+
+	private final List<ContentController> controllers = new ArrayList<>();
+
+	private ContentController activeController;
+
+	private NotificationController notificationController;
+
 	@FXML
 	public void initialize() {
+		// init Model
+		this.model = new User();
+
 		this.navigationBackground.widthProperty().bind(this.root.widthProperty());
+
+		// load sub views
 		loadSubControllers();
+
+		this.username.textProperty().bind(this.model.usernameProperty());
+		this.avatar.imageProperty().bind(this.model.avatarProperty());
+
+		FontAwesomeDecorate.stylise(this.avatarDefault);
+
+		// this.avatarDefault.setGraphic(Test.getLabel());
+		this.avatarDefault.setGraphic(Icons.getIcon(Icons.USER, 35, 35));
 	}
 
 	private void loadSubControllers() {
-		this.subViews.forEach(subview -> loadSubController(subview));
+		this.subViews.forEach(view -> loadSubController(view));
 
-		if (this.controllers != null && !this.controllers.isEmpty()) {
-			activateController(this.controllers.get(0));
+		final ContentController firtsSubController = (this.controllers != null) && !this.controllers.isEmpty()
+				? this.controllers.get(0) : null;
+
+		if (firtsSubController != null) {
+			activateController(firtsSubController);
 		}
 	}
 
-	private void loadSubController(final String subController) {
-		try {
-			final Result loadResult = this.fxmlLoader.load(ApplicationController.class.getResource(subController),
-					this.resources);
-			final ContentController controller = loadResult.getController();
-
-			this.controllers.add(controller);
-			controller.setApplicationController(this);
-
-			final Button btn = addControllerButton(controller);
-			controller.setNavigationButton(btn);
-
-			this.content.getChildren().add(controller.getRootNode());
-			controller.setControllerConstrains();
-
-			controller.getRootNode().setVisible(false);
-
-		} catch (final Exception e) {
-			throw new RuntimeException("Could not load sub view: " + subController, e);
-		}
+	private void activateController(final ContentController subController) {
+		activateController(subController, true);
 	}
 
-	private Button addControllerButton(final ContentController controller) {
-		final Button navButton = new Button(controller.getName());
-
-		navButton.getStyleClass().add("nav-button");
-		navButton.getStyleClass().add("xine-button");
-		navButton.setPrefHeight(49);
-
-		navButton.setOnAction(e -> activateController(controller));
-
-		this.navigationButtons.getChildren().add(navButton);
-
-		return navButton;
-	}
-
-	private void activateController(final ContentController contentController) {
-		activateController(contentController, true);
-	}
-
-	private void activateController(final ContentController contentController, final boolean animated) {
-		if (this.activeController == contentController) {
+	private void activateController(final ContentController subController, final boolean animated) {
+		if (this.activeController == subController) {
 			return;
 		}
+
 		final int from = this.controllers.indexOf(this.activeController);
-		final int to = this.controllers.indexOf(contentController);
+		final int to = this.controllers.indexOf(subController);
+
 		final ContentController oldController = this.activeController;
-		contentController.getRootNode().setVisible(true);
-		if (this.activeController != null) {
-			this.activeController.getRootNode().setVisible(false);
-			this.activeController.onDeactivate();
-			this.activeController.getNavigationButton().getStyleClass().remove("selected");
+
+		subController.getRootNode().setVisible(true);
+
+		if (oldController != null) {
+			oldController.getRootNode().setVisible(false);
+			oldController.onDeactivate();
+			oldController.getNavigationButton().getStyleClass().remove("selected");
 		}
-		this.activeController = contentController;
+
+		this.activeController = subController;
 		this.activeController.getNavigationButton().getStyleClass().add("selected");
+
 		final int direction = from < to ? -1 : 1;
-		if (animated && oldController != null) {
-			animateController(contentController, oldController, direction);
+		if (animated && (oldController != null)) {
+			animateController(subController, oldController, direction);
 		}
+
 		this.activeController.onActivate();
 	}
 
-	private void animateController(final ContentController contentController, final ContentController oldController,
+
+	private void animateController(final ContentController newController, final ContentController oldController,
 			final int direction) {
 		oldController.getRootNode().setVisible(true);
 		if (this.activeController.getRootNode() instanceof Pane) {
@@ -196,43 +202,107 @@ public class ApplicationController {
 
 		timeline.setOnFinished(e -> {
 			oldController.setControllerConstrains();
-			contentController.setControllerConstrains();
+			newController.setControllerConstrains();
 			oldController.getRootNode().setVisible(false);
 		});
-
-	}
-
-	public List<ContentController> getControllers() {
-		return this.controllers;
-	}
-
-	public void onQuit() {
-		this.controllers.forEach(controller -> {
-			try {
-				onQuit();
-			} catch (final Exception e) {
-				e.printStackTrace();
-			}
-		});
-	}
-
-	public ExecutorService getExecuterService() {
-		return this.executerService;
-	}
-
-	public NotificationController getNotificationController() {
-		return this.notificationController;
 	}
 
 	public void setDecorateScene(final FxDecorateScene fxDecorateScene) {
 		this.fxDecorateScene = fxDecorateScene;
 
 		fxDecorateScene.getController().addMoveNode(this.navigationBackground);
-		fxDecorateScene.getController().addMoveNode(this.xineLogo);
+		fxDecorateScene.getController().addMoveNode(this.spoutLogo);
+		fxDecorateScene.getController().addMoveNode(this.username);
+		fxDecorateScene.getController().addMoveNode(this.avatar);
 	}
 
 	public FxDecorateScene getDecorateScene() {
 		return this.fxDecorateScene;
 	}
+
+	private void loadSubController(final String view) {
+		try {
+			final Result loadResult = this.fxmlLoader.load(ApplicationController.class.getResource(view));
+
+			final ContentController controller = loadResult.getController();
+			this.controllers.add(controller);
+			controller.setApplicationController(this);
+			final Button btn = addControllerButton(controller);
+			controller.setNavigationButton(btn);
+			this.content.getChildren().add(controller.getRootNode());
+
+			controller.setControllerConstrains();
+
+			controller.getRootNode().setVisible(false);
+		} catch (final IOException e) {
+			throw new RuntimeException(String.format("Could not load sub view: %s ", view), e);
+		}
+	}
+
+	private Button addControllerButton(final ContentController controller) {
+		final Button nav = new Button(controller.getName());
+		nav.getStyleClass().add("nav-button");
+		nav.getStyleClass().add("xine-button");
+		nav.setPrefHeight(49);
+
+		nav.setOnAction(event -> {
+			activateController(controller);
+		});
+
+		this.navigationButtons.getChildren().add(nav);
+
+		return nav;
+	}
+
+	public void onNotificationButtonPressed() {
+		Platform.runLater(() -> {
+			final Stage notif = getNotificationController().getStage();
+			if (notif.isShowing()) {
+				if (!getNotificationController().isAnimating()) {
+					getNotificationController().hide();
+				}
+			}
+
+		});
+	}
+
+	public void onNotificationButtonReleased() {
+		Platform.runLater(() -> {
+			final Stage notif = getNotificationController().getStage();
+			if (!notif.isShowing()) {
+				final Bounds b = this.notifications.localToScene(this.notifications.getLayoutBounds());
+
+				double x = (b.getMinX() + b.getMaxX()) / 2d;
+				double y = b.getMaxY();
+
+				x += getDecorateScene().getStage().getX();
+				y += getDecorateScene().getStage().getY();
+
+				final Point2D arrow = getNotificationController().getArrowPosition();
+				x -= arrow.getX();
+				y -= arrow.getY();
+
+				notif.setX(x);
+				notif.setY(y);
+
+				getNotificationController().show();
+			}
+		});
+
+	}
+
+	public NotificationController getNotificationController() {
+		return this.notificationController;
+	}
+
+	public void setNotificationController(final NotificationController notificationController) {
+		this.notificationController = notificationController;
+	}
+
+	public ExecutorService getExecutorService() {
+		return this.executorService;
+	}
+
+
 
 }

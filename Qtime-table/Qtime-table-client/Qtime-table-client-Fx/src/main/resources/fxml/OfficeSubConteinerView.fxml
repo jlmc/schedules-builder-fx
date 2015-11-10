@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import org.xine.eplan.desktop.controllers.office.discipline.*?>
+
+
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" 
+	minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" 
+	style="-fx-background-color: #FFFFFF;" xmlns:fx="http://javafx.com/fxml/1" 
+	xmlns="http://javafx.com/javafx/8" 
+	   fx:controller="org.xine.eplan.desktop.controllers.office.DisciplineWrapperController">
+	
+   <children>
+      
+     <DisciplinesCompoment fx:id="disciplinesCompoment"></DisciplinesCompoment>
+     
+   </children>
+</AnchorPane>

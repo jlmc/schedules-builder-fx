@@ -1,0 +1,207 @@
+* {
+	-fx-font-family: "Ubuntu Light";
+}
+
+#root {
+	-light-black: rgb(74, 75, 78);
+	-dark-highlight: rgb(87, 89, 92);
+	-dark-black: rgb(39, 40, 40);
+	-darkest-black: rgb(5, 5, 5);
+	-mid-gray: rgb(216, 222, 227);
+	-fx-background-color: -mid-gray;
+}
+
+.root {
+	-fx-font-family: "Ubuntu Light" !important;
+	-fx-font-smoothing-type: gray !important;
+	-fx-font-size: 12pt;
+}
+
+/*icon class*/
+/* .icon{
+	-fx-font-family: 'FontAwesome';
+	 -fx-font-size: 12pt !important;
+}*/
+
+
+.icon{
+    -fx-font-family: FontAwesome;
+    -fx-font-size: 16px;
+}
+ 
+
+
+/** background  */
+.background{
+	-fx-background-repeat: repeat;
+}
+
+.avatar-default {
+    -fx-font-size: 12pt !important;
+   /*
+    -fx-font-size: 20pt !important;
+    */ 
+}
+
+
+
+/**  old class to refactory */
+.button {
+	-fx-background-radius: 0;
+}
+
+
+.button {
+    /* Default button colors */
+    -eplan-button-top-color: white;
+    -eplan-button-gradient-top-color: white;
+    -eplan-button-gradient-bottom-color: #ECEFF2;
+    -eplan-button-border-color: #C3C3C3;
+
+    -eplan-button-hover-gradient-top-color: white;
+    -eplan-button-hover-gradient-bottom-color: #E8ECF0;
+    -eplan-button-hover-border-color: #C3C3C3;
+
+    -eplan-button-armed-border-color: #C3C3C3;
+    -eplan-button-text-color: black;
+    -eplan-button-hover-text-color: #368DB2;
+
+    -fx-font-family: "Ubuntu Medium" !important;
+    -fx-text-fill: -eplan-button-text-color;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-border-color: -eplan-button-border-color;
+    -fx-background-color: -eplan-button-top-color, linear-gradient(to bottom, -eplan-button-gradient-top-color, -eplan-button-gradient-bottom-color);
+    -fx-background-insets: 0, 2 0 0 0;
+    -fx-background-radius: 0;
+    -fx-padding: 10;
+}
+
+.button:hover {
+    -fx-border-color: -eplan-button-hover-border-color;
+    -fx-background-color: -eplan-button-top-color, linear-gradient(to bottom, -eplan-button-hover-gradient-top-color, -eplan-button-hover-gradient-bottom-color);
+    -fx-text-fill: -eplan-button-hover-text-color;
+}
+
+
+.button:armed {
+    -fx-border-color: -eplan-button-armed-border-color;
+    -fx-background-insets: 0, 0;
+    -fx-background-color: -eplan-button-gradient-top-color !important;
+    -fx-effect: innershadow(three-pass-box, #969696, 25, 0.0, 0, 0);
+}
+
+.button:default, .button.action {
+    -eplan-button-top-color: #3576D4;
+    -eplan-button-gradient-top-color: #2966BF;
+    -eplan-button-gradient-bottom-color: #2761B5;
+    -eplan-button-border-color: #1F4D91;
+
+    -eplan-button-hover-gradient-top-color: #2B6DCB;
+    -eplan-button-hover-gradient-bottom-color: #2966BE;
+    -eplan-button-hover-border-color: linear-gradient(to bottom, #2155A0, #2966BF);
+
+    -eplan-button-armed-border-color: linear-gradient(to bottom, #1E498B, #2966BE);
+    -eplan-button-text-color: white;
+    -eplan-button-hover-text-color: white;
+}
+
+.button.alert {
+    -eplan-button-top-color: #CB3C3D;
+    -eplan-button-gradient-top-color: #B23635;
+    -eplan-button-gradient-bottom-color: #AA3333;
+    -eplan-button-border-color: #862928;
+
+    -eplan-button-hover-gradient-top-color: #B64040 !important;
+    -eplan-button-hover-gradient-bottom-color: #AD3D3D !important;
+    -eplan-button-hover-border-color: linear-gradient(to bottom, #962D2D, #B03737);
+
+    -eplan-button-armed-border-color: linear-gradient(to bottom, #812625, #B13636);
+    -eplan-button-text-color: white;
+    -eplan-button-hover-text-color: white;
+}
+
+.button.confirm {
+    -eplan-button-top-color: #53B45B;
+    -eplan-button-gradient-top-color: #46A34E;
+    -eplan-button-gradient-bottom-color: #419A49;
+    -eplan-button-border-color: #357B3B;
+
+    -eplan-button-hover-gradient-top-color: #4AAB52 !important;
+    -eplan-button-hover-gradient-bottom-color: #47A44F !important;
+    -eplan-button-hover-border-color: linear-gradient(to bottom, #3B8841, #60AD68);
+
+    -eplan-button-armed-border-color: linear-gradient(to bottom, #327437, #45A14D);
+    -eplan-button-text-color: white;
+    -eplan-button-hover-text-color: white;
+}
+
+.button:default:armed, .button.alert:armed, .button.alert:armed, .button.confirm:armed {
+    -fx-effect: innershadow(three-pass-box, black, 25, 0.0, 0, 0);
+}
+
+.button:default .text, .button.action .text, .button.confirm .text, .button.alert .text {
+    -fx-effect: dropshadow(gaussian, grey, 2, 0.0, 0, -1);
+}
+
+.notifRoot{
+	 -fx-border-style: null;
+    -fx-border-color: transparent;
+    -fx-background-color: null;
+}
+
+
+.window-control {
+    -fx-border-style: null;
+    -fx-border-color: transparent;
+    -fx-background-color: null;
+    -fx-text-fill: #8F9396;
+    -fx-padding: 5;
+}
+
+.window-control:hover {
+    -fx-text-fill: #6B6E70;
+}
+
+
+.notification-button {
+    -fx-background-color: #1D90D9;
+    -fx-border-style: null;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+    -fx-border-width: 0;
+    -fx-padding: 5;
+}
+
+.notification-button:hover, .notification-button:armed {
+    -fx-background-color: #2B6DCB !important;
+}
+
+.nav-button {
+    -fx-padding: 10px;
+    -fx-text-fill: #336A97;
+    -fx-border-width: 0;
+    -fx-background-color: transparent;
+}
+
+.nav-button.selected {
+    -fx-padding: 11px 9px 9px 11px;
+}
+
+.nav-button.selected, .nav-button:armed {
+    -fx-text-fill: #0A8EDC;
+    -fx-effect: innershadow(gaussian, #CCCED3, 5, 0.0, 5, 3);
+    -fx-background-color: #DFE1E7;
+}
+
+.nav-button:armed {
+    -fx-text-fill: #2A8EFC !important;
+    -fx-padding: 12px 8px 8px 12px !important;
+}
+
+.list-view {
+    -fx-background-insets: 0;
+    -fx-border-style: none;
+}
+
+

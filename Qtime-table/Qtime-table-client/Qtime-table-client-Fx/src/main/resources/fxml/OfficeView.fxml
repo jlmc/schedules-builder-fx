@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import org.xine.schedules.builder.fx.backoffice.subject.*?>
+
+<AnchorPane fx:id="root" prefHeight="660.0" prefWidth="960.0" 
+styleClass="backofficeView" 
+stylesheets="@../styles/backoffice.css" 
+xmlns="http://javafx.com/javafx/8" 
+xmlns:fx="http://javafx.com/fxml/1" 
+fx:controller="org.xine.qtime.client.fx.controllers.office.OfficeController">
+    <children>
+        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox maxHeight="35.0" prefHeight="100.0" prefWidth="200.0" styleClass="headerHBox">
+                    <children>
+                        <Label text="Backoffice" />
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="7.0" top="5.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+        <HBox prefHeight="100.0" prefWidth="200.0" styleClass="bodyHBox" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="38.0">
+            <children>
+                <VBox fx:id="nav" maxWidth="250.0" minWidth="250.0" prefHeight="200.0" prefWidth="250.0" styleClass="bodyVBoxNav" HBox.hgrow="NEVER">
+                    <children>
+                        <ToolBar maxWidth="200.0" orientation="VERTICAL" VBox.vgrow="ALWAYS">
+                            <items>
+                                <VBox fx:id="navItems">
+                                    <children>
+<!--                                         <Button maxWidth="200.0" minWidth="200.0" prefHeight="-1.0" styleClass="first" text="Tasks" /> -->
+<!--                                         <Button maxWidth="200.0" minWidth="200.0" text="Administrator" /> -->
+<!--                                         <Button maxWidth="200.0" minWidth="200.0" text="Search" /> -->
+<!--                                         <Button maxWidth="200.0" minWidth="200.0" text="Line" /> -->
+<!--                                         <Button maxWidth="200.0" minWidth="200.0" styleClass="last" text="Process" /> -->
+                                    </children>
+                                </VBox>
+                            </items>
+                            <VBox.margin>
+                                <Insets left="17.0" top="20.0" />
+                            </VBox.margin>
+                        </ToolBar>
+                    </children>
+                </VBox>
+                <AnchorPane fx:id="component" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                    <children>
+<!--                       <SubjectAnchorPane id="subjectAnchorPane" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" /> -->
+                   </children>
+                </AnchorPane>
+
+                
+                
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

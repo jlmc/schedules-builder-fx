@@ -1,25 +1,16 @@
 package org.xine.qtime.client.fx.gui;
 
-/**
- * The Class Views.
- */
 public final class Views {
 
-    public static final String APP_VIEW = "/views/appview.fxml";
+	public static final String APPLICATION_VIEW = "/fxml/ApplicationView.fxml";
+	public static final String NOTIFICATION_VIEW = "/fxml/NotificationView.fxml";
+	public static final String OFFICE_VIEW = "/fxml/OfficeView.fxml";
+	public static final String DASHBOARD_VIEW = "/fxml/DashboardView.fxml";
+	public static final String WEB_VIEW = "/fxml/WebView.fxml";
 
-    public static final String START_UP = "/views/startupview.fxml";
-
-	public static final String BACKOFFICE = "/views/officeview.fxml";
-
-	public static final String BACKOFFICE_SUBJECT = "/views/backoffice/subjects/subjectsView.fxml";
-
-    public static final String BACKOFFICE_PERSONS = "/views/backoffice/persons/personsView.fxml";
-
-    public static final String BACKOFFICE_SUBJECTS_LIST = "/views/backoffice/subjects/subjectListView.fxml";
-
-    public static final String BACKOFFICE_SUBJECTS_CREATE = "/views/backoffice/subjects/subjectCreateView.fxml";
-
-    public static final String BACKOFFICE_SUBJECTS_EDIT = "/views/backoffice/subjects/subjectEditView.fxml";
+	public static final String PLAN_VIEW = null;
+	public static final String OFFICE_CONTEINER_VIEW = "/fxml/OfficeSubConteinerView.fxml";
+	public static final String OFFICE_DISCIPLINE_SEARCH_VIEW = "/fxml/office-views/discipline/DisciplineSearchView.fxml";
 
     private Views() {}
 }

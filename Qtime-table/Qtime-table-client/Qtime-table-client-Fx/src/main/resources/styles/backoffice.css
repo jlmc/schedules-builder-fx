@@ -1,0 +1,44 @@
+.backofficeView
+{
+	
+	-fx-border-color: #818181;
+	-fx-border-width: 1.0px 1.0px 1.0px 1.0px; 
+	-fx-background-color: #FFFFFF;
+}
+
+.headerHBox
+{
+	-fx-border-color: #818181;
+	/*-fx-border-size: 1;*/
+	-fx-border-width: 1.0px 1.0px 1.0px 1.0px; 
+	-fx-background-color: #01607F;
+}
+
+.headerHBox .label
+{
+	-fx-font-size: 15.0px;
+	-fx-font-weight: bold;
+	-fx-text-fill:white ;
+}
+
+.bodyHBox
+{
+	
+	-fx-border-color: #CBCBCB;
+	/*-fx-border-size: 1;*/
+	-fx-border-width: 1.0px 1.0px 1.0px 1.0px; 
+	-fx-background-color: #FFFFFF;
+}
+
+.bodyVBoxNav
+{
+	-fx-border-color: #CBCBCB;
+	/*-fx-border-size: 1;*/
+	-fx-border-width: 1.0px 1.0px 1.0px 1.0px; 
+	-fx-background-color: #C3DDE6;
+}
+
+.tool-bar{
+	-fx-background-color: #C3DDE6;
+	
+}

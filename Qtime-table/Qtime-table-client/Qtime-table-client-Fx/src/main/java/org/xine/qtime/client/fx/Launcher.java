@@ -8,9 +8,10 @@ import org.xine.fx.guice.GuiceApplication;
 import org.xine.fx.guice.GuiceFXMLLoader;
 import org.xine.fx.guice.GuiceFXMLLoader.Result;
 import org.xine.qtime.client.fx.controllers.ApplicationController;
+import org.xine.qtime.client.fx.controllers.NotificationController;
 import org.xine.qtime.client.fx.gui.FxDecorateScene;
 import org.xine.qtime.client.fx.gui.Views;
-import org.xine.qtime.client.fx.utils.ImageUtils;
+import org.xine.qtime.client.fx.gui.icons.Icons;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Module;
@@ -20,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Launcher extends GuiceApplication {
 
@@ -65,31 +67,48 @@ public class Launcher extends GuiceApplication {
 	}
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(final Stage mainStage) throws Exception {
 		loadFonts();
 
 		// Mac OS X workaround for Smack debugging and JavaFX (Swing + JavaFX issue).
 		System.setProperty("java.awt.headless", "false");
 
 		// stage.initStyle(StageStyle.UNDECORATED);
-		primaryStage.setTitle("AppName");
-		primaryStage.setMinHeight(MIN_HEIGHT);
-		primaryStage.setMinWidth(MIN_WIDTH);
-		primaryStage.setHeight(MIN_HEIGHT);
-		primaryStage.setWidth(MIN_WIDTH);
+		// define the Application icon
+		mainStage.setTitle("");
+		// mainStage.getIcons().add(ImageUtils.getFXImageSafely("/images/e-plan.png"));
+		mainStage.getIcons().add(Icons.getIcon(Icons.E_PLAN));
 
-		primaryStage.getIcons().add(ImageUtils.getFXImageSafely("/images/Qicon.png"));
+		mainStage.setMinHeight(MIN_HEIGHT);
+		mainStage.setMinWidth(MIN_WIDTH);
+		mainStage.setHeight(MIN_HEIGHT);
+		mainStage.setWidth(MIN_WIDTH);
 
-		final Result appViewResult = this.fxmlLoader.load(getClass().getResource(Views.APP_VIEW));
-		final FxDecorateScene fxDecorateScene = new FxDecorateScene((Parent) appViewResult.getRoot(), primaryStage);
+		final Result applicationViewResult = this.fxmlLoader.load(getClass().getResource(Views.APPLICATION_VIEW));
+
+		final FxDecorateScene fxDecorateScene = new FxDecorateScene((Parent) applicationViewResult.getRoot(),
+				mainStage);
+
 		fxDecorateScene.setEdgeSize(5);
+		mainStage.setScene(fxDecorateScene);
 
-		primaryStage.setScene(fxDecorateScene);
-
-		this.applicationController = appViewResult.getController();
+		this.applicationController = applicationViewResult.getController();
 		this.applicationController.setDecorateScene(fxDecorateScene);
 
-		primaryStage.show();
+		mainStage.show();
+
+		fxDecorateScene.getController().centerOnScreen();
+
+		// notification compoment
+		final Result notificationViewResult = this.fxmlLoader.load(getClass().getResource(Views.NOTIFICATION_VIEW));
+		final Stage notificationStage = new Stage(StageStyle.TRANSPARENT);
+		notificationStage.setScene(new Scene(notificationViewResult.getRoot()));
+		final NotificationController notificationController = notificationViewResult.getController();
+		notificationController.setStage(notificationStage);
+		notificationController.init();
+
+		this.applicationController.setNotificationController(notificationController);
+
 	}
 
 	/**
