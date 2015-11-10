@@ -35,6 +35,6 @@ fx:controller="org.xine.qtime.client.fx.controllers.NotificationController">
 		<DropShadow height="11.0" radius="5.0" width="11.0" />
 	</effect>
 	<stylesheets>
-		<URL value="@/styles/Styles.css" />
+		<URL value="@/styles/styles.css" />
 	</stylesheets>
 </AnchorPane>
